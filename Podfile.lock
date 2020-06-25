@@ -1,0 +1,28 @@
+PODS:
+  - FeedKit (9.1.2)
+  - JoaKit (0.1)
+
+DEPENDENCIES:
+  - FeedKit (~> 9)
+  - JoaKit (from `https://github.com/pimms/JoaKit`)
+
+SPEC REPOS:
+  trunk:
+    - FeedKit
+
+EXTERNAL SOURCES:
+  JoaKit:
+    :git: https://github.com/pimms/JoaKit
+
+CHECKOUT OPTIONS:
+  JoaKit:
+    :commit: 85a3ee52b0b92c2be43c8cae99286f6852dd00f9
+    :git: https://github.com/pimms/JoaKit
+
+SPEC CHECKSUMS:
+  FeedKit: 71653273ab08e618cd6fd1301ca08fc02dca6a9e
+  JoaKit: 8cb7ba1dc1e1fb2220e9b0695dfb008b5a3267c7
+
+PODFILE CHECKSUM: e322c831518a6a39506c8654a39edefe3416087c
+
+COCOAPODS: 1.9.1
