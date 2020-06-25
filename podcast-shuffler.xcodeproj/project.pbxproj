@@ -1,0 +1,585 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		19115D7C24A4C8E8008E8BAC /* podcast_shufflerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19115D7B24A4C8E8008E8BAC /* podcast_shufflerApp.swift */; };
+		19115D7E24A4C8E8008E8BAC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19115D7D24A4C8E8008E8BAC /* ContentView.swift */; };
+		19115D8024A4C8E9008E8BAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19115D7F24A4C8E9008E8BAC /* Assets.xcassets */; };
+		19115D8324A4C8E9008E8BAC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19115D8224A4C8E9008E8BAC /* Preview Assets.xcassets */; };
+		19115D8E24A4C8E9008E8BAC /* podcast_shufflerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19115D8D24A4C8E9008E8BAC /* podcast_shufflerTests.swift */; };
+		19115D9924A4C8E9008E8BAC /* podcast_shufflerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19115D9824A4C8E9008E8BAC /* podcast_shufflerUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		19115D8A24A4C8E9008E8BAC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 19115D7024A4C8E8008E8BAC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 19115D7724A4C8E8008E8BAC;
+			remoteInfo = "podcast-shuffler";
+		};
+		19115D9524A4C8E9008E8BAC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 19115D7024A4C8E8008E8BAC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 19115D7724A4C8E8008E8BAC;
+			remoteInfo = "podcast-shuffler";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		19115D7824A4C8E8008E8BAC /* podcast-shuffler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "podcast-shuffler.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		19115D7B24A4C8E8008E8BAC /* podcast_shufflerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = podcast_shufflerApp.swift; sourceTree = "<group>"; };
+		19115D7D24A4C8E8008E8BAC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		19115D7F24A4C8E9008E8BAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		19115D8224A4C8E9008E8BAC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		19115D8424A4C8E9008E8BAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		19115D8924A4C8E9008E8BAC /* podcast-shufflerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "podcast-shufflerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		19115D8D24A4C8E9008E8BAC /* podcast_shufflerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = podcast_shufflerTests.swift; sourceTree = "<group>"; };
+		19115D8F24A4C8E9008E8BAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		19115D9424A4C8E9008E8BAC /* podcast-shufflerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "podcast-shufflerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		19115D9824A4C8E9008E8BAC /* podcast_shufflerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = podcast_shufflerUITests.swift; sourceTree = "<group>"; };
+		19115D9A24A4C8E9008E8BAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		19115D7524A4C8E8008E8BAC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		19115D8624A4C8E9008E8BAC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		19115D9124A4C8E9008E8BAC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		19115D6F24A4C8E8008E8BAC = {
+			isa = PBXGroup;
+			children = (
+				19115D7A24A4C8E8008E8BAC /* podcast-shuffler */,
+				19115D8C24A4C8E9008E8BAC /* podcast-shufflerTests */,
+				19115D9724A4C8E9008E8BAC /* podcast-shufflerUITests */,
+				19115D7924A4C8E8008E8BAC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		19115D7924A4C8E8008E8BAC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				19115D7824A4C8E8008E8BAC /* podcast-shuffler.app */,
+				19115D8924A4C8E9008E8BAC /* podcast-shufflerTests.xctest */,
+				19115D9424A4C8E9008E8BAC /* podcast-shufflerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		19115D7A24A4C8E8008E8BAC /* podcast-shuffler */ = {
+			isa = PBXGroup;
+			children = (
+				19115D7B24A4C8E8008E8BAC /* podcast_shufflerApp.swift */,
+				19115D7D24A4C8E8008E8BAC /* ContentView.swift */,
+				19115D7F24A4C8E9008E8BAC /* Assets.xcassets */,
+				19115D8424A4C8E9008E8BAC /* Info.plist */,
+				19115D8124A4C8E9008E8BAC /* Preview Content */,
+			);
+			path = "podcast-shuffler";
+			sourceTree = "<group>";
+		};
+		19115D8124A4C8E9008E8BAC /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				19115D8224A4C8E9008E8BAC /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		19115D8C24A4C8E9008E8BAC /* podcast-shufflerTests */ = {
+			isa = PBXGroup;
+			children = (
+				19115D8D24A4C8E9008E8BAC /* podcast_shufflerTests.swift */,
+				19115D8F24A4C8E9008E8BAC /* Info.plist */,
+			);
+			path = "podcast-shufflerTests";
+			sourceTree = "<group>";
+		};
+		19115D9724A4C8E9008E8BAC /* podcast-shufflerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				19115D9824A4C8E9008E8BAC /* podcast_shufflerUITests.swift */,
+				19115D9A24A4C8E9008E8BAC /* Info.plist */,
+			);
+			path = "podcast-shufflerUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		19115D7724A4C8E8008E8BAC /* podcast-shuffler */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 19115D9D24A4C8E9008E8BAC /* Build configuration list for PBXNativeTarget "podcast-shuffler" */;
+			buildPhases = (
+				19115D7424A4C8E8008E8BAC /* Sources */,
+				19115D7524A4C8E8008E8BAC /* Frameworks */,
+				19115D7624A4C8E8008E8BAC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "podcast-shuffler";
+			productName = "podcast-shuffler";
+			productReference = 19115D7824A4C8E8008E8BAC /* podcast-shuffler.app */;
+			productType = "com.apple.product-type.application";
+		};
+		19115D8824A4C8E9008E8BAC /* podcast-shufflerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 19115DA024A4C8E9008E8BAC /* Build configuration list for PBXNativeTarget "podcast-shufflerTests" */;
+			buildPhases = (
+				19115D8524A4C8E9008E8BAC /* Sources */,
+				19115D8624A4C8E9008E8BAC /* Frameworks */,
+				19115D8724A4C8E9008E8BAC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				19115D8B24A4C8E9008E8BAC /* PBXTargetDependency */,
+			);
+			name = "podcast-shufflerTests";
+			productName = "podcast-shufflerTests";
+			productReference = 19115D8924A4C8E9008E8BAC /* podcast-shufflerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		19115D9324A4C8E9008E8BAC /* podcast-shufflerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 19115DA324A4C8E9008E8BAC /* Build configuration list for PBXNativeTarget "podcast-shufflerUITests" */;
+			buildPhases = (
+				19115D9024A4C8E9008E8BAC /* Sources */,
+				19115D9124A4C8E9008E8BAC /* Frameworks */,
+				19115D9224A4C8E9008E8BAC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				19115D9624A4C8E9008E8BAC /* PBXTargetDependency */,
+			);
+			name = "podcast-shufflerUITests";
+			productName = "podcast-shufflerUITests";
+			productReference = 19115D9424A4C8E9008E8BAC /* podcast-shufflerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		19115D7024A4C8E8008E8BAC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1200;
+				LastUpgradeCheck = 1200;
+				TargetAttributes = {
+					19115D7724A4C8E8008E8BAC = {
+						CreatedOnToolsVersion = 12.0;
+					};
+					19115D8824A4C8E9008E8BAC = {
+						CreatedOnToolsVersion = 12.0;
+						TestTargetID = 19115D7724A4C8E8008E8BAC;
+					};
+					19115D9324A4C8E9008E8BAC = {
+						CreatedOnToolsVersion = 12.0;
+						TestTargetID = 19115D7724A4C8E8008E8BAC;
+					};
+				};
+			};
+			buildConfigurationList = 19115D7324A4C8E8008E8BAC /* Build configuration list for PBXProject "podcast-shuffler" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 19115D6F24A4C8E8008E8BAC;
+			productRefGroup = 19115D7924A4C8E8008E8BAC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				19115D7724A4C8E8008E8BAC /* podcast-shuffler */,
+				19115D8824A4C8E9008E8BAC /* podcast-shufflerTests */,
+				19115D9324A4C8E9008E8BAC /* podcast-shufflerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		19115D7624A4C8E8008E8BAC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19115D8324A4C8E9008E8BAC /* Preview Assets.xcassets in Resources */,
+				19115D8024A4C8E9008E8BAC /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		19115D8724A4C8E9008E8BAC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		19115D9224A4C8E9008E8BAC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		19115D7424A4C8E8008E8BAC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19115D7E24A4C8E8008E8BAC /* ContentView.swift in Sources */,
+				19115D7C24A4C8E8008E8BAC /* podcast_shufflerApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		19115D8524A4C8E9008E8BAC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19115D8E24A4C8E9008E8BAC /* podcast_shufflerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		19115D9024A4C8E9008E8BAC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19115D9924A4C8E9008E8BAC /* podcast_shufflerUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		19115D8B24A4C8E9008E8BAC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 19115D7724A4C8E8008E8BAC /* podcast-shuffler */;
+			targetProxy = 19115D8A24A4C8E9008E8BAC /* PBXContainerItemProxy */;
+		};
+		19115D9624A4C8E9008E8BAC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 19115D7724A4C8E8008E8BAC /* podcast-shuffler */;
+			targetProxy = 19115D9524A4C8E9008E8BAC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		19115D9B24A4C8E9008E8BAC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		19115D9C24A4C8E9008E8BAC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		19115D9E24A4C8E9008E8BAC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"podcast-shuffler/Preview Content\"";
+				DEVELOPMENT_TEAM = WSQ25TFDK3;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "podcast-shuffler/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "no.jstien.podcast-shuffler";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		19115D9F24A4C8E9008E8BAC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"podcast-shuffler/Preview Content\"";
+				DEVELOPMENT_TEAM = WSQ25TFDK3;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "podcast-shuffler/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "no.jstien.podcast-shuffler";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		19115DA124A4C8E9008E8BAC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WSQ25TFDK3;
+				INFOPLIST_FILE = "podcast-shufflerTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "no.jstien.podcast-shufflerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/podcast-shuffler.app/podcast-shuffler";
+			};
+			name = Debug;
+		};
+		19115DA224A4C8E9008E8BAC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WSQ25TFDK3;
+				INFOPLIST_FILE = "podcast-shufflerTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "no.jstien.podcast-shufflerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/podcast-shuffler.app/podcast-shuffler";
+			};
+			name = Release;
+		};
+		19115DA424A4C8E9008E8BAC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WSQ25TFDK3;
+				INFOPLIST_FILE = "podcast-shufflerUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "no.jstien.podcast-shufflerUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "podcast-shuffler";
+			};
+			name = Debug;
+		};
+		19115DA524A4C8E9008E8BAC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WSQ25TFDK3;
+				INFOPLIST_FILE = "podcast-shufflerUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "no.jstien.podcast-shufflerUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "podcast-shuffler";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		19115D7324A4C8E8008E8BAC /* Build configuration list for PBXProject "podcast-shuffler" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				19115D9B24A4C8E9008E8BAC /* Debug */,
+				19115D9C24A4C8E9008E8BAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		19115D9D24A4C8E9008E8BAC /* Build configuration list for PBXNativeTarget "podcast-shuffler" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				19115D9E24A4C8E9008E8BAC /* Debug */,
+				19115D9F24A4C8E9008E8BAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		19115DA024A4C8E9008E8BAC /* Build configuration list for PBXNativeTarget "podcast-shufflerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				19115DA124A4C8E9008E8BAC /* Debug */,
+				19115DA224A4C8E9008E8BAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		19115DA324A4C8E9008E8BAC /* Build configuration list for PBXNativeTarget "podcast-shufflerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				19115DA424A4C8E9008E8BAC /* Debug */,
+				19115DA524A4C8E9008E8BAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 19115D7024A4C8E8008E8BAC /* Project object */;
+}
