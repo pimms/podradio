@@ -27,7 +27,7 @@ class FeedProvider {
             switch result {
             case .success(let data):
                 guard let data = data,
-                      let feed = self?.parseRssData(data) else {
+                      let feed = self?.parseRssData(data, url: url) else {
                     handler(.failure(FeedError.invalidFeed))
                     return
                 }
@@ -45,7 +45,7 @@ class FeedProvider {
 
     // MARK: - Private methods
 
-    private func parseRssData(_ data: Data) -> Feed? {
+    private func parseRssData(_ data: Data, url: URL) -> Feed? {
         let parser = FeedParser(data: data)
         let result = parser.parse()
 
@@ -57,12 +57,12 @@ class FeedProvider {
                 return nil
             }
 
-            let mappedFeed = self.mapFeed(rssFeed: rssFeed)
+            let mappedFeed = self.mapFeed(rssFeed: rssFeed, url: url)
             return mappedFeed
         }
     }
 
-    private func mapFeed(rssFeed: RSSFeed) -> Feed {
+    private func mapFeed(rssFeed: RSSFeed, url: URL) -> Feed {
         // TODO: Download this image
         // let imageUrl = rssFeed.iTunes?.iTunesImage?.attributes?.href
 
@@ -71,7 +71,8 @@ class FeedProvider {
         return Feed(id: rssFeed.title ?? rssFeed.link ?? UUID().uuidString,
                     episodes: episodes,
                     title: rssFeed.title ?? "Unnamed Feed",
-                    image: nil)
+                    image: nil,
+                    url: url)
     }
 
     private func mapEpisodes(from items: [RSSFeedItem]) -> [Episode] {

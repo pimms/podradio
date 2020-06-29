@@ -3,8 +3,8 @@ import UIKit
 
 struct Feed: Identifiable {
     static let testData = [
-        Feed(id: "1", episodes: Episode.testData, title: "Feed 1", image: nil),
-        Feed(id: "2", episodes: Episode.testData, title: "Feed 2", image: nil),
+        Feed(id: "1", episodes: Episode.testData, title: "Feed 1", image: nil, url: URL(string: "https://www.google.com")!),
+        Feed(id: "2", episodes: Episode.testData, title: "Feed 2", image: nil, url: URL(string: "https://www.google.com")!),
     ]
 
     struct Section: Identifiable {
@@ -17,13 +17,15 @@ struct Feed: Identifiable {
     var episodes: [Episode] { didSet { rebuildSections() } }
     var title: String
     var image: UIImage?
+    var url: URL
     private(set) var sections: [Section]
 
-    init(id: String, episodes: [Episode], title: String, image: UIImage?) {
+    init(id: String, episodes: [Episode], title: String, image: UIImage?, url: URL) {
         self.id = id
         self.episodes = episodes
         self.title = title
         self.image = image
+        self.url = url
         self.sections = []
 
         rebuildSections()

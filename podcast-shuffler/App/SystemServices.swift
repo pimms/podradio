@@ -9,6 +9,5 @@ struct SystemServices: ViewModifier {
         content
             .accentColor(.purple)
             .environmentObject(Self.feedStore)
-            .padding()
     }
 }

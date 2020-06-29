@@ -22,7 +22,17 @@ private struct FeedCell: View {
             FeedImageView(image: feed.image)
 
             VStack {
-                Text(feed.title)
+                HStack {
+                    Text(feed.title)
+                    Spacer()
+                }
+                HStack {
+                    Text(feed.url.absoluteString)
+                        .font(.caption2)
+                        .foregroundColor(.secondary)
+                    Spacer()
+                }
+                .padding(.top, 2)
             }
         }
     }
@@ -42,8 +52,15 @@ private struct FeedImageView: View {
         return imageView
             .resizable()
             .cornerRadius(8)
-            .aspectRatio(contentMode: .fit)
-            .frame(minWidth: 44, idealWidth: 50, maxWidth: 100, minHeight: 44, idealHeight: 50, maxHeight: 100, alignment: .center)
+            .aspectRatio(CGSize(width: 1, height: 1), contentMode: .fill)
+            .frame(minWidth: 15,
+                   idealWidth: 30,
+                   maxWidth: 40,
+                   minHeight: 15,
+                   idealHeight: 30,
+                   maxHeight: 40,
+                   alignment: .center)
+            .padding([.bottom, .trailing, .top], 10)
     }
 }
 
@@ -51,7 +68,6 @@ private struct AddFeedButton: View {
     @State var isPresenting = false
 
     var body: some View {
-        // Image(systemName: "plus.circle")
         Button(action: {
             self.isPresenting = true
         }, label: {
@@ -70,6 +86,7 @@ struct FeedRootView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             FeedRootView(feeds: Feed.testData)
+                .modifier(SystemServices())
         }
     }
 }
