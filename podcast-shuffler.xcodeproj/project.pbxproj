@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		19097C2E24A9B3AF0006B8B2 /* AddFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19097C2D24A9B3AE0006B8B2 /* AddFeedView.swift */; };
 		19097C3024A9C1FE0006B8B2 /* SystemServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19097C2F24A9C1FE0006B8B2 /* SystemServices.swift */; };
+		19097C3524A9F2070006B8B2 /* FeedIndexList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19097C3424A9F2070006B8B2 /* FeedIndexList.swift */; };
 		19115D7C24A4C8E8008E8BAC /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19115D7B24A4C8E8008E8BAC /* Main.swift */; };
 		19115D8024A4C8E9008E8BAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19115D7F24A4C8E9008E8BAC /* Assets.xcassets */; };
 		19115D8324A4C8E9008E8BAC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19115D8224A4C8E9008E8BAC /* Preview Assets.xcassets */; };
@@ -47,6 +48,8 @@
 /* Begin PBXFileReference section */
 		19097C2D24A9B3AE0006B8B2 /* AddFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFeedView.swift; sourceTree = "<group>"; };
 		19097C2F24A9C1FE0006B8B2 /* SystemServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemServices.swift; sourceTree = "<group>"; };
+		19097C3124A9EF1F0006B8B2 /* podcast-shuffler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "podcast-shuffler.entitlements"; sourceTree = "<group>"; };
+		19097C3424A9F2070006B8B2 /* FeedIndexList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedIndexList.swift; sourceTree = "<group>"; };
 		19115D7824A4C8E8008E8BAC /* podcast-shuffler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "podcast-shuffler.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		19115D7B24A4C8E8008E8BAC /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		19115D7F24A4C8E9008E8BAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -127,6 +130,7 @@
 		19115D7A24A4C8E8008E8BAC /* podcast-shuffler */ = {
 			isa = PBXGroup;
 			children = (
+				19097C3124A9EF1F0006B8B2 /* podcast-shuffler.entitlements */,
 				19168D4524A5012C0064A0B6 /* App */,
 				19168D3B24A4F96B0064A0B6 /* Models */,
 				19168D3724A4F92D0064A0B6 /* Views */,
@@ -189,6 +193,7 @@
 				19168D3E24A4FE440064A0B6 /* Feed.swift */,
 				19168D4924A503280064A0B6 /* FeedStore.swift */,
 				19168D4E24A509EF0064A0B6 /* FeedProvider.swift */,
+				19097C3424A9F2070006B8B2 /* FeedIndexList.swift */,
 				19168D5024A50A6A0064A0B6 /* HttpClient.swift */,
 			);
 			path = Models;
@@ -454,6 +459,7 @@
 				19168D4A24A503280064A0B6 /* FeedStore.swift in Sources */,
 				19168D4824A5019B0064A0B6 /* AppRootView.swift in Sources */,
 				19168D4F24A509EF0064A0B6 /* FeedProvider.swift in Sources */,
+				19097C3524A9F2070006B8B2 /* FeedIndexList.swift in Sources */,
 				19115D7C24A4C8E8008E8BAC /* Main.swift in Sources */,
 				19097C2E24A9B3AF0006B8B2 /* AddFeedView.swift in Sources */,
 			);
@@ -613,6 +619,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "podcast-shuffler/podcast-shuffler.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"podcast-shuffler/Preview Content\"";
 				DEVELOPMENT_TEAM = WSQ25TFDK3;
@@ -625,8 +632,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "no.jstien.podcast-shuffler";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,6";
 			};
 			name = Debug;
 		};
@@ -636,6 +644,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "podcast-shuffler/podcast-shuffler.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"podcast-shuffler/Preview Content\"";
 				DEVELOPMENT_TEAM = WSQ25TFDK3;
@@ -648,8 +657,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "no.jstien.podcast-shuffler";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,6";
 			};
 			name = Release;
 		};

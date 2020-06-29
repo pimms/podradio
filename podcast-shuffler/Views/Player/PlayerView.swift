@@ -18,7 +18,7 @@ private struct EpisodeViewLink: View {
     var body: some View {
         HStack {
             Spacer()
-            NavigationLink(destination: EpisodeRootView(episodes: feed.episodes)) {
+            NavigationLink(destination: EpisodeRootView(feed: feed)) {
                 Text("See all episodes")
             }
             Spacer()

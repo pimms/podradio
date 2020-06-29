@@ -1,17 +1,21 @@
 import SwiftUI
 
 struct EpisodeRootView: View {
-    var episodes: [Episode]
+    var feed: Feed
 
     var body: some View {
         List {
-            ForEach(episodes) { episode in
-                EpisodeCell(episode: episode)
+            ForEach(feed.sections) { section in
+                Section(header: Text(section.title)) {
+                    ForEach(section.episodes) { episode in
+                        EpisodeCell(episode: episode)
+                    }
+                }
             }
 
             HStack {
                 Spacer()
-                Text("\(episodes.count) episodes")
+                Text("\(feed.episodes.count) episodes")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
                 Spacer()
@@ -39,7 +43,7 @@ private struct EpisodeCell: View {
 struct EpisodeRootView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            EpisodeRootView(episodes: Episode.testData)
+            EpisodeRootView(feed: Feed.testData[0])
         }
     }
 }

@@ -6,22 +6,59 @@ class FeedProvider {
         case invalidFeed
     }
 
+    // MARK: - Internal properties
+
+    var persistentFeedUrls: [URL] { feedIndex.feedIndex }
+
+    // MARK: - Private properties
+
+    private let httpClient: HttpClient
+    private let feedIndex: FeedIndexList
+
+    init(httpClient: HttpClient = HttpClient()) {
+        self.httpClient = httpClient
+        self.feedIndex = FeedIndexList()
+    }
+
+    // MARK: - Internal methods
+
     func downloadFeed(at url: URL, handler: @escaping (Result<Feed, Error>) -> Void) {
-        let parser = FeedParser(URL: url)
-        parser.parseAsync(queue: DispatchQueue.global(qos: .userInitiated)) { [weak self] result in
-            guard let self = self else { return }
+        httpClient.get(url, handler: { [weak self] result in
             switch result {
-            case .failure:
-                handler(.failure(FeedError.invalidFeed))
-            case .success(let feed):
-                guard let rssFeed = feed.rssFeed else {
+            case .success(let data):
+                guard let data = data,
+                      let feed = self?.parseRssData(data) else {
                     handler(.failure(FeedError.invalidFeed))
                     return
                 }
+                handler(.success(feed))
 
-                let mappedFeed = self.mapFeed(rssFeed: rssFeed)
-                handler(.success(mappedFeed))
+            case .failure:
+                handler(.failure(FeedError.invalidFeed))
             }
+        })
+    }
+
+    func saveLocalReference(to url: URL) {
+        feedIndex.persistUrl(url)
+    }
+
+    // MARK: - Private methods
+
+    private func parseRssData(_ data: Data) -> Feed? {
+        let parser = FeedParser(data: data)
+        let result = parser.parse()
+
+        switch result {
+        case .failure:
+            return nil
+        case .success(let feed):
+            guard let rssFeed = feed.rssFeed else {
+                return nil
+            }
+
+            let mappedFeed = self.mapFeed(rssFeed: rssFeed)
+            return mappedFeed
         }
     }
 

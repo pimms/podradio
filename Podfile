@@ -6,7 +6,6 @@ target 'podcast-shuffler' do
   use_frameworks!
 
   # Pods for podcast-shuffler
-  pod 'JoaKit', :git => 'https://github.com/pimms/JoaKit'
   pod 'FeedKit', '~> 9'
 
   target 'podcast-shufflerTests' do
