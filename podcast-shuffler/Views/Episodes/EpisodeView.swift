@@ -29,12 +29,34 @@ private struct EpisodeCell: View {
     var episode: Episode
 
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(episode.title)
-            Text(episode.description)
-                .font(.subheadline)
-                .foregroundColor(.secondary)
+        HStack {
+            VStack(alignment: .leading) {
+                Text(episode.title)
+                Text(episode.description)
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+            }
+
+            Spacer()
+            VStack {
+                Text("\(formattedDuration())")
+                    .font(.subheadline)
+                    .italic()
+                    .foregroundColor(.secondary)
+            }
         }
+    }
+
+    private func formattedDuration() -> String {
+        guard let duration = episode.duration else {
+            return ""
+        }
+
+        let format = DateComponentsFormatter()
+        format.zeroFormattingBehavior = .pad
+        format.allowedUnits = [ .second, .minute, .hour ]
+
+        return format.string(from: duration) ?? ""
     }
 }
 

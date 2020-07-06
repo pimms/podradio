@@ -6,9 +6,51 @@ struct PlayerRootView: View {
     var body: some View {
         VStack {
             Spacer()
+            NowPlayingLabel()
+                .padding()
+            PlayButton(feed: feed)
+            Spacer()
             EpisodeViewLink(feed: feed)
         }
         .navigationTitle(feed.title)
+    }
+}
+
+private struct NowPlayingLabel: View {
+    @EnvironmentObject var player: EpisodePlayer
+
+    var body: some View {
+        VStack {
+            Text("\(player.currentEpisode?.title ?? "title")")
+                .font(.headline)
+            Text("\(player.currentEpisode?.description ?? "description")")
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+        }
+    }
+}
+
+private struct PlayButton: View {
+    @EnvironmentObject var player: EpisodePlayer
+    var feed: Feed
+
+    var body: some View {
+        Button(action: onTap, label: {
+            Text("Play")
+                .fontWeight(.bold)
+                .font(.title)
+                .foregroundColor(.primary)
+                .padding()
+                .overlay(
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(Color.primary, lineWidth: 5)
+                )
+        })
+    }
+
+    private func onTap() {
+        guard let picker = EpisodePicker(feed: feed) else { return }
+        player.configure(with: picker)
     }
 }
 
@@ -33,5 +75,7 @@ struct PlayerView_Previews: PreviewProvider {
         NavigationView {
             PlayerRootView(feed: Feed.testData[0])
         }
+        .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
+        .modifier(SystemServices())
     }
 }

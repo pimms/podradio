@@ -82,7 +82,11 @@ class FeedProvider {
                let title = item.title,
                let description = item.description,
                let date = item.pubDate {
-                let episode = Episode(url: url, title: title, description: description, date: date)
+                let episode = Episode(url: url,
+                                      title: title,
+                                      description: description,
+                                      duration: item.iTunes?.iTunesDuration ?? 0,
+                                      date: date)
                 episodes.append(episode)
             }
         }
