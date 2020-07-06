@@ -48,15 +48,11 @@ private struct EpisodeCell: View {
     }
 
     private func formattedDuration() -> String {
-        guard let duration = episode.duration else {
-            return ""
-        }
-
         let format = DateComponentsFormatter()
         format.zeroFormattingBehavior = .pad
         format.allowedUnits = [ .second, .minute, .hour ]
 
-        return format.string(from: duration) ?? ""
+        return format.string(from: episode.duration) ?? ""
     }
 }
 
