@@ -33,7 +33,6 @@ class FeedStore: ObservableObject {
             DispatchQueue.main.async {
                 switch result {
                 case .success(let feed):
-                    self?.feedProvider?.saveLocalReference(to: url)
                     self?.feeds.append(feed)
                     completion?(true)
                 case .failure(let error):

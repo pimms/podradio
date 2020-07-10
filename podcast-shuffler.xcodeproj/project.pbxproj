@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		19097C2E24A9B3AF0006B8B2 /* AddFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19097C2D24A9B3AE0006B8B2 /* AddFeedView.swift */; };
 		19097C3024A9C1FE0006B8B2 /* SystemServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19097C2F24A9C1FE0006B8B2 /* SystemServices.swift */; };
-		19097C3524A9F2070006B8B2 /* FeedIndexList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19097C3424A9F2070006B8B2 /* FeedIndexList.swift */; };
+		19097C3524A9F2070006B8B2 /* FeedCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19097C3424A9F2070006B8B2 /* FeedCache.swift */; };
 		19115D7C24A4C8E8008E8BAC /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19115D7B24A4C8E8008E8BAC /* Main.swift */; };
 		19115D8024A4C8E9008E8BAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19115D7F24A4C8E9008E8BAC /* Assets.xcassets */; };
 		19115D8324A4C8E9008E8BAC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19115D8224A4C8E9008E8BAC /* Preview Assets.xcassets */; };
@@ -24,6 +24,7 @@
 		19168D4D24A5058A0064A0B6 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19168D4C24A5058A0064A0B6 /* PlayerView.swift */; };
 		19168D4F24A509EF0064A0B6 /* FeedProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19168D4E24A509EF0064A0B6 /* FeedProvider.swift */; };
 		19168D5124A50A6A0064A0B6 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19168D5024A50A6A0064A0B6 /* HttpClient.swift */; };
+		19D8A75724B89D72000AE5A5 /* MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D8A75624B89D72000AE5A5 /* MD5.swift */; };
 		19FD32ED24AA980100FB9FF6 /* EpisodePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FD32EC24AA980000FB9FF6 /* EpisodePlayer.swift */; };
 		19FD32EF24AA981900FB9FF6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19FD32EE24AA981900FB9FF6 /* AVFoundation.framework */; };
 		19FD32F424AA9B0A00FB9FF6 /* EpisodePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FD32F324AA9B0A00FB9FF6 /* EpisodePicker.swift */; };
@@ -54,7 +55,7 @@
 		19097C2D24A9B3AE0006B8B2 /* AddFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFeedView.swift; sourceTree = "<group>"; };
 		19097C2F24A9C1FE0006B8B2 /* SystemServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemServices.swift; sourceTree = "<group>"; };
 		19097C3124A9EF1F0006B8B2 /* podcast-shuffler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "podcast-shuffler.entitlements"; sourceTree = "<group>"; };
-		19097C3424A9F2070006B8B2 /* FeedIndexList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedIndexList.swift; sourceTree = "<group>"; };
+		19097C3424A9F2070006B8B2 /* FeedCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCache.swift; sourceTree = "<group>"; };
 		19115D7824A4C8E8008E8BAC /* podcast-shuffler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "podcast-shuffler.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		19115D7B24A4C8E8008E8BAC /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		19115D7F24A4C8E9008E8BAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -75,6 +76,7 @@
 		19168D4C24A5058A0064A0B6 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		19168D4E24A509EF0064A0B6 /* FeedProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedProvider.swift; sourceTree = "<group>"; };
 		19168D5024A50A6A0064A0B6 /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
+		19D8A75624B89D72000AE5A5 /* MD5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MD5.swift; sourceTree = "<group>"; };
 		19FD32EC24AA980000FB9FF6 /* EpisodePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodePlayer.swift; sourceTree = "<group>"; };
 		19FD32EE24AA981900FB9FF6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.16.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
 		19FD32F324AA9B0A00FB9FF6 /* EpisodePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodePicker.swift; sourceTree = "<group>"; };
@@ -206,7 +208,7 @@
 				19168D3E24A4FE440064A0B6 /* Feed.swift */,
 				19168D4924A503280064A0B6 /* FeedStore.swift */,
 				19168D4E24A509EF0064A0B6 /* FeedProvider.swift */,
-				19097C3424A9F2070006B8B2 /* FeedIndexList.swift */,
+				19097C3424A9F2070006B8B2 /* FeedCache.swift */,
 				19168D5024A50A6A0064A0B6 /* HttpClient.swift */,
 			);
 			path = Models;
@@ -260,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				19FD32F524AB3D1600FB9FF6 /* Random.swift */,
+				19D8A75624B89D72000AE5A5 /* MD5.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -494,7 +497,8 @@
 				19168D4A24A503280064A0B6 /* FeedStore.swift in Sources */,
 				19168D4824A5019B0064A0B6 /* AppRootView.swift in Sources */,
 				19168D4F24A509EF0064A0B6 /* FeedProvider.swift in Sources */,
-				19097C3524A9F2070006B8B2 /* FeedIndexList.swift in Sources */,
+				19097C3524A9F2070006B8B2 /* FeedCache.swift in Sources */,
+				19D8A75724B89D72000AE5A5 /* MD5.swift in Sources */,
 				19115D7C24A4C8E8008E8BAC /* Main.swift in Sources */,
 				19FD32F924AB40CA00FB9FF6 /* Streamable.swift in Sources */,
 				19097C2E24A9B3AF0006B8B2 /* AddFeedView.swift in Sources */,

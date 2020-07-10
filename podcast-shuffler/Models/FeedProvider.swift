@@ -8,16 +8,16 @@ class FeedProvider {
 
     // MARK: - Internal properties
 
-    var persistentFeedUrls: [URL] { feedIndex.feedIndex }
+    var persistentFeedUrls: [URL] { feedCache.cache.map { $0.feedUrl } }
 
     // MARK: - Private properties
 
     private let httpClient: HttpClient
-    private let feedIndex: FeedIndexList
+    private let feedCache: FeedCache
 
     init(httpClient: HttpClient = HttpClient()) {
         self.httpClient = httpClient
-        self.feedIndex = FeedIndexList()
+        self.feedCache = FeedCache()
     }
 
     // MARK: - Internal methods
@@ -31,16 +31,13 @@ class FeedProvider {
                     handler(.failure(FeedError.invalidFeed))
                     return
                 }
-                handler(.success(feed))
 
+                self?.feedCache.cacheFeed(url, feedContent: data)
+                handler(.success(feed))
             case .failure:
                 handler(.failure(FeedError.invalidFeed))
             }
         })
-    }
-
-    func saveLocalReference(to url: URL) {
-        feedIndex.persistUrl(url)
     }
 
     // MARK: - Private methods
