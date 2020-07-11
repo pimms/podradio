@@ -11,53 +11,58 @@ class FeedStore: ObservableObject {
 
     // MARK: - Private properties
 
-    private let feedProvider: FeedProvider?
+    private let feedCache = FeedCache()
+    private let httpClient = HttpClient()
 
     // MARK: - Init
 
     init(feeds: [Feed]) {
         self.feeds = feeds
-        self.feedProvider = nil
     }
 
     init() {
         self.feeds = []
-        self.feedProvider = FeedProvider()
-        addPersistentFeeds()
+        loadCachedFeeds()
+    }
+
+    private func loadCachedFeeds() {
+        feedCache.cache.forEach { cacheEntry in
+            guard let data = cacheEntry.feedContent,
+                  let feed = FeedParser.parseRssData(data, url: cacheEntry.feedUrl) else {
+                feedCache.remove(cacheEntry)
+                return
+            }
+
+            DispatchQueue.main.async {
+                self.feeds.append(feed)
+            }
+        }
     }
 
     // MARK: - Internal methods
 
     func addFeed(from url: URL, then completion: ((Bool) -> Void)? = nil) {
-        feedProvider?.downloadFeed(at: url) { [weak self] result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let feed):
+        httpClient.get(url) { [weak self] response in
+            switch response {
+            case .success(let data):
+                guard let data = data,
+                      let feed = FeedParser.parseRssData(data, url: url) else {
+                    DispatchQueue.main.async {
+                        completion?(false)
+                    }
+                    return
+                }
+
+                self?.feedCache.cacheFeed(url, feedContent: data)
+                DispatchQueue.main.async {
                     self?.feeds.append(feed)
                     completion?(true)
-                case .failure(let error):
-                    // TODO: How do we notify someone about this?
-                    print("Failed to add feed: \(error)")
+                }
+            case .failure:
+                DispatchQueue.main.async {
                     completion?(false)
                 }
             }
-        }
-    }
-
-    // MARK: - Private methods
-
-    private func addPersistentFeeds() {
-        feedProvider?.persistentFeedUrls.forEach { [weak self] url in
-            feedProvider?.downloadFeed(at: url, handler: { result in
-                switch result {
-                case .success(let feed):
-                    DispatchQueue.main.async {
-                        self?.feeds.append(feed)
-                    }
-                case .failure(let error):
-                    print("Failed to add persistent feed: \(error)")
-                }
-            })
         }
     }
 }

@@ -1,49 +1,12 @@
 import Foundation
 import FeedKit
 
-class FeedProvider {
-    private enum FeedError: Error {
-        case invalidFeed
-    }
+final class FeedParser {
 
-    // MARK: - Internal properties
+    // MARK: - Static internal methods
 
-    var persistentFeedUrls: [URL] { feedCache.cache.map { $0.feedUrl } }
-
-    // MARK: - Private properties
-
-    private let httpClient: HttpClient
-    private let feedCache: FeedCache
-
-    init(httpClient: HttpClient = HttpClient()) {
-        self.httpClient = httpClient
-        self.feedCache = FeedCache()
-    }
-
-    // MARK: - Internal methods
-
-    func downloadFeed(at url: URL, handler: @escaping (Result<Feed, Error>) -> Void) {
-        httpClient.get(url, handler: { [weak self] result in
-            switch result {
-            case .success(let data):
-                guard let data = data,
-                      let feed = self?.parseRssData(data, url: url) else {
-                    handler(.failure(FeedError.invalidFeed))
-                    return
-                }
-
-                self?.feedCache.cacheFeed(url, feedContent: data)
-                handler(.success(feed))
-            case .failure:
-                handler(.failure(FeedError.invalidFeed))
-            }
-        })
-    }
-
-    // MARK: - Private methods
-
-    private func parseRssData(_ data: Data, url: URL) -> Feed? {
-        let parser = FeedParser(data: data)
+    static func parseRssData(_ data: Data, url: URL) -> Feed? {
+        let parser = FeedKit.FeedParser(data: data)
         let result = parser.parse()
 
         switch result {
@@ -59,7 +22,9 @@ class FeedProvider {
         }
     }
 
-    private func mapFeed(rssFeed: RSSFeed, url: URL) -> Feed {
+    // MARK: - Static private methods
+
+    static private func mapFeed(rssFeed: RSSFeed, url: URL) -> Feed {
         // TODO: Download this image
         // let imageUrl = rssFeed.iTunes?.iTunesImage?.attributes?.href
 
@@ -72,7 +37,7 @@ class FeedProvider {
                     url: url)
     }
 
-    private func mapEpisodes(from items: [RSSFeedItem]) -> [Episode] {
+    static private func mapEpisodes(from items: [RSSFeedItem]) -> [Episode] {
         var episodes = [Episode]()
         for item in items {
             if let url = URL(string: item.link ?? item.enclosure?.attributes?.url ?? ""),

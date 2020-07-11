@@ -22,9 +22,9 @@
 		19168D4824A5019B0064A0B6 /* AppRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19168D4724A5019B0064A0B6 /* AppRootView.swift */; };
 		19168D4A24A503280064A0B6 /* FeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19168D4924A503280064A0B6 /* FeedStore.swift */; };
 		19168D4D24A5058A0064A0B6 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19168D4C24A5058A0064A0B6 /* PlayerView.swift */; };
-		19168D4F24A509EF0064A0B6 /* FeedProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19168D4E24A509EF0064A0B6 /* FeedProvider.swift */; };
 		19168D5124A50A6A0064A0B6 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19168D5024A50A6A0064A0B6 /* HttpClient.swift */; };
 		19D8A75724B89D72000AE5A5 /* MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D8A75624B89D72000AE5A5 /* MD5.swift */; };
+		19D8A75924B9A2D5000AE5A5 /* FeedParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D8A75824B9A2D5000AE5A5 /* FeedParser.swift */; };
 		19FD32ED24AA980100FB9FF6 /* EpisodePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FD32EC24AA980000FB9FF6 /* EpisodePlayer.swift */; };
 		19FD32EF24AA981900FB9FF6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19FD32EE24AA981900FB9FF6 /* AVFoundation.framework */; };
 		19FD32F424AA9B0A00FB9FF6 /* EpisodePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FD32F324AA9B0A00FB9FF6 /* EpisodePicker.swift */; };
@@ -74,9 +74,9 @@
 		19168D4724A5019B0064A0B6 /* AppRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootView.swift; sourceTree = "<group>"; };
 		19168D4924A503280064A0B6 /* FeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStore.swift; sourceTree = "<group>"; };
 		19168D4C24A5058A0064A0B6 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
-		19168D4E24A509EF0064A0B6 /* FeedProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedProvider.swift; sourceTree = "<group>"; };
 		19168D5024A50A6A0064A0B6 /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
 		19D8A75624B89D72000AE5A5 /* MD5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MD5.swift; sourceTree = "<group>"; };
+		19D8A75824B9A2D5000AE5A5 /* FeedParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedParser.swift; sourceTree = "<group>"; };
 		19FD32EC24AA980000FB9FF6 /* EpisodePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodePlayer.swift; sourceTree = "<group>"; };
 		19FD32EE24AA981900FB9FF6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.16.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
 		19FD32F324AA9B0A00FB9FF6 /* EpisodePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodePicker.swift; sourceTree = "<group>"; };
@@ -207,9 +207,9 @@
 				19168D3C24A4F9740064A0B6 /* Episode.swift */,
 				19168D3E24A4FE440064A0B6 /* Feed.swift */,
 				19168D4924A503280064A0B6 /* FeedStore.swift */,
-				19168D4E24A509EF0064A0B6 /* FeedProvider.swift */,
 				19097C3424A9F2070006B8B2 /* FeedCache.swift */,
 				19168D5024A50A6A0064A0B6 /* HttpClient.swift */,
+				19D8A75824B9A2D5000AE5A5 /* FeedParser.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -496,7 +496,7 @@
 				19168D4424A4FEAA0064A0B6 /* FeedView.swift in Sources */,
 				19168D4A24A503280064A0B6 /* FeedStore.swift in Sources */,
 				19168D4824A5019B0064A0B6 /* AppRootView.swift in Sources */,
-				19168D4F24A509EF0064A0B6 /* FeedProvider.swift in Sources */,
+				19D8A75924B9A2D5000AE5A5 /* FeedParser.swift in Sources */,
 				19097C3524A9F2070006B8B2 /* FeedCache.swift in Sources */,
 				19D8A75724B89D72000AE5A5 /* MD5.swift in Sources */,
 				19115D7C24A4C8E8008E8BAC /* Main.swift in Sources */,
