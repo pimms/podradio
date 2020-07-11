@@ -22,10 +22,12 @@ struct EpisodeRootView: View {
             }
         }
         .navigationTitle("Episodes")
+        .animation(.default)
     }
 }
 
 private struct EpisodeCell: View {
+    @State private var expanded: Bool = false
     var episode: Episode
 
     var body: some View {
@@ -35,6 +37,7 @@ private struct EpisodeCell: View {
                 Text(episode.description)
                     .font(.subheadline)
                     .foregroundColor(.secondary)
+                    .lineLimit(expanded ? nil : 3)
             }
 
             Spacer()
@@ -43,8 +46,11 @@ private struct EpisodeCell: View {
                     .font(.subheadline)
                     .italic()
                     .foregroundColor(.secondary)
+                Spacer()
             }
         }
+        .onTapGesture { expanded.toggle() }
+        .animation(.default)
     }
 
     private func formattedDuration() -> String {
