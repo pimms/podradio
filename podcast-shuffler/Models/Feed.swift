@@ -71,9 +71,12 @@ private extension Feed {
         dateFormatter.dateFormat = "MMMM yyyy"
 
         self.sections = dict.keys
-            .sorted { $0.year < $1.year && $0.month < $1.month }
             .map { key in
-                let episodes = dict[key]!.reduce(into: [], { result, tuple in result.append(tuple.1)})
+                var episodes: [Episode] = []
+                for episode in dict[key] ?? [] {
+                    episodes.append(episode.1)
+                }
+
                 let title = dateFormatter.string(from: episodes[0].date)
                 return Section(title: title, episodes: episodes)
             }

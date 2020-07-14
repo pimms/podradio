@@ -39,17 +39,21 @@ final class FeedParser {
 
     static private func mapEpisodes(from items: [RSSFeedItem]) -> [Episode] {
         var episodes = [Episode]()
+        var seenEpisodes = Set<String>()
+
         for item in items {
             if let url = URL(string: item.link ?? item.enclosure?.attributes?.url ?? ""),
                let title = item.title,
-               let description = item.description,
+               let description = item.description ?? "",
                let date = item.pubDate,
-               let duration = item.iTunes?.iTunesDuration {
+               let duration = item.iTunes?.iTunesDuration ?? 10,
+               !seenEpisodes.contains(url.absoluteString) {
                 let episode = Episode(url: url,
                                       title: title,
                                       description: description,
                                       duration: duration,
                                       date: date)
+                seenEpisodes.insert(url.absoluteString)
                 episodes.append(episode)
             }
         }
