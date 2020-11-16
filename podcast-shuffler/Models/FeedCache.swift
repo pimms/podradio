@@ -31,7 +31,6 @@ class FeedCache {
         let docDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         let url = URL(fileURLWithPath: docDir)
         let filePath = url.appendingPathComponent("cacheIndex.plist")
-        print("index file path: \(filePath)")
         return filePath
     }
 
