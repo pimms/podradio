@@ -75,7 +75,7 @@ struct PlayerView_Previews: PreviewProvider {
         NavigationView {
             PlayerRootView(feed: Feed.testData[0])
         }
-        .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
+        .preferredColorScheme(.dark)
         .modifier(SystemServices())
     }
 }

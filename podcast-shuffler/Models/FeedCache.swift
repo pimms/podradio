@@ -7,22 +7,22 @@ class FeedCache {
 
     struct CacheEntry: Codable {
         fileprivate let feedUrlString: String
-        fileprivate let filePathString: String
+        fileprivate let feedContentFileName: String
         let lastRefreshed: Date
 
         var feedUrl: URL { URL(string: feedUrlString)! }
-        var filePath: URL { URL(string: filePathString)! }
-        var feedContent: Data? { try? Data(contentsOf: filePath) }
+        var feedFilePath: URL { FeedCache.feedContentPath(fileName: feedContentFileName) }
+        var feedContent: Data? { try? Data(contentsOf: feedFilePath) }
 
-        init(feedUrl: URL, filePath: URL, lastRefreshed: Date) {
+        init(feedUrl: URL, feedContentFileName: String, lastRefreshed: Date) {
             self.feedUrlString = feedUrl.absoluteString
-            self.filePathString = filePath.absoluteString
+            self.feedContentFileName = feedContentFileName
             self.lastRefreshed = lastRefreshed
         }
 
-        private init(feedUrlString: String, filePathString: String, lastRefreshed: Date) {
+        private init(feedUrlString: String, feedContentFileName: String, lastRefreshed: Date) {
             self.feedUrlString = feedUrlString
-            self.filePathString = filePathString
+            self.feedContentFileName = feedContentFileName
             self.lastRefreshed = lastRefreshed
         }
     }
@@ -35,8 +35,8 @@ class FeedCache {
         return filePath
     }
 
-    private static func cachePath(fileName: String) -> URL {
-        let cacheDir = NSSearchPathForDirectoriesInDomains(.cachesDirectory, .userDomainMask, true)[0]
+    private static func feedContentPath(fileName: String) -> URL {
+        let cacheDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         let url = URL(fileURLWithPath: cacheDir)
         return url.appendingPathComponent(fileName)
     }
@@ -56,11 +56,10 @@ class FeedCache {
 
     func cacheFeed(_ url: URL, feedContent: Data) {
         let fileName = MD5(string: url.absoluteString)
-        let feedFilePath = Self.cachePath(fileName: fileName)
-        let entry = CacheEntry(feedUrl: url, filePath: feedFilePath, lastRefreshed: Date())
+        let entry = CacheEntry(feedUrl: url, feedContentFileName: fileName, lastRefreshed: Date())
 
         do {
-            try feedContent.write(to: feedFilePath)
+            try feedContent.write(to: entry.feedFilePath)
 
             cache.removeAll(where: { $0.feedUrl == url })
             cache.append(entry)
