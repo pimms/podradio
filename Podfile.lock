@@ -1,16 +1,22 @@
 PODS:
   - FeedKit (9.1.2)
+  - ModernAVPlayer (1.7.3):
+    - ModernAVPlayer/Core (= 1.7.3)
+  - ModernAVPlayer/Core (1.7.3)
 
 DEPENDENCIES:
   - FeedKit (~> 9)
+  - ModernAVPlayer (= 1.7.3)
 
 SPEC REPOS:
   trunk:
     - FeedKit
+    - ModernAVPlayer
 
 SPEC CHECKSUMS:
   FeedKit: 71653273ab08e618cd6fd1301ca08fc02dca6a9e
+  ModernAVPlayer: d04d53be7b620990250d0e13bee3be7217dc6214
 
-PODFILE CHECKSUM: 881bb288b8732b8a3fb5ad5c5a2bccc63e33d425
+PODFILE CHECKSUM: 8f375f5f85e3d38cb705077253af1f148ceb223e
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.9.3

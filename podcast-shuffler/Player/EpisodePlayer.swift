@@ -1,5 +1,6 @@
 import Foundation
 import AVFoundation
+import ModernAVPlayer
 
 class EpisodePlayer: ObservableObject {
 
@@ -9,21 +10,15 @@ class EpisodePlayer: ObservableObject {
 
     // MARK: - Internal properties
 
-    var duration: TimeInterval { player?.currentItem?.asset.duration.seconds ?? 0 }
-    var currentTime: TimeInterval { player?.currentItem?.currentTime().seconds ?? 0 }
+    var duration: TimeInterval { 0 }
+    var currentTime: TimeInterval { 0 }
 
     // MARK: - Private properties
 
-    private var playerItem: AVPlayerItem?
-    private var player: AVPlayer?
+    private let player = ModernAVPlayer()
     private var streamable: Streamable?
-    private var statusObserver: NSKeyValueObservation?
 
     // MARK: - Lifecycle
-
-    deinit {
-        statusObserver?.invalidate()
-    }
 
     // MARK: - Internal methods
 
@@ -33,20 +28,13 @@ class EpisodePlayer: ObservableObject {
         let streamable = picker.currentStreamable()
         self.streamable = streamable
 
-        let asset = AVAsset(url: streamable.episode.url)
-        playerItem = AVPlayerItem(asset: asset, automaticallyLoadedAssetKeys: ["playable", "duration"])
-        player = AVPlayer(playerItem: playerItem)
-        statusObserver = playerItem?.observe(\.status, options: [.new]) { _, status in
-            switch self.player?.status {
-            case .readyToPlay:
-                print("READY TO PLAY")
-                self.play()
-            default:
-                break
-            }
-        }
+        let url = streamable.episode.url
+        let media = ModernAVPlayerMedia(url: url, type: .clip)
 
-        print("Playing episode \(streamable.episode.url.absoluteString)")
+        let position = streamable.startTime.distance(to: Date())
+        player.load(media: media, autostart: true, position: position)
+
+        print("Playing episode \(media.url.absoluteString)")
 
         DispatchQueue.main.async {
             self.currentEpisode = streamable.episode
@@ -54,21 +42,14 @@ class EpisodePlayer: ObservableObject {
     }
 
     func pause() {
-        player?.pause()
+        player.pause()
     }
 
     func play() {
         guard let streamable = streamable else { fatalError("No streamable") }
 
-        self.player?.play()
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            print("-- attempting to seek --")
-            let diff = streamable.startTime.distance(to: Date())
-            let cmTime = CMTime(seconds: diff, preferredTimescale: 1000)
-            self.player?.seek(to: cmTime, completionHandler: { success in
-                print("seek success: \(success)")
-            })
-        }
+        let position = streamable.startTime.distance(to: Date())
+        player.seek(position: position)
+        player.play()
     }
 }

@@ -17,6 +17,7 @@ struct AddFeedView: View {
                 .textContentType(.URL)
                 .keyboardType(.URL)
                 .autocapitalization(.none)
+                .disableAutocorrection(true)
 
                 if !feedUrl.isEmpty && !isValidUrl() {
                     HStack {
