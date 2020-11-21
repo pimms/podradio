@@ -36,7 +36,7 @@ class EpisodePicker {
         var streamable = makeStreamable(using: &rng, startTime: currentPeriodStart)
 
         let now = Date()
-        while streamable.endTime.distance(to: now) > 0 {
+        while streamable.endTime.distance(to: now) > 15 {
             streamable = streamable.nextStreamable
         }
 

@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct PlayerRootView: View {
+    @EnvironmentObject var player: EpisodePlayer
     var feed: Feed
 
     var body: some View {
@@ -13,6 +14,11 @@ struct PlayerRootView: View {
             EpisodeViewLink(feed: feed)
         }
         .navigationTitle(feed.title)
+        .onAppear {
+            guard player.state != .playing else { return }
+            guard let picker = EpisodePicker(feed: feed) else { return }
+            player.configure(with: picker)
+        }
     }
 }
 
@@ -36,7 +42,7 @@ private struct PlayButton: View {
 
     var body: some View {
         Button(action: onTap, label: {
-            Text("Play")
+            Text(player.state == .playing ? "Pause" : "Play")
                 .fontWeight(.bold)
                 .font(.title)
                 .foregroundColor(.primary)
@@ -49,8 +55,12 @@ private struct PlayButton: View {
     }
 
     private func onTap() {
-        guard let picker = EpisodePicker(feed: feed) else { return }
-        player.configure(with: picker)
+        switch player.state {
+        case .playing:
+            player.pause()
+        case .paused:
+            player.play()
+        }
     }
 }
 

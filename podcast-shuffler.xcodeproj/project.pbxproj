@@ -663,6 +663,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"podcast-shuffler/Preview Content\"";
 				DEVELOPMENT_TEAM = WSQ25TFDK3;
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = NO;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "podcast-shuffler/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -688,6 +689,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"podcast-shuffler/Preview Content\"";
 				DEVELOPMENT_TEAM = WSQ25TFDK3;
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = NO;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "podcast-shuffler/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
