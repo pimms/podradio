@@ -1,21 +1,24 @@
 import SwiftUI
 
 struct PlayerRootView: View {
-    @EnvironmentObject var player: EpisodePlayer
+    @StateObject var player: EpisodePlayer = EpisodePlayer()
     var feed: Feed
+
+    init(feed: Feed) {
+        self.feed = feed
+    }
 
     var body: some View {
         VStack {
             Spacer()
-            NowPlayingLabel()
+            NowPlayingLabel(player: player)
                 .padding()
-            PlayButton(feed: feed)
+            PlayButton(player: player, feed: feed)
             Spacer()
             EpisodeViewLink(feed: feed)
         }
         .navigationTitle(feed.title)
         .onAppear {
-            guard player.state != .playing else { return }
             guard let picker = EpisodePicker(feed: feed) else { return }
             player.configure(with: picker)
         }
@@ -23,7 +26,7 @@ struct PlayerRootView: View {
 }
 
 private struct NowPlayingLabel: View {
-    @EnvironmentObject var player: EpisodePlayer
+    @StateObject var player: EpisodePlayer
 
     var body: some View {
         VStack {
@@ -37,7 +40,7 @@ private struct NowPlayingLabel: View {
 }
 
 private struct PlayButton: View {
-    @EnvironmentObject var player: EpisodePlayer
+    @StateObject var player: EpisodePlayer
     var feed: Feed
 
     var body: some View {
@@ -86,6 +89,5 @@ struct PlayerView_Previews: PreviewProvider {
             PlayerRootView(feed: Feed.testData[0])
         }
         .preferredColorScheme(.dark)
-        .modifier(SystemServices())
     }
 }

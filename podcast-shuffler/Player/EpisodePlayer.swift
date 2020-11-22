@@ -3,6 +3,8 @@ import AVFoundation
 import ModernAVPlayer
 
 class EpisodePlayer: ObservableObject {
+    static var current: EpisodePlayer?
+
     enum State {
         case playing
         case paused
@@ -23,6 +25,8 @@ class EpisodePlayer: ObservableObject {
     private let player: ModernAVPlayer
     private var episodePicker: EpisodePicker?
     private var streamable: Streamable?
+
+    private var isCurrent: Bool { Self.current === self }
 
     // MARK: - Lifecycle
 
@@ -68,9 +72,20 @@ class EpisodePlayer: ObservableObject {
     func play() {
         guard let streamable = streamable else { fatalError("No streamable") }
 
+        makeCurrent()
+
         let position = streamable.startTime.distance(to: Date())
         player.seek(position: position)
         player.play()
+    }
+
+    // MARK: - Private methods
+
+    private func makeCurrent() {
+        if !isCurrent {
+            Self.current?.pause()
+            Self.current = self
+        }
     }
 }
 
