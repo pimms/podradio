@@ -1,10 +1,6 @@
 import Foundation
 
 class FeedCache {
-    fileprivate struct CodableCacheEntry {
-
-    }
-
     struct CacheEntry: Codable {
         fileprivate let feedUrlString: String
         fileprivate let feedContentFileName: String

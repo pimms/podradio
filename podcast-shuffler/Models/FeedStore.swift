@@ -65,4 +65,14 @@ class FeedStore: ObservableObject {
             }
         }
     }
+
+    func deleteFeed(_ feed: Feed) {
+        feedCache.cache
+            .filter { $0.feedUrl == feed.url }
+            .forEach { feedCache.remove($0) }
+
+        DispatchQueue.syncOnMain {
+            feeds = feeds.filter { $0.id != feed.id }
+        }
+    }
 }

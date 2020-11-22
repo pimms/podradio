@@ -1,16 +1,25 @@
 import SwiftUI
 
 struct FeedRootView: View {
-    var feeds: [Feed]
+    @EnvironmentObject var feedStore: FeedStore
 
     var body: some View {
-        List(feeds) { feed in
-            NavigationLink(destination: PlayerRootView(feed: feed)) {
-                FeedCell(feed: feed)
+        List {
+            ForEach(feedStore.feeds) { feed in
+                NavigationLink(destination: PlayerRootView(feed: feed)) {
+                    FeedCell(feed: feed)
+                }
             }
+            .onDelete(perform: onDelete)
         }
         .navigationTitle("Feeds")
         .navigationBarItems(trailing: AddFeedButton())
+    }
+
+    private func onDelete(_ indexSet: IndexSet) {
+        Array(indexSet)
+            .map { feedStore.feeds[$0] }
+            .forEach { feedStore.deleteFeed($0) }
     }
 }
 
@@ -84,9 +93,15 @@ private struct AddFeedButton: View {
 
 struct FeedRootView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            FeedRootView(feeds: Feed.testData)
-                .modifier(SystemServices())
-        }
+        Group {
+            NavigationView {
+                FeedRootView()
+                    .modifier(SystemServices())
+            }
+            NavigationView {
+                FeedRootView()
+                    .modifier(SystemServices())
+            }
+        }.modifier(SystemServices())
     }
 }
