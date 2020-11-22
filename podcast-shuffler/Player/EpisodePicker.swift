@@ -16,7 +16,12 @@ private struct StreamableImpl: Streamable {
 }
 
 class EpisodePicker {
-    private let feed: Feed
+
+    // MARK: - Internal properties
+
+    let feed: Feed
+
+    // MARK: - Init
 
     init?(feed: Feed) {
         guard !feed.episodes.isEmpty else { return nil }
