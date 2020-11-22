@@ -24,7 +24,7 @@ class EpisodePlayer: ObservableObject {
     // MARK: - Private properties
 
     private let player: ModernAVPlayer
-    private var episodePicker: EpisodePicker?
+    private var episodePicker: EpisodePicking?
     private var streamable: Streamable?
 
     private var isTransitioningToNextEpisode = false
@@ -44,7 +44,7 @@ class EpisodePlayer: ObservableObject {
 
     // MARK: - Internal methods
 
-    func configure(with picker: EpisodePicker) {
+    func configure(with picker: EpisodePicking) {
         let streamable = picker.currentStreamable()
         self.episodePicker = picker
         self.streamable = streamable

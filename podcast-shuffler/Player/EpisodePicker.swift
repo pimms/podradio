@@ -15,7 +15,12 @@ private struct StreamableImpl: Streamable {
     }
 }
 
-class EpisodePicker {
+protocol EpisodePicking {
+    var feed: Feed { get }
+    func currentStreamable() -> Streamable
+}
+
+class EpisodePicker: EpisodePicking {
 
     // MARK: - Internal properties
 
