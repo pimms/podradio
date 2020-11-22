@@ -1,13 +1,13 @@
 import Foundation
 import UIKit
 
-struct Feed: Identifiable {
+struct Feed: Identifiable, Hashable {
     static let testData = [
         Feed(id: "1", episodes: Episode.testData, title: "Feed 1", image: nil, url: URL(string: "https://www.google.com")!),
         Feed(id: "2", episodes: Episode.testData, title: "Feed 2", image: nil, url: URL(string: "https://www.google.com")!),
     ]
 
-    struct Section: Identifiable {
+    struct Section: Identifiable, Hashable {
         var id: String { title }
         var title: String
         var episodes: [Episode]

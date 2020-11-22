@@ -1,4 +1,5 @@
 import SwiftUI
+import AVFoundation
 
 @main
 struct Main: App {
@@ -8,6 +9,16 @@ struct Main: App {
         WindowGroup {
             AppRootView()
                 .modifier(SystemServices())
+                .onAppear(perform: onAppear)
+        }
+    }
+
+    private func onAppear() {
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+            print("[EpisodePlayer] AVAudioSession failure: \(error)")
         }
     }
 }

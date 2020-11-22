@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-struct Episode: Identifiable {
+struct Episode: Identifiable, Hashable {
     static let longDescription = "This description is way too long.\n - 1\n - 2\n - 3\n - 4\n\nAnd many more numbers :)\n\n💩\nhi mom"
     static let testData = [
         Episode(url: URL(string: "https://www.google.com")!, title: "Episode 1", description: longDescription, duration: 3650, date: Date().addingTimeInterval(-86400 * 50)),

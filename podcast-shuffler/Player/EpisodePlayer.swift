@@ -27,13 +27,6 @@ class EpisodePlayer: ObservableObject {
     // MARK: - Lifecycle
 
     init() {
-        do {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
-            try AVAudioSession.sharedInstance().setActive(true)
-        } catch {
-            print("[EpisodePlayer] AVAudioSession failure: \(error)")
-        }
-
         let config = ModernAVPlayerConfiguration()
         player = ModernAVPlayer(config: config)
 
@@ -83,6 +76,7 @@ class EpisodePlayer: ObservableObject {
 
 extension EpisodePlayer: ModernAVPlayerDelegate {
     func modernAVPlayer(_ player: ModernAVPlayer, didStateChange state: ModernAVPlayer.State) {
+        print("-- state: \(state)")
         switch state {
         case .buffering,
              .initialization,

@@ -4,7 +4,7 @@ struct FeedRootView: View {
     @EnvironmentObject var feedStore: FeedStore
 
     var body: some View {
-        List {
+        List() {
             ForEach(feedStore.feeds) { feed in
                 NavigationLink(destination: PlayerRootView(feed: feed)) {
                     FeedCell(feed: feed)
