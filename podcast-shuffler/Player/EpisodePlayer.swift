@@ -17,6 +17,7 @@ class EpisodePlayer: ObservableObject {
 
     // MARK: - Internal properties
 
+    var feed: Feed? { episodePicker?.feed }
     var duration: TimeInterval { 0 }
     var currentTime: TimeInterval { 0 }
 
@@ -49,7 +50,7 @@ class EpisodePlayer: ObservableObject {
         self.streamable = streamable
 
         let url = streamable.episode.url
-        let media = ModernAVPlayerMedia(url: url, type: .clip)
+        let media = ModernAVPlayerMedia(url: url, type: .stream(isLive: true))
 
         let position = streamable.startTime.distance(to: Date())
         player.load(media: media, autostart: false, position: position)
@@ -108,10 +109,10 @@ extension EpisodePlayer: ModernAVPlayerDelegate {
             player.updateMetadata(makeMetadata())
             self.state = .playing
         case .buffering,
-             .initialization,
-             .loading:
+             .initialization:
             self.state = .playing
         case .failed,
+             .loading,
              .loaded,
              .paused,
              .stopped,

@@ -1,11 +1,20 @@
 import SwiftUI
 
 struct PlayerRootView: View {
-    @StateObject var player: EpisodePlayer = EpisodePlayer()
+    @StateObject var player: EpisodePlayer
     var feed: Feed
 
     init(feed: Feed) {
         self.feed = feed
+
+        let player: EpisodePlayer
+        if let currentPlayer = EpisodePlayer.current,
+           currentPlayer.feed?.id == feed.id {
+            player = currentPlayer
+        } else {
+            player = EpisodePlayer()
+        }
+        self._player = StateObject(wrappedValue: player)
     }
 
     var body: some View {
@@ -19,8 +28,10 @@ struct PlayerRootView: View {
         }
         .navigationTitle(feed.title)
         .onAppear {
-            guard let picker = EpisodePicker(feed: feed) else { return }
-            player.configure(with: picker)
+            if player.state != .playing,
+               let picker = EpisodePicker(feed: feed) {
+                player.configure(with: picker)
+            }
         }
     }
 }
