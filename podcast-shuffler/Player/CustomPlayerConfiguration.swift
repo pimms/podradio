@@ -3,6 +3,8 @@ import ModernAVPlayer
 import AVFoundation
 
 struct CustomPlayerConfiguration: PlayerConfiguration {
+    var audioSessionCategoryOptions: AVAudioSession.CategoryOptions = []
+
     let allowsExternalPlayback: Bool = true
     let useDefaultRemoteCommand: Bool = false
 

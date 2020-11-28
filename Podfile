@@ -7,7 +7,7 @@ target 'podcast-shuffler' do
 
   # Pods for podcast-shuffler
   pod 'FeedKit', '~> 9'
-  pod 'ModernAVPlayer', '1.7.2'
+  pod 'ModernAVPlayer', '1.7.3'
 
   target 'podcast-shufflerTests' do
     inherit! :search_paths
