@@ -1,6 +1,7 @@
 import Foundation
 import AVFoundation
 import ModernAVPlayer
+import MediaPlayer
 
 class EpisodePlayer: ObservableObject {
     static var current: EpisodePlayer?
@@ -36,10 +37,8 @@ class EpisodePlayer: ObservableObject {
     init() {
         let config = ModernAVPlayerConfiguration()
         player = ModernAVPlayer(config: config, loggerDomains: [.error, .service, .remoteCommand])
+        player.remoteCommands = [ makePlayCommand(), makeStopCommand() ]
         player.delegate = self
-
-        let commandFactory = ModernAVPlayerRemoteCommandFactory(player: player)
-        player.remoteCommands = [ commandFactory.playCommand ]
     }
 
     // MARK: - Internal methods
@@ -99,6 +98,46 @@ class EpisodePlayer: ObservableObject {
         return ModernAVPlayerMediaMetadata(title: episode.title,
                                            albumTitle: albumTitle,
                                            artist: feed.title)
+    }
+
+    private func makePlayCommand() -> ModernAVPlayerRemoteCommand {
+        let command = MPRemoteCommandCenter.shared().playCommand
+        let isEnabled: (MediaType) -> Bool = { [weak self] _ in
+            self?.isCurrent ?? false
+        }
+
+        let handler: (MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus = { [weak self] _ in
+            guard self?.isCurrent == true else {
+                return .noSuchContent
+            }
+
+            print("PLAY COMMAND")
+            self?.play()
+            return .success
+        }
+
+        command.addTarget(handler: handler)
+        return ModernAVPlayerRemoteCommand(reference: command, debugDescription: "PSPlay", isEnabled: isEnabled)
+    }
+
+    private func makeStopCommand() -> ModernAVPlayerRemoteCommand {
+        let command = MPRemoteCommandCenter.shared().stopCommand
+        let isEnabled: (MediaType) -> Bool = { [weak self] _ in
+            self?.isCurrent ?? false
+        }
+
+        let handler: (MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus = { [weak self] _ in
+            guard self?.isCurrent == true else {
+                return .noSuchContent
+            }
+
+            print("STOP COMMAND")
+            self?.pause()
+            return .success
+        }
+
+        command.addTarget(handler: handler)
+        return ModernAVPlayerRemoteCommand(reference: command, debugDescription: "PSStop", isEnabled: isEnabled)
     }
 }
 
