@@ -35,7 +35,7 @@ class EpisodePlayer: ObservableObject {
     // MARK: - Lifecycle
 
     init() {
-        let config = ModernAVPlayerConfiguration()
+        let config = CustomPlayerConfiguration()
         player = ModernAVPlayer(config: config, loggerDomains: [.error, .service, .remoteCommand])
         player.remoteCommands = [ makePlayCommand(), makeStopCommand() ]
         player.delegate = self

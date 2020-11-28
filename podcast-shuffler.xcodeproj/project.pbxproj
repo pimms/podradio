@@ -23,6 +23,7 @@
 		19168D4A24A503280064A0B6 /* FeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19168D4924A503280064A0B6 /* FeedStore.swift */; };
 		19168D4D24A5058A0064A0B6 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19168D4C24A5058A0064A0B6 /* PlayerView.swift */; };
 		19168D5124A50A6A0064A0B6 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19168D5024A50A6A0064A0B6 /* HttpClient.swift */; };
+		199D710425727A5B00B72E23 /* CustomPlayerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199D710325727A5B00B72E23 /* CustomPlayerConfiguration.swift */; };
 		19D8A75724B89D72000AE5A5 /* MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D8A75624B89D72000AE5A5 /* MD5.swift */; };
 		19D8A75924B9A2D5000AE5A5 /* FeedParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D8A75824B9A2D5000AE5A5 /* FeedParser.swift */; };
 		19FD32ED24AA980100FB9FF6 /* EpisodePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FD32EC24AA980000FB9FF6 /* EpisodePlayer.swift */; };
@@ -77,6 +78,7 @@
 		19168D4924A503280064A0B6 /* FeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStore.swift; sourceTree = "<group>"; };
 		19168D4C24A5058A0064A0B6 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		19168D5024A50A6A0064A0B6 /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
+		199D710325727A5B00B72E23 /* CustomPlayerConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPlayerConfiguration.swift; sourceTree = "<group>"; };
 		19D8A75624B89D72000AE5A5 /* MD5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MD5.swift; sourceTree = "<group>"; };
 		19D8A75824B9A2D5000AE5A5 /* FeedParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedParser.swift; sourceTree = "<group>"; };
 		19FD32EC24AA980000FB9FF6 /* EpisodePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodePlayer.swift; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				19FD32F324AA9B0A00FB9FF6 /* EpisodePicker.swift */,
 				19FD32F824AB40CA00FB9FF6 /* Streamable.swift */,
 				65BAA70E5B537AE2CFE2447F /* BingeEpisodePicker.swift */,
+				199D710325727A5B00B72E23 /* CustomPlayerConfiguration.swift */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -503,6 +506,7 @@
 				19168D4A24A503280064A0B6 /* FeedStore.swift in Sources */,
 				19FDA725256A960300BBF6B1 /* DispatchQueue.swift in Sources */,
 				19168D4824A5019B0064A0B6 /* AppRootView.swift in Sources */,
+				199D710425727A5B00B72E23 /* CustomPlayerConfiguration.swift in Sources */,
 				19D8A75924B9A2D5000AE5A5 /* FeedParser.swift in Sources */,
 				19097C3524A9F2070006B8B2 /* FeedCache.swift in Sources */,
 				19D8A75724B89D72000AE5A5 /* MD5.swift in Sources */,
