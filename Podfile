@@ -8,6 +8,7 @@ target 'podcast-shuffler' do
   # Pods for podcast-shuffler
   pod 'FeedKit', '~> 9'
   pod 'ModernAVPlayer', '1.7.3'
+  pod 'Kingfisher/SwiftUI', '~> 5.15'
 
   target 'podcast-shufflerTests' do
     inherit! :search_paths

@@ -1,4 +1,5 @@
 import SwiftUI
+import struct Kingfisher.KFImage
 
 struct FeedRootView: View {
     @EnvironmentObject var feedStore: FeedStore
@@ -28,7 +29,7 @@ private struct FeedCell: View {
 
     var body: some View {
         HStack {
-            FeedImageView(image: feed.image)
+            FeedImageView(imageUrl: feed.imageUrl)
 
             VStack {
                 HStack {
@@ -48,18 +49,10 @@ private struct FeedCell: View {
 }
 
 private struct FeedImageView: View {
-    var image: UIImage?
+    var imageUrl: URL?
 
     var body: some View {
-        var imageView: Image
-        if let image = image {
-            imageView = Image(uiImage: image)
-        } else {
-            imageView = Image("defaultFeedImage")
-        }
-
-        return imageView
-            .resizable()
+        imageView
             .cornerRadius(8)
             .aspectRatio(CGSize(width: 1, height: 1), contentMode: .fill)
             .frame(minWidth: 15,
@@ -70,6 +63,16 @@ private struct FeedImageView: View {
                    maxHeight: 40,
                    alignment: .center)
             .padding([.bottom, .trailing, .top], 10)
+    }
+
+    private var imageView: some View {
+        Group {
+            if let imageUrl = imageUrl {
+                KFImage(imageUrl).resizable()
+            } else {
+                Image("defaultFeedImage").resizable()
+            }
+        }
     }
 }
 

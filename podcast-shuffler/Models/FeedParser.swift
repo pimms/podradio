@@ -33,7 +33,7 @@ final class FeedParser {
         return Feed(id: rssFeed.title ?? rssFeed.link ?? UUID().uuidString,
                     episodes: episodes,
                     title: rssFeed.title ?? "Unnamed Feed",
-                    image: nil,
+                    imageUrl: nil,
                     url: url)
     }
 

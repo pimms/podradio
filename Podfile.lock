@@ -1,22 +1,28 @@
 PODS:
   - FeedKit (9.1.2)
+  - Kingfisher/Core (5.15.8)
+  - Kingfisher/SwiftUI (5.15.8):
+    - Kingfisher/Core
   - ModernAVPlayer (1.7.3):
     - ModernAVPlayer/Core (= 1.7.3)
   - ModernAVPlayer/Core (1.7.3)
 
 DEPENDENCIES:
   - FeedKit (~> 9)
+  - Kingfisher/SwiftUI (~> 5.15)
   - ModernAVPlayer (= 1.7.3)
 
 SPEC REPOS:
   trunk:
     - FeedKit
+    - Kingfisher
     - ModernAVPlayer
 
 SPEC CHECKSUMS:
   FeedKit: 71653273ab08e618cd6fd1301ca08fc02dca6a9e
+  Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
   ModernAVPlayer: d04d53be7b620990250d0e13bee3be7217dc6214
 
-PODFILE CHECKSUM: 8f375f5f85e3d38cb705077253af1f148ceb223e
+PODFILE CHECKSUM: c1914780936f0692968170d6c02d186ebc9fa7bb
 
 COCOAPODS: 1.9.3

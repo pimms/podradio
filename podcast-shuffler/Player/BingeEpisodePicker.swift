@@ -22,7 +22,7 @@ private struct StreamableImpl: Streamable {
 }
 
 class BingeEpisodePicker: EpisodePicking {
-    let feed = Feed(id: "BingeFeed", episodes: [], title: "BingeFeed", image: nil, url: URL(string: "https://stienjoa.kim")!)
+    let feed = Feed(id: "BingeFeed", episodes: [], title: "BingeFeed", imageUrl: nil, url: URL(string: "https://stienjoa.kim")!)
 
     func currentStreamable() -> Streamable {
         return streamable(atTime: Date().timeIntervalSince1970)
