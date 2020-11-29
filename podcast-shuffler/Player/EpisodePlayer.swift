@@ -44,21 +44,9 @@ class EpisodePlayer: ObservableObject {
     // MARK: - Internal methods
 
     func configure(with picker: EpisodePicking) {
-        let streamable = picker.currentStreamable()
         self.episodePicker = picker
-        self.streamable = streamable
-
-        let url = streamable.episode.url
-        let media = ModernAVPlayerMedia(url: url, type: .stream(isLive: true))
-
-        let position = streamable.startTime.distance(to: Date())
-        player.load(media: media, autostart: false, position: position)
-
-        print("[EpisodePlayer] Loading episode: \(url.absoluteString) at position \(position)")
-
-        DispatchQueue.main.async {
-            self.currentEpisode = streamable.episode
-        }
+        let streamable = picker.currentStreamable()
+        configure(with: streamable)
     }
 
     func pause() {
@@ -78,6 +66,22 @@ class EpisodePlayer: ObservableObject {
     }
 
     // MARK: - Private methods
+
+    private func configure(with streamable: Streamable) {
+        self.streamable = streamable
+
+        let url = streamable.episode.url
+        let media = ModernAVPlayerMedia(url: url, type: .stream(isLive: true))
+
+        let position = streamable.startTime.distance(to: Date())
+        player.load(media: media, autostart: false, position: position)
+
+        print("[EpisodePlayer] Loading episode: \(url.absoluteString) at position \(position)")
+
+        DispatchQueue.main.async {
+            self.currentEpisode = streamable.episode
+        }
+    }
 
     private func makeCurrent() {
         if !isCurrent {
@@ -111,7 +115,6 @@ class EpisodePlayer: ObservableObject {
                 return .noSuchContent
             }
 
-            print("PLAY COMMAND")
             self?.play()
             return .success
         }
@@ -131,7 +134,6 @@ class EpisodePlayer: ObservableObject {
                 return .noSuchContent
             }
 
-            print("STOP COMMAND")
             self?.pause()
             return .success
         }
@@ -188,9 +190,9 @@ extension EpisodePlayer: ModernAVPlayerDelegate {
 
     func modernAVPlayer(_ player: ModernAVPlayer, didItemPlayToEndTime endTime: Double) {
         player.stop()
-        if let episodePicker = episodePicker {
+        if let streamable = streamable {
             isTransitioningToNextEpisode = true
-            configure(with: episodePicker)
+            configure(with: streamable.nextStreamable)
         }
     }
 }
