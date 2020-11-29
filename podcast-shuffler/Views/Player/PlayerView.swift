@@ -22,9 +22,11 @@ struct PlayerRootView: View {
             Spacer()
             NowPlayingLabel(player: player)
                 .padding()
-            PlayButton(state: player.state, onTap: onPlayButtonTap)
             Spacer()
+            PlayButton(state: player.state, onTap: onPlayButtonTap)
+                .padding(.bottom, 20)
             EpisodeViewLink(feed: feed)
+                .padding(.bottom, 20)
         }
         .navigationTitle(feed.title)
         .onAppear {
@@ -52,10 +54,23 @@ private struct NowPlayingLabel: View {
         VStack {
             Text("\(player.currentEpisode?.title ?? "title")")
                 .font(.headline)
-            Text("\(player.currentEpisode?.description ?? "description")")
-                .font(.subheadline)
+            Text(formattedDateString)
+                .font(.caption)
                 .foregroundColor(.secondary)
+            ScrollView {
+                Text("\(player.currentEpisode?.description ?? "description")")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+            }
         }
+    }
+
+    private var formattedDateString: String {
+        let date = player.currentEpisode?.date ?? Date()
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        return formatter.string(from: date)
     }
 }
 
