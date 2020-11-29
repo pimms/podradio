@@ -24,6 +24,7 @@
 		19168D4D24A5058A0064A0B6 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19168D4C24A5058A0064A0B6 /* PlayerView.swift */; };
 		19168D5124A50A6A0064A0B6 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19168D5024A50A6A0064A0B6 /* HttpClient.swift */; };
 		199D710425727A5B00B72E23 /* CustomPlayerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199D710325727A5B00B72E23 /* CustomPlayerConfiguration.swift */; };
+		19D5BF152573EDE6002A9558 /* AirPlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D5BF142573EDE6002A9558 /* AirPlayButton.swift */; };
 		19D8A75724B89D72000AE5A5 /* MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D8A75624B89D72000AE5A5 /* MD5.swift */; };
 		19D8A75924B9A2D5000AE5A5 /* FeedParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D8A75824B9A2D5000AE5A5 /* FeedParser.swift */; };
 		19FD32ED24AA980100FB9FF6 /* EpisodePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FD32EC24AA980000FB9FF6 /* EpisodePlayer.swift */; };
@@ -79,6 +80,7 @@
 		19168D4C24A5058A0064A0B6 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		19168D5024A50A6A0064A0B6 /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
 		199D710325727A5B00B72E23 /* CustomPlayerConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPlayerConfiguration.swift; sourceTree = "<group>"; };
+		19D5BF142573EDE6002A9558 /* AirPlayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirPlayButton.swift; sourceTree = "<group>"; };
 		19D8A75624B89D72000AE5A5 /* MD5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MD5.swift; sourceTree = "<group>"; };
 		19D8A75824B9A2D5000AE5A5 /* FeedParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedParser.swift; sourceTree = "<group>"; };
 		19FD32EC24AA980000FB9FF6 /* EpisodePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodePlayer.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				19168D4C24A5058A0064A0B6 /* PlayerView.swift */,
+				19D5BF142573EDE6002A9558 /* AirPlayButton.swift */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -512,6 +515,7 @@
 				19D8A75724B89D72000AE5A5 /* MD5.swift in Sources */,
 				19115D7C24A4C8E8008E8BAC /* Main.swift in Sources */,
 				19FD32F924AB40CA00FB9FF6 /* Streamable.swift in Sources */,
+				19D5BF152573EDE6002A9558 /* AirPlayButton.swift in Sources */,
 				19097C2E24A9B3AF0006B8B2 /* AddFeedView.swift in Sources */,
 				65BAA57414707A6CEE97720D /* BingeEpisodePicker.swift in Sources */,
 			);

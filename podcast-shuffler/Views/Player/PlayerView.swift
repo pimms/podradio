@@ -23,8 +23,18 @@ struct PlayerRootView: View {
             NowPlayingLabel(player: player)
                 .padding()
             Spacer()
-            PlayButton(state: player.state, onTap: onPlayButtonTap)
-                .padding(.bottom, 20)
+
+            ZStack {
+                PlayButton(state: player.state, onTap: onPlayButtonTap)
+                    .padding(.bottom, 20)
+
+                HStack {
+                    Spacer()
+                    AirPlayButton()
+                        .frame(width: 40, height: 40)
+                        .padding(.trailing, 20)
+                }
+            }
             EpisodeViewLink(feed: feed)
                 .padding(.bottom, 20)
         }
