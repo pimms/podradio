@@ -65,16 +65,26 @@ private struct PlayButton: View {
 
     var body: some View {
         Button(action: onTap, label: {
-            Text(state == .playing ? "Pause" : "Play")
-                .fontWeight(.bold)
-                .font(.title)
-                .foregroundColor(.primary)
-                .padding()
-                .overlay(
-                    RoundedRectangle(cornerRadius: 20)
-                        .stroke(Color.primary, lineWidth: 5)
-                )
+            ZStack {
+                Image(systemName: sfButtonName)
+                    .resizable()
+                    .foregroundColor(Color(UIColor.label))
+                    .frame(width: 40, height: 40, alignment: .center)
+                Circle()
+                    .stroke(Color.primary, lineWidth: 4)
+                    .frame(width: 80, height: 80, alignment: .center)
+                    .foregroundColor(.clear)
+            }
         })
+    }
+
+    private var sfButtonName: String {
+        switch state {
+        case .playing:
+            return "pause.fill"
+        case .paused:
+            return "play.fill"
+        }
     }
 }
 
