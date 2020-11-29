@@ -25,15 +25,17 @@ final class FeedParser {
     // MARK: - Static private methods
 
     static private func mapFeed(rssFeed: RSSFeed, url: URL) -> Feed {
-        // TODO: Download this image
-        // let imageUrl = rssFeed.iTunes?.iTunesImage?.attributes?.href
+        var imageUrl: URL? = nil
+        if let imageHref = rssFeed.iTunes?.iTunesImage?.attributes?.href {
+            imageUrl = URL(string: imageHref)
+        }
 
         let episodes = mapEpisodes(from: rssFeed.items ?? [])
 
         return Feed(id: rssFeed.title ?? rssFeed.link ?? UUID().uuidString,
                     episodes: episodes,
                     title: rssFeed.title ?? "Unnamed Feed",
-                    imageUrl: nil,
+                    imageUrl: imageUrl,
                     url: url)
     }
 
