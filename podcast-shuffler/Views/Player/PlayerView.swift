@@ -22,7 +22,7 @@ struct PlayerRootView: View {
             Spacer()
             NowPlayingLabel(player: player)
                 .padding()
-            PlayButton(player: player, feed: feed)
+            PlayButton(state: player.state, onTap: onPlayButtonTap)
             Spacer()
             EpisodeViewLink(feed: feed)
         }
@@ -32,6 +32,15 @@ struct PlayerRootView: View {
                let picker = EpisodePicker(feed: feed) {
                 player.configure(with: picker)
             }
+        }
+    }
+
+    private func onPlayButtonTap() {
+        switch player.state {
+        case .playing:
+            player.pause()
+        case .paused:
+            player.play()
         }
     }
 }
@@ -51,12 +60,12 @@ private struct NowPlayingLabel: View {
 }
 
 private struct PlayButton: View {
-    @StateObject var player: EpisodePlayer
-    var feed: Feed
+    var state: EpisodePlayer.State
+    var onTap: (() -> Void)
 
     var body: some View {
         Button(action: onTap, label: {
-            Text(player.state == .playing ? "Pause" : "Play")
+            Text(state == .playing ? "Pause" : "Play")
                 .fontWeight(.bold)
                 .font(.title)
                 .foregroundColor(.primary)
@@ -66,15 +75,6 @@ private struct PlayButton: View {
                         .stroke(Color.primary, lineWidth: 5)
                 )
         })
-    }
-
-    private func onTap() {
-        switch player.state {
-        case .playing:
-            player.pause()
-        case .paused:
-            player.play()
-        }
     }
 }
 
@@ -100,5 +100,12 @@ struct PlayerView_Previews: PreviewProvider {
             PlayerRootView(feed: Feed.testData[0])
         }
         .preferredColorScheme(.dark)
+
+        PlayButton(state: .paused, onTap: {})
+            .previewLayout(.sizeThatFits)
+            .padding()
+        PlayButton(state: .playing, onTap: {})
+            .previewLayout(.sizeThatFits)
+            .padding()
     }
 }
