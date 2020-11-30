@@ -35,6 +35,9 @@ struct PlayerRootView: View {
                         .padding(.trailing, 20)
                 }
             }
+            ProgressBarView(player: player)
+                .frame(maxHeight: 60)
+                .padding()
             EpisodeViewLink(feed: feed)
                 .padding(.bottom, 20)
         }

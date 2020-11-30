@@ -15,12 +15,12 @@ class EpisodePlayer: ObservableObject {
 
     @Published var currentEpisode: Episode?
     @Published var state: State = .paused
+    @Published var duration: TimeInterval = 0
+    @Published var currentTime: TimeInterval = 0
 
     // MARK: - Internal properties
 
     var feed: Feed? { episodePicker?.feed }
-    var duration: TimeInterval { 0 }
-    var currentTime: TimeInterval { 0 }
 
     // MARK: - Private properties
 
@@ -78,7 +78,7 @@ class EpisodePlayer: ObservableObject {
 
         print("[EpisodePlayer] Loading episode: \(url.absoluteString) at position \(position)")
 
-        DispatchQueue.main.async {
+        DispatchQueue.syncOnMain {
             self.currentEpisode = streamable.episode
         }
     }
@@ -177,11 +177,21 @@ extension EpisodePlayer: ModernAVPlayerDelegate {
     }
 
     func modernAVPlayer(_ player: ModernAVPlayer, didCurrentTimeChange currentTime: Double) {
-
+        DispatchQueue.syncOnMain {
+            self.currentTime = currentTime
+        }
     }
 
     func modernAVPlayer(_ player: ModernAVPlayer, didItemDurationChange itemDuration: Double?) {
         print("[EpisodePlayer] Item duration changed: \(itemDuration ?? -1)")
+        DispatchQueue.syncOnMain {
+            if let itemDuration = itemDuration {
+                self.duration = itemDuration
+            } else {
+                self.duration = 0
+                self.currentTime = 0
+            }
+        }
     }
 
     func modernAVPlayer(_ player: ModernAVPlayer, unavailableActionReason: PlayerUnavailableActionReason) {
