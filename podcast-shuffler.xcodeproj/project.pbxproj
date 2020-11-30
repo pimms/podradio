@@ -26,6 +26,8 @@
 		199D710425727A5B00B72E23 /* CustomPlayerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199D710325727A5B00B72E23 /* CustomPlayerConfiguration.swift */; };
 		19D5BF152573EDE6002A9558 /* AirPlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D5BF142573EDE6002A9558 /* AirPlayButton.swift */; };
 		19D5BF1D257552F0002A9558 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D5BF1C257552F0002A9558 /* ProgressBarView.swift */; };
+		19D5BF232575608A002A9558 /* SettingsRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D5BF222575608A002A9558 /* SettingsRootView.swift */; };
+		19D5BF3725756D52002A9558 /* StorageKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D5BF3625756D52002A9558 /* StorageKey.swift */; };
 		19D8A75724B89D72000AE5A5 /* MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D8A75624B89D72000AE5A5 /* MD5.swift */; };
 		19D8A75924B9A2D5000AE5A5 /* FeedParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D8A75824B9A2D5000AE5A5 /* FeedParser.swift */; };
 		19FD32ED24AA980100FB9FF6 /* EpisodePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FD32EC24AA980000FB9FF6 /* EpisodePlayer.swift */; };
@@ -83,6 +85,8 @@
 		199D710325727A5B00B72E23 /* CustomPlayerConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPlayerConfiguration.swift; sourceTree = "<group>"; };
 		19D5BF142573EDE6002A9558 /* AirPlayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirPlayButton.swift; sourceTree = "<group>"; };
 		19D5BF1C257552F0002A9558 /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
+		19D5BF222575608A002A9558 /* SettingsRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRootView.swift; sourceTree = "<group>"; };
+		19D5BF3625756D52002A9558 /* StorageKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageKey.swift; sourceTree = "<group>"; };
 		19D8A75624B89D72000AE5A5 /* MD5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MD5.swift; sourceTree = "<group>"; };
 		19D8A75824B9A2D5000AE5A5 /* FeedParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedParser.swift; sourceTree = "<group>"; };
 		19FD32EC24AA980000FB9FF6 /* EpisodePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodePlayer.swift; sourceTree = "<group>"; };
@@ -158,6 +162,7 @@
 				19168D3B24A4F96B0064A0B6 /* Models */,
 				19FD32EB24AA97E300FB9FF6 /* Player */,
 				19168D3724A4F92D0064A0B6 /* Views */,
+				19D5BF3225756D3F002A9558 /* Extensions */,
 				19FD32F724AB3D1C00FB9FF6 /* Utility */,
 				19115D7F24A4C8E9008E8BAC /* Assets.xcassets */,
 				19115D8424A4C8E9008E8BAC /* Info.plist */,
@@ -195,6 +200,7 @@
 		19168D3724A4F92D0064A0B6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				19D5BF2125756080002A9558 /* Settings */,
 				19168D4624A501900064A0B6 /* RootView */,
 				19168D4024A4FE7F0064A0B6 /* Feed */,
 				19168D4B24A504CB0064A0B6 /* Player */,
@@ -260,6 +266,21 @@
 			path = Player;
 			sourceTree = "<group>";
 		};
+		19D5BF2125756080002A9558 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				19D5BF222575608A002A9558 /* SettingsRootView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		19D5BF3225756D3F002A9558 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		19FD32EB24AA97E300FB9FF6 /* Player */ = {
 			isa = PBXGroup;
 			children = (
@@ -278,6 +299,7 @@
 				19FD32F524AB3D1600FB9FF6 /* Random.swift */,
 				19D8A75624B89D72000AE5A5 /* MD5.swift */,
 				19FDA724256A960300BBF6B1 /* DispatchQueue.swift */,
+				19D5BF3625756D52002A9558 /* StorageKey.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -500,6 +522,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				19097C3024A9C1FE0006B8B2 /* SystemServices.swift in Sources */,
+				19D5BF232575608A002A9558 /* SettingsRootView.swift in Sources */,
 				19168D5124A50A6A0064A0B6 /* HttpClient.swift in Sources */,
 				19168D3F24A4FE440064A0B6 /* Feed.swift in Sources */,
 				19168D3D24A4F9740064A0B6 /* Episode.swift in Sources */,
@@ -517,6 +540,7 @@
 				19D8A75924B9A2D5000AE5A5 /* FeedParser.swift in Sources */,
 				19097C3524A9F2070006B8B2 /* FeedCache.swift in Sources */,
 				19D8A75724B89D72000AE5A5 /* MD5.swift in Sources */,
+				19D5BF3725756D52002A9558 /* StorageKey.swift in Sources */,
 				19115D7C24A4C8E8008E8BAC /* Main.swift in Sources */,
 				19FD32F924AB40CA00FB9FF6 /* Streamable.swift in Sources */,
 				19D5BF152573EDE6002A9558 /* AirPlayButton.swift in Sources */,

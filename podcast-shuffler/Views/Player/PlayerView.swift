@@ -4,6 +4,9 @@ struct PlayerRootView: View {
     @StateObject var player: EpisodePlayer
     var feed: Feed
 
+    @AppStorage(StorageKey.useBingeEpisodePicker.rawValue)
+    private var useBingePicker = false
+
     init(feed: Feed) {
         self.feed = feed
 
@@ -44,7 +47,7 @@ struct PlayerRootView: View {
         .navigationTitle(feed.title)
         .onAppear {
             if player.state != .playing,
-               let picker = EpisodePicker(feed: feed) {
+               let picker = makeEpisodePicker() {
                 player.configure(with: picker)
             }
         }
@@ -57,6 +60,14 @@ struct PlayerRootView: View {
         case .paused:
             player.play()
         }
+    }
+
+    private func makeEpisodePicker() -> EpisodePicking? {
+        if useBingePicker {
+            return BingeEpisodePicker()
+        }
+
+        return EpisodePicker(feed: feed)
     }
 }
 

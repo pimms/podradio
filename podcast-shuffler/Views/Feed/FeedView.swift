@@ -14,7 +14,7 @@ struct FeedRootView: View {
             .onDelete(perform: onDelete)
         }
         .navigationTitle("Feeds")
-        .navigationBarItems(trailing: AddFeedButton())
+        .navigationBarItems(leading: SettingsButton(), trailing: AddFeedButton())
     }
 
     private func onDelete(_ indexSet: IndexSet) {
@@ -72,6 +72,22 @@ private struct FeedImageView: View {
             } else {
                 Image("defaultFeedImage").resizable()
             }
+        }
+    }
+}
+
+private struct SettingsButton: View {
+    @State var isPresenting = false
+
+    var body: some View {
+        Button(action: {
+            self.isPresenting = true
+        }, label: {
+            Image(systemName: "gear")
+        })
+        .sheet(isPresented: $isPresenting) {
+            SettingsRootView()
+                .modifier(SystemServices())
         }
     }
 }
