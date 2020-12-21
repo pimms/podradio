@@ -4,8 +4,18 @@ import SwiftUI
 struct FilterRootView: View {
     var feed: Feed
 
+    @Environment(\.presentationMode) private var presentationMode
+
     var body: some View {
-        YearFilterList(feed: feed)
+        NavigationView {
+            YearFilterList(feed: feed)
+                .navigationBarTitle("Yearly Filter", displayMode: .inline)
+                .navigationBarItems(trailing:
+                    Button(action: { presentationMode.wrappedValue.dismiss() }) {
+                        Text("Done").bold()
+                    }
+                )
+        }
     }
 }
 

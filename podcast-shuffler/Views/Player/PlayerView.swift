@@ -52,11 +52,20 @@ struct PlayerRootView: View {
                 .padding(.bottom, 20)
         }
         .navigationTitle(feed.title)
-        .onAppear {
-            if player.state != .playing,
-               let picker = makeEpisodePicker() {
-                player.configure(with: picker)
-            }
+        .onAppear(perform: onAppear)
+    }
+
+    private func onAppear() {
+        if player.state != .playing {
+            reconfigure()
+        }
+    }
+
+    private func reconfigure() {
+        if let picker = makeEpisodePicker() {
+            player.configure(with: picker)
+        } else {
+            player.pause()
         }
     }
 
@@ -74,7 +83,7 @@ struct PlayerRootView: View {
             return BingeEpisodePicker()
         }
 
-        let filter = DefaultFilter(feed: feed)
+        let filter = FilterStore.shared.filter(for: feed)
         return EpisodePicker(filter: filter)
     }
 }
