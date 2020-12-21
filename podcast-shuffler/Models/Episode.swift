@@ -18,3 +18,10 @@ struct Episode: Identifiable, Hashable {
     var duration: TimeInterval
     var date: Date
 }
+
+extension Episode {
+    var year: Int {
+        let comps = Calendar.current.dateComponents([.year], from: date)
+        return comps.year ?? 0
+    }
+}

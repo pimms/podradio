@@ -6,6 +6,7 @@ struct PlayerRootView: View {
 
     @AppStorage(StorageKey.useBingeEpisodePicker.rawValue)
     private var useBingePicker = false
+    @State private var isPresentingFilter = false
 
     init(feed: Feed) {
         self.feed = feed
@@ -32,6 +33,12 @@ struct PlayerRootView: View {
                     .padding(.bottom, 20)
 
                 HStack {
+                    FilterButton(onTap: { isPresentingFilter.toggle() })
+                        .frame(width: 24, height: 24)
+                        .padding(.leading, 20)
+                        .sheet(isPresented: $isPresentingFilter) {
+                            FilterRootView(feed: feed)
+                        }
                     Spacer()
                     AirPlayButton()
                         .frame(width: 40, height: 40)
@@ -98,6 +105,18 @@ private struct NowPlayingLabel: View {
     }
 }
 
+private struct FilterButton: View {
+    var onTap: (() -> Void)
+
+    var body: some View {
+        Button(action: onTap) {
+            Image(systemName: "line.horizontal.3.decrease.circle")
+                .resizable()
+                .foregroundColor(.primary)
+        }
+    }
+}
+
 private struct PlayButton: View {
     var state: EpisodePlayer.State
     var onTap: (() -> Void)
@@ -145,10 +164,7 @@ private struct EpisodeViewLink: View {
 
 struct PlayerView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            PlayerRootView(feed: Feed.testData[0])
-        }
-        .preferredColorScheme(.dark)
+        PlayerRootView(feed: Feed.testData[0])
 
         PlayButton(state: .paused, onTap: {})
             .previewLayout(.sizeThatFits)
