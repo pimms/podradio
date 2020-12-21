@@ -7,6 +7,7 @@ struct PlayerRootView: View {
     @AppStorage(StorageKey.useBingeEpisodePicker.rawValue)
     private var useBingePicker = false
     @State private var isPresentingFilter = false
+    @State private var hasCustomFilter = false
 
     init(feed: Feed) {
         self.feed = feed
@@ -33,7 +34,7 @@ struct PlayerRootView: View {
                     .padding(.bottom, 20)
 
                 HStack {
-                    FilterButton(onTap: { isPresentingFilter.toggle() })
+                    FilterButton(isActive: hasCustomFilter, onTap: { isPresentingFilter.toggle() })
                         .frame(width: 24, height: 24)
                         .padding(.leading, 20)
                         .sheet(isPresented: $isPresentingFilter) {
@@ -85,6 +86,7 @@ struct PlayerRootView: View {
         }
 
         let filter = FilterStore.shared.filter(for: feed)
+        hasCustomFilter = !(filter is DefaultFilter)
         return EpisodePicker(filter: filter)
     }
 }
@@ -117,13 +119,14 @@ private struct NowPlayingLabel: View {
 }
 
 private struct FilterButton: View {
+    let isActive: Bool
     var onTap: (() -> Void)
 
     var body: some View {
         Button(action: onTap) {
             Image(systemName: "line.horizontal.3.decrease.circle")
                 .resizable()
-                .foregroundColor(.primary)
+                .foregroundColor(isActive ? .blue : .primary)
         }
     }
 }
