@@ -1,4 +1,5 @@
 import Foundation
+import Combine
 
 class FilterStore {
     private struct EncodedYearlyFilter: Codable {

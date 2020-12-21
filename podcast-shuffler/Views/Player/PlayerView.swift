@@ -38,6 +38,7 @@ struct PlayerRootView: View {
                         .padding(.leading, 20)
                         .sheet(isPresented: $isPresentingFilter) {
                             FilterRootView(feed: feed)
+                                .onDisappear(perform: reconfigure)
                         }
                     Spacer()
                     AirPlayButton()
