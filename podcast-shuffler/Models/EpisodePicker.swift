@@ -24,13 +24,17 @@ class EpisodePicker: EpisodePicking {
 
     // MARK: - Internal properties
 
-    let feed: Feed
+    var feed: Feed { filter.feed }
+
+    // MARK: - Private properties
+
+    private let filter: Filter
 
     // MARK: - Init
 
-    init?(feed: Feed) {
-        guard !feed.episodes.isEmpty else { return nil }
-        self.feed = feed
+    init?(filter: Filter) {
+        guard !filter.episodes.isEmpty else { return nil }
+        self.filter = filter
     }
 
     // MARK: - Internal methods
@@ -76,14 +80,14 @@ class EpisodePicker: EpisodePicking {
     }
 
     private func makeStreamable(using rng: inout RandomNumberGenerator, startTime: Date) -> Streamable {
-        let index = rng.next() % UInt64(feed.episodes.count)
-        let episode = feed.episodes[Int(index)]
+        let index = rng.next() % UInt64(filter.episodes.count)
+        let episode = filter.episodes[Int(index)]
         return StreamableImpl(episode: episode, picker: self, startTime: startTime)
     }
 
     private func makeStreamable(using rng: inout RandomNumberGenerator, endingAt endTime: Date) -> Streamable {
-        let index = rng.next() % UInt64(feed.episodes.count)
-        let episode = feed.episodes[Int(index)]
+        let index = rng.next() % UInt64(filter.episodes.count)
+        let episode = filter.episodes[Int(index)]
 
         let startTime = endTime.addingTimeInterval(-episode.duration)
         return StreamableImpl(episode: episode, picker: self, startTime: startTime)

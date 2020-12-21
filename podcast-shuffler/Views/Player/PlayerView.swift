@@ -74,7 +74,8 @@ struct PlayerRootView: View {
             return BingeEpisodePicker()
         }
 
-        return EpisodePicker(feed: feed)
+        let filter = DefaultFilter(feed: feed)
+        return EpisodePicker(filter: filter)
     }
 }
 
