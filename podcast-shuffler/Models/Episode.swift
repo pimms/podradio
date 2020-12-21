@@ -14,7 +14,7 @@ struct Episode: Identifiable, Hashable {
     var id: String { url.absoluteString }
     var url: URL
     var title: String
-    var description: String
+    var description: String?
     var duration: TimeInterval
     var date: Date
 }

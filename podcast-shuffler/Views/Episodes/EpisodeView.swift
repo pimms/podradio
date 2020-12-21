@@ -34,7 +34,7 @@ private struct EpisodeCell: View {
         HStack {
             VStack(alignment: .leading) {
                 Text(episode.title)
-                Text(episode.description)
+                Text(episode.description ?? "")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
                     .lineLimit(expanded ? nil : 3)

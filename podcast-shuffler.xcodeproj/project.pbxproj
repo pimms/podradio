@@ -184,6 +184,7 @@
 		19115D8C24A4C8E9008E8BAC /* podcast-shufflerTests */ = {
 			isa = PBXGroup;
 			children = (
+				F53DAF0F259080F700D3F0A9 /* Model */,
 				19115D8D24A4C8E9008E8BAC /* podcast_shufflerTests.swift */,
 				19115D8F24A4C8E9008E8BAC /* Info.plist */,
 			);
@@ -326,6 +327,13 @@
 				7658280C9C6EE3082A3DBD20 /* Pods-podcast-shufflerTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		F53DAF0F259080F700D3F0A9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		F55B1C1E25841CA0004E1380 /* Filter */ = {

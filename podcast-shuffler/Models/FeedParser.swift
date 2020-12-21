@@ -46,13 +46,12 @@ final class FeedParser {
         for item in items {
             if let url = URL(string: item.link ?? item.enclosure?.attributes?.url ?? ""),
                let title = item.title,
-               let description = item.description,
                let date = item.pubDate,
                let duration = item.iTunes?.iTunesDuration,
                !seenEpisodes.contains(url.absoluteString) {
                 let episode = Episode(url: url,
                                       title: title,
-                                      description: description,
+                                      description: item.description,
                                       duration: duration,
                                       date: date)
                 seenEpisodes.insert(url.absoluteString)
