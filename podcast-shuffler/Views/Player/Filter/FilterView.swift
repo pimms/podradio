@@ -22,17 +22,29 @@ struct FilterRootView: View {
 struct YearFilterList: View {
     private struct Year: Identifiable {
         let value: Int
-        var id: Int { value }
+        let episodeCount: Int
         let selected: Bool
+
+        var id: Int { value }
     }
 
     var feed: Feed
     private var years: [Year] {
         let years = feed.episodes.map { $0.year }
+
+        var counts: [Int: Int] = [:]
+        for year in years {
+            counts[year] = (counts[year] ?? 0) + 1
+        }
+
         let uniqueYears = Set(years).sorted()
         let selected = selectedYears
 
-        return uniqueYears.map { Year(value: $0, selected: selected.contains($0)) }
+        return uniqueYears.map {
+            Year(value: $0,
+                 episodeCount: counts[$0] ?? 0,
+                 selected: selected.contains($0))
+        }
     }
     @State private var selectedYears: [Int]
 
