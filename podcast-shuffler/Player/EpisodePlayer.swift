@@ -24,6 +24,7 @@ class EpisodePlayer: ObservableObject {
 
     // MARK: - Private properties
 
+    private lazy var log = Log(self)
     private let player: ModernAVPlayer
     private var episodePicker: EpisodePicking?
     private var streamable: Streamable?
@@ -36,7 +37,7 @@ class EpisodePlayer: ObservableObject {
 
     init() {
         let config = CustomPlayerConfiguration()
-        player = ModernAVPlayer(config: config, loggerDomains: [.error, .service, .remoteCommand])
+        player = ModernAVPlayer(config: config, loggerDomains: [.error])
         player.remoteCommands = [ makePlayCommand(), makeStopCommand() ]
         player.delegate = self
     }
@@ -59,7 +60,7 @@ class EpisodePlayer: ObservableObject {
         makeCurrent()
 
         let position = streamable.startTime.distance(to: Date())
-        print("[EpisodePicker] Playing from position \(position)")
+        log.debug("Playing from position \(position)")
 
         player.seek(position: position)
         player.play()
@@ -76,7 +77,7 @@ class EpisodePlayer: ObservableObject {
         let position = streamable.startTime.distance(to: Date())
         player.load(media: media, autostart: false, position: position)
 
-        print("[EpisodePlayer] Loading episode: \(url.absoluteString) at position \(position)")
+        log.info("Loading episode: \(url.absoluteString) at position \(position)")
 
         DispatchQueue.syncOnMain {
             self.currentEpisode = streamable.episode
@@ -160,7 +161,7 @@ extension EpisodePlayer: ModernAVPlayerDelegate {
              .waitingForNetwork:
             self.state = .paused
         }
-        print("[EpisodePlayer] State changed: \(state)")
+        log.debug("State changed: \(state)")
 
         // When an episode ends and we reconfigure the player, autoplay doesn't
         // seem to function properly, so we need to handle the transition ourselves.
@@ -173,7 +174,7 @@ extension EpisodePlayer: ModernAVPlayerDelegate {
     }
 
     func modernAVPlayer(_ player: ModernAVPlayer, didCurrentMediaChange media: PlayerMedia?) {
-        print("[EpisodePlayer] Current media changed: \(media?.url.absoluteString ?? "<nil>")")
+        log.debug("Current media changed: \(media?.url.absoluteString ?? "<nil>")")
     }
 
     func modernAVPlayer(_ player: ModernAVPlayer, didCurrentTimeChange currentTime: Double) {
@@ -183,7 +184,7 @@ extension EpisodePlayer: ModernAVPlayerDelegate {
     }
 
     func modernAVPlayer(_ player: ModernAVPlayer, didItemDurationChange itemDuration: Double?) {
-        print("[EpisodePlayer] Item duration changed: \(itemDuration ?? -1)")
+        log.debug("Item duration changed: \(itemDuration ?? -1)")
         DispatchQueue.syncOnMain {
             if let itemDuration = itemDuration {
                 self.duration = itemDuration
@@ -195,7 +196,7 @@ extension EpisodePlayer: ModernAVPlayerDelegate {
     }
 
     func modernAVPlayer(_ player: ModernAVPlayer, unavailableActionReason: PlayerUnavailableActionReason) {
-        print("[EpisodePlayer] Unavailable action: \(unavailableActionReason)")
+        log.warn("Unavailable action: \(unavailableActionReason)")
     }
 
     func modernAVPlayer(_ player: ModernAVPlayer, didItemPlayToEndTime endTime: Double) {

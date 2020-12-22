@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct PlayerRootView: View {
+    static let log = Log(Self.self)
+
     @StateObject var player: EpisodePlayer
     var feed: Feed
 
@@ -64,8 +66,14 @@ struct PlayerRootView: View {
     }
 
     private func reconfigure() {
+        Self.log.debug("Reconfiguring")
         if let picker = makeEpisodePicker() {
+            let wasPlaying = player.state == .playing
             player.configure(with: picker)
+            if wasPlaying {
+                Self.log.debug("Was playing before reconf, resuming playback")
+                player.play()
+            }
         } else {
             player.pause()
         }
