@@ -134,7 +134,7 @@ private struct FilterButton: View {
         Button(action: onTap) {
             Image(systemName: "line.horizontal.3.decrease.circle")
                 .resizable()
-                .foregroundColor(isActive ? .blue : .primary)
+                .foregroundColor(isActive ? .accentColor : .primary)
         }
     }
 }

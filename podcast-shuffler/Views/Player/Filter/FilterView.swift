@@ -15,7 +15,7 @@ struct FilterRootView: View {
                         Text("Done").bold()
                     }
                 )
-        }
+        }.modifier(SystemServices())
     }
 }
 
@@ -56,7 +56,9 @@ struct YearFilterList: View {
 
     var body: some View {
         List(years) { year in
-            MultipleSelectionRow(title: "\(year.value)", isSelected: year.selected) {
+            MultipleSelectionRow(title: "\(String(year.value))",
+                                 description: "\(year.episodeCount) episodes",
+                                 isSelected: year.selected) {
                 yearTapped(year)
             }
         }
@@ -82,14 +84,26 @@ struct YearFilterList: View {
 
 struct MultipleSelectionRow: View {
     var title: String
+    var description: String
     var isSelected: Bool
     var action: () -> Void
 
     var body: some View {
-        Button(action: self.action) {
+        Button(action: action) {
             HStack {
-                Text(self.title)
-                if self.isSelected {
+                VStack {
+                    HStack {
+                        Text(title)
+                        Spacer()
+                    }
+                    HStack {
+                        Text(description)
+                            .font(.footnote)
+                            .foregroundColor(.secondary)
+                        Spacer()
+                    }
+                }
+                if isSelected {
                     Spacer()
                     Image(systemName: "checkmark")
                 }
