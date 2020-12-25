@@ -1,41 +1,62 @@
 import SwiftUI
 
 struct AddFeedView: View {
+    private enum InputState {
+        case noInput
+        case readyToSubmit
+        case invalidUrl
+        case downloading
+        case incorrectContent
+    }
+
     @EnvironmentObject var feedStore: FeedStore
 
     @Binding var presenting: Bool
     @State private var feedUrl: String = ""
+    @State private var state: InputState = .noInput
 
     var body: some View {
         NavigationView {
-            VStack {
-                TextField("Feed URL", text: $feedUrl, onEditingChanged: { _ in
-                    print("wtf is this")
-                }, onCommit: {
-                    self.commitFeed()
-                })
-                .textContentType(.URL)
-                .keyboardType(.URL)
-                .autocapitalization(.none)
-                .disableAutocorrection(true)
+            ZStack {
+                if state == .downloading {
+                    LoadingView()
+                }
 
-                if !feedUrl.isEmpty && !isValidUrl() {
-                    HStack {
-                        Text("Invalid feed URL")
-                            .foregroundColor(.red)
+                VStack {
+                    TextField("Feed URL", text: $feedUrl, onCommit: {
+                        self.commitFeed()
+                    })
+                    .onChange(of: feedUrl, perform: { _ in
+                        if feedUrl.isEmpty {
+                            state = .noInput
+                        } else if !isValidUrl() {
+                            state = .invalidUrl
+                        } else {
+                            state = .readyToSubmit
+                        }
+                    })
+                    .textContentType(.URL)
+                    .keyboardType(.URL)
+                    .autocapitalization(.none)
+                    .disableAutocorrection(true)
+
+                    if state == .invalidUrl {
+                        Text("Not a valid URL").foregroundColor(.red)
+                    } else if state == .incorrectContent {
+                        Text("Not a valid RSS feed").foregroundColor(.red)
                     }
-                }
 
-                Spacer()
+                    Spacer()
 
-                Button(action: commitFeed) {
-                    Text("Add feed")
+                    Button(action: commitFeed) {
+                        Text("Add feed")
+                    }
+                    .disabled(state != .readyToSubmit)
                 }
-                .disabled($feedUrl.wrappedValue.isEmpty && !isValidUrl())
+                .padding()
+                .navigationTitle("Add a feed")
+                .multilineTextAlignment(.leading)
             }
-            .padding()
-            .navigationTitle("Add a feed")
-            .multilineTextAlignment(.leading)
         }
     }
 
@@ -52,10 +73,34 @@ struct AddFeedView: View {
 
     private func commitFeed() {
         guard let url = URL(string: feedUrl) else { return }
+        state = .downloading
 
         feedStore.addFeed(from: url) { success in
             if success {
                 presenting = false
+            } else {
+                self.state = .incorrectContent
+            }
+        }
+    }
+}
+
+private struct LoadingView: View {
+    var body: some View {
+        GeometryReader { metrics in
+            HStack {
+                Spacer()
+                VStack {
+                    Spacer()
+                    ProgressView("Loading")
+                        .frame(width: metrics.size.width * 0.4, height: metrics.size.width * 0.4, alignment: .center)
+                        .background(Color.secondary.opacity(0.5))
+                        .cornerRadius(10)
+                        .transition(.scale)
+                        .animation(.easeInOut)
+                    Spacer()
+                }
+                Spacer()
             }
         }
     }
