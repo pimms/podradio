@@ -26,7 +26,7 @@ class EpisodePlayer: ObservableObject {
 
     private lazy var log = Log(self)
     private let player: ModernAVPlayer
-    private var episodePicker: EpisodePicking?
+    private var episodePicker: EpisodePicker?
     private var streamable: Streamable?
 
     private var isTransitioningToNextEpisode = false
@@ -44,7 +44,7 @@ class EpisodePlayer: ObservableObject {
 
     // MARK: - Internal methods
 
-    func configure(with picker: EpisodePicking) {
+    func configure(with picker: EpisodePicker) {
         self.episodePicker = picker
         let streamable = picker.currentStreamable()
         configure(with: streamable)

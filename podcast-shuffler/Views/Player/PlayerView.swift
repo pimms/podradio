@@ -88,14 +88,14 @@ struct PlayerRootView: View {
         }
     }
 
-    private func makeEpisodePicker() -> EpisodePicking? {
+    private func makeEpisodePicker() -> EpisodePicker? {
         if useBingePicker {
             return BingeEpisodePicker()
         }
 
         let filter = FilterStore.shared.filter(for: feed)
         hasCustomFilter = !(filter is DefaultFilter)
-        return EpisodePicker(filter: filter)
+        return DefaultEpisodePicker(filter: filter)
     }
 }
 

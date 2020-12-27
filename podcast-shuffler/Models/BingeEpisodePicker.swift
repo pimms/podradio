@@ -21,7 +21,7 @@ private struct StreamableImpl: Streamable {
     }
 }
 
-class BingeEpisodePicker: EpisodePicking {
+class BingeEpisodePicker: EpisodePicker {
     let feed = Feed(id: "BingeFeed", episodes: [], title: "BingeFeed", imageUrl: nil, url: URL(string: "https://stienjoa.kim")!)
 
     func currentStreamable() -> Streamable {
