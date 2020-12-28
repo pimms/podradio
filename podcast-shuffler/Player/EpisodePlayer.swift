@@ -28,6 +28,7 @@ class EpisodePlayer: ObservableObject {
     private let player: ModernAVPlayer
     private var episodePicker: EpisodePicker?
     private var streamable: Streamable?
+    private var timer: Timer? { willSet { timer?.invalidate() } }
 
     private var isTransitioningToNextEpisode = false
 
@@ -40,6 +41,7 @@ class EpisodePlayer: ObservableObject {
         player = ModernAVPlayer(config: config, loggerDomains: [.error])
         player.remoteCommands = [ makePlayCommand(), makeStopCommand() ]
         player.delegate = self
+        startSimulatedProgressTimer()
     }
 
     // MARK: - Internal methods
@@ -150,16 +152,19 @@ extension EpisodePlayer: ModernAVPlayerDelegate {
         case .playing:
             player.updateMetadata(makeMetadata())
             self.state = .playing
+            self.timer = nil
         case .buffering,
              .initialization:
             self.state = .playing
+            self.timer = nil
         case .failed,
-             .loading,
              .loaded,
+             .loading,
              .paused,
              .stopped,
              .waitingForNetwork:
             self.state = .paused
+            startSimulatedProgressTimer()
         }
         log.debug("State changed: \(state)")
 
@@ -204,6 +209,35 @@ extension EpisodePlayer: ModernAVPlayerDelegate {
         if let streamable = streamable {
             isTransitioningToNextEpisode = true
             configure(with: streamable.nextStreamable)
+        }
+    }
+}
+
+// MARK: - Simulated progress
+
+extension EpisodePlayer {
+    private func startSimulatedProgressTimer() {
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
+            self?.simulatedProgressTick()
+        }
+        timer?.fire()
+    }
+
+    private func simulatedProgressTick() {
+        guard let streamable = streamable else { return }
+
+        let now = Date()
+        guard streamable.endTime > now else {
+            configure(with: streamable.nextStreamable)
+            return
+        }
+
+        let position = streamable.startTime.distance(to: now)
+        let duration = streamable.startTime.distance(to: streamable.endTime)
+
+        DispatchQueue.syncOnMain {
+            self.currentTime = position
+            self.duration = duration
         }
     }
 }
