@@ -37,6 +37,8 @@ private extension Feed {
     struct YearAndMonth: Hashable {
         let year: Int
         let month: Int
+
+        var sortValue: Int { year*12 + month }
     }
 
     private mutating func rebuildSections() {
@@ -71,6 +73,7 @@ private extension Feed {
         dateFormatter.dateFormat = "MMMM yyyy"
 
         self.sections = dict.keys
+            .sorted { $0.sortValue < $1.sortValue }
             .map { key in
                 var episodes: [Episode] = []
                 for episode in dict[key] ?? [] {
