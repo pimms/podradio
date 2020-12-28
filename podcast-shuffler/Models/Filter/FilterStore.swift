@@ -32,7 +32,7 @@ class FilterStore {
         return DefaultFilter(feed: feed)
     }
 
-    func setFilter(_ filter: Filter, for feed: Feed) {
+    func setFilter(_ filter: Filter) {
         let value: Data?
         if let yearFilter = filter as? YearFilter {
             value = EncodedYearlyFilter(years: yearFilter.years).encoded
@@ -40,11 +40,9 @@ class FilterStore {
             value = nil
         }
 
+        let feed = filter.feed
         userDefaults.setValue(value, forKey: key(for: feed))
-    }
-
-    func removeFilter(for feed: Feed) {
-        userDefaults.setValue(nil, forKey: key(for: feed))
+        episodePicker(for: feed).setFilter(filter)
     }
 
     // MARK: - Private methods

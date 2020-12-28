@@ -16,3 +16,7 @@ class YearFilter: Filter {
         self.years = years
     }
 }
+
+extension YearFilter: CustomStringConvertible {
+    var description: String { "[YearFilter(\(years))]" }
+}

@@ -28,6 +28,8 @@ class BingeEpisodePicker: EpisodePicker {
         return streamable(atTime: Date().timeIntervalSince1970)
     }
 
+    func setFilter(_ filter: Filter) { }
+
     fileprivate func streamable(after item: Streamable) -> Streamable {
         return streamable(atTime: item.endTime.timeIntervalSince1970 + 1)
     }

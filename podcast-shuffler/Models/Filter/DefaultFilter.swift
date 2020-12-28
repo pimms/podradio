@@ -15,4 +15,9 @@ class DefaultFilter: Filter {
     init(feed: Feed) {
         self.feed = feed
     }
+
+}
+
+extension DefaultFilter: CustomStringConvertible {
+    var description: String { "[DefaultFilter]" }
 }

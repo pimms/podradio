@@ -71,13 +71,11 @@ struct YearFilterList: View {
             selectedYears.append(year.value)
         }
 
-        print("selected years: \(selectedYears)")
-
         if selectedYears.isEmpty {
-            FilterStore.shared.removeFilter(for: feed)
+            FilterStore.shared.setFilter(DefaultFilter(feed: feed))
         } else {
             let filter = YearFilter(feed: feed, years: selectedYears)
-            FilterStore.shared.setFilter(filter, for: feed)
+            FilterStore.shared.setFilter(filter)
         }
     }
 }

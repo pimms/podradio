@@ -1,4 +1,5 @@
 import Foundation
+import Combine
 
 private struct StreamableImpl: Streamable {
     let episode: Episode
@@ -20,7 +21,7 @@ class DefaultEpisodePicker: EpisodePicker {
     // MARK: - Internal properties
 
     var feed: Feed { filter.feed }
-    var filter: Filter
+    @Published private(set) var filter: Filter
 
     // MARK: - Private properties
 
@@ -54,6 +55,13 @@ class DefaultEpisodePicker: EpisodePicker {
         }
 
         return streamable
+    }
+
+    func setFilter(_ filter: Filter) {
+        log.debug("Assigning new filter: \(filter)")
+        DispatchQueue.syncOnMain {
+            self.filter = filter
+        }
     }
 
     // MARK: - Fileprivate methods

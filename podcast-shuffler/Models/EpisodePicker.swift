@@ -15,6 +15,7 @@ fileprivate var globalPickers: [Feed.ID: EpisodePicker] = [:]
 protocol EpisodePicker {
     var feed: Feed { get }
     func currentStreamable() -> Streamable
+    func setFilter(_ filter: Filter)
 }
 
 
