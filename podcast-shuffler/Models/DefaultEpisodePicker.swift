@@ -20,16 +20,20 @@ class DefaultEpisodePicker: EpisodePicker {
     // MARK: - Internal properties
 
     var feed: Feed { filter.feed }
+    var filter: Filter
 
     // MARK: - Private properties
 
-    private let filter: Filter
+    private lazy var log = Log(self)
 
     // MARK: - Init
 
-    init?(filter: Filter) {
-        guard !filter.episodes.isEmpty else { return nil }
+    init(filter: Filter) {
         self.filter = filter
+
+        if filter.episodes.isEmpty {
+            log.warn("DefaultEpisodePicker created without any episodes")
+        }
     }
 
     // MARK: - Internal methods

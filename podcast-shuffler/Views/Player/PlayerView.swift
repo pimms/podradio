@@ -67,15 +67,12 @@ struct PlayerRootView: View {
 
     private func reconfigure() {
         Self.log.debug("Reconfiguring")
-        if let picker = makeEpisodePicker() {
-            let wasPlaying = player.state == .playing
-            player.configure(with: picker)
-            if wasPlaying {
-                Self.log.debug("Was playing before reconf, resuming playback")
-                player.play()
-            }
-        } else {
-            player.pause()
+        let picker = episodePicker(for: feed)
+        let wasPlaying = player.state == .playing
+        player.configure(with: picker)
+        if wasPlaying {
+            Self.log.debug("Was playing before reconf, resuming playback")
+            player.play()
         }
     }
 
@@ -86,16 +83,6 @@ struct PlayerRootView: View {
         case .paused:
             player.play()
         }
-    }
-
-    private func makeEpisodePicker() -> EpisodePicker? {
-        if useBingePicker {
-            return BingeEpisodePicker()
-        }
-
-        let filter = FilterStore.shared.filter(for: feed)
-        hasCustomFilter = !(filter is DefaultFilter)
-        return DefaultEpisodePicker(filter: filter)
     }
 }
 
