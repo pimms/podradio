@@ -50,7 +50,7 @@ struct PlayerRootView: View {
                 }
             }
             ProgressBarView(player: player)
-                .frame(maxHeight: 60)
+                .frame(maxHeight: 40)
                 .padding()
             EpisodeViewLink(feed: feed)
                 .padding(.bottom, 20)
@@ -74,6 +74,8 @@ struct PlayerRootView: View {
             Self.log.debug("Was playing before reconf, resuming playback")
             player.play()
         }
+
+        hasCustomFilter = !(FilterStore.shared.filter(for: feed) is DefaultFilter)
     }
 
     private func onPlayButtonTap() {

@@ -40,29 +40,18 @@ fileprivate struct ProgressBar: View {
     let duration: TimeInterval
 
     var body: some View {
-        ZStack {
-            HStack(alignment: .center, spacing: 0) {
-                RoundedRectangle(cornerRadius: 1)
-                    .frame(width: 3, height: 20)
-                    .foregroundColor(.primary)
-                Spacer()
-                RoundedRectangle(cornerRadius: 1)
-                    .frame(width: 3, height: 20)
-                    .foregroundColor(.primary)
-            }
+        GeometryReader { metrics in
+            ZStack {
+                Rectangle()
+                    .foregroundColor(Color.secondary)
+                    .cornerRadius(metrics.size.height / 2)
 
-            GeometryReader { metrics in
-                VStack(alignment: .center) {
-                    Spacer()
-                    HStack(spacing: 0) {
-                        Rectangle()
-                            .frame(width: metrics.size.width * ratio, height: 3)
-                            .foregroundColor(.primary)
-                        Rectangle()
-                            .frame(width: metrics.size.width * (1 - ratio), height: 3)
-                            .foregroundColor(.secondary)
-                    }
-                    Spacer()
+                HStack {
+                    Rectangle()
+                        .frame(width: metrics.size.width * ratio)
+                        .foregroundColor(.primary)
+                        .cornerRadius(metrics.size.height / 2)
+                    Spacer(minLength: 0)
                 }
             }
         }
@@ -83,7 +72,7 @@ struct ProgressBar_Previews: PreviewProvider {
             .previewLayout(.sizeThatFits)
             .padding()
 
-        ProgressBar(currentTime: 0.3, duration: 1)
+        ProgressBar(currentTime: 0.4, duration: 1)
             .frame(maxHeight: 40)
             .previewLayout(.sizeThatFits)
             .padding()
