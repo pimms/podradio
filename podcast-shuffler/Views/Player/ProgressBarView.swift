@@ -54,7 +54,7 @@ fileprivate struct ProgressBar: View {
                     Spacer(minLength: 0)
                 }
             }
-        }
+        }.frame(height: 4)
     }
 
     private var ratio: CGFloat {
