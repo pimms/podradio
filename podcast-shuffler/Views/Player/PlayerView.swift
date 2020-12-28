@@ -1,6 +1,41 @@
 import SwiftUI
+import struct Kingfisher.KFImage
 
 struct PlayerRootView: View {
+    let feed: Feed
+
+    var body: some View {
+        ZStack {
+            BackdropImageView(imageUrl: feed.imageUrl)
+            PlayerContentView(feed: feed)
+        }
+        .navigationTitle(feed.title)
+    }
+}
+
+private struct BackdropImageView: View {
+    var imageUrl: URL?
+
+    var body: some View {
+        GeometryReader { metrics in
+            VStack {
+                ZStack {
+                    KFImage(imageUrl)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                    Rectangle()
+                        .foregroundColor(.clear)
+                        .background(LinearGradient(gradient: Gradient(colors: [Color.systemBackground.opacity(0.85),
+                                                                               Color.systemBackground.opacity(1)]),
+                                                   startPoint: .top, endPoint: .bottom))
+                }.frame(width: metrics.size.width, height: metrics.size.height * 0.9)
+                Spacer()
+            }.edgesIgnoringSafeArea(.all)
+        }
+    }
+}
+
+private struct PlayerContentView: View {
     static let log = Log(Self.self)
 
     @StateObject var player: EpisodePlayer
@@ -54,7 +89,6 @@ struct PlayerRootView: View {
                 .padding()
                 .padding(.bottom, 20)
         }
-        .navigationTitle(feed.title)
         .onAppear(perform: onAppear)
     }
 

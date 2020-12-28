@@ -1,10 +1,12 @@
 import Foundation
 import UIKit
 
+private let testImageUrl = URL(string: "https://cdn.pixabay.com/photo/2018/10/08/14/46/bird-3732867_1280.jpg")
+
 struct Feed: Identifiable, Hashable {
     static let testData = [
-        Feed(id: "1", episodes: Episode.testData, title: "Feed 1", imageUrl: nil, url: URL(string: "https://www.google.com")!),
-        Feed(id: "2", episodes: Episode.testData, title: "Feed 2", imageUrl: nil, url: URL(string: "https://www.google.com")!),
+        Feed(id: "1", episodes: Episode.testData, title: "Feed 1", imageUrl: testImageUrl, url: URL(string: "https://www.google.com")!),
+        Feed(id: "2", episodes: Episode.testData, title: "Feed 2", imageUrl: testImageUrl, url: URL(string: "https://www.google.com")!),
     ]
 
     struct Section: Identifiable, Hashable {
