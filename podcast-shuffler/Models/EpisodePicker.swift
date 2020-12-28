@@ -18,7 +18,6 @@ protocol EpisodePicker {
     func setFilter(_ filter: Filter)
 }
 
-
 func episodePicker(for feed: Feed) -> EpisodePicker {
     if let picker = globalPickers[feed.id] {
         return picker

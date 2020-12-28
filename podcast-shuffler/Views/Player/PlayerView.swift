@@ -52,7 +52,6 @@ struct PlayerRootView: View {
             ProgressBarView(player: player)
                 .frame(maxHeight: 40)
                 .padding()
-            EpisodeViewLink(feed: feed)
                 .padding(.bottom, 20)
         }
         .navigationTitle(feed.title)
@@ -153,20 +152,6 @@ private struct PlayButton: View {
             return "pause.fill"
         case .paused:
             return "play.fill"
-        }
-    }
-}
-
-private struct EpisodeViewLink: View {
-    var feed: Feed
-
-    var body: some View {
-        HStack {
-            Spacer()
-            NavigationLink(destination: EpisodeRootView(feed: feed)) {
-                Text("See all episodes")
-            }
-            Spacer()
         }
     }
 }
