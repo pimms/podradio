@@ -91,13 +91,13 @@ private struct NowPlayingLabel: View {
 
     var body: some View {
         VStack {
-            Text("\(player.currentEpisode?.title ?? "title")")
+            Text("\(player.currentEpisode?.title ?? "")")
                 .font(.headline)
             Text(formattedDateString)
                 .font(.caption)
                 .foregroundColor(.secondary)
             ScrollView {
-                Text("\(player.currentEpisode?.description ?? "description")")
+                Text("\(player.currentEpisode?.description ?? "")")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
             }
