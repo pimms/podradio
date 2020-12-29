@@ -50,6 +50,7 @@
 		F5768FED259B347500FD551A /* ITunesIdExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5768FEC259B347500FD551A /* ITunesIdExtractor.swift */; };
 		F5768FF5259B384100FD551A /* ITunesLinkExtractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5768FF4259B384100FD551A /* ITunesLinkExtractorTests.swift */; };
 		F5768FFB259B396F00FD551A /* MockHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5768FFA259B396F00FD551A /* MockHttpClient.swift */; };
+		F578886E259BAEEC00B7658B /* URL+withHttps.swift in Sources */ = {isa = PBXBuildFile; fileRef = F578886D259BAEEC00B7658B /* URL+withHttps.swift */; };
 		F59A927F259B44B5000CA1B5 /* FeedHelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59A927E259B44B5000CA1B5 /* FeedHelpView.swift */; };
 		F59A9285259B5359000CA1B5 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59A9284259B5359000CA1B5 /* HelpView.swift */; };
 		F5B49E92259126A300399ADF /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B49E91259126A300399ADF /* Log.swift */; };
@@ -129,6 +130,7 @@
 		F5768FEC259B347500FD551A /* ITunesIdExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITunesIdExtractor.swift; sourceTree = "<group>"; };
 		F5768FF4259B384100FD551A /* ITunesLinkExtractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITunesLinkExtractorTests.swift; sourceTree = "<group>"; };
 		F5768FFA259B396F00FD551A /* MockHttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHttpClient.swift; sourceTree = "<group>"; };
+		F578886D259BAEEC00B7658B /* URL+withHttps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+withHttps.swift"; sourceTree = "<group>"; };
 		F59A927E259B44B5000CA1B5 /* FeedHelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedHelpView.swift; sourceTree = "<group>"; };
 		F59A9284259B5359000CA1B5 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 		F5B49E91259126A300399ADF /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
@@ -312,6 +314,7 @@
 		19D5BF3225756D3F002A9558 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				F578886D259BAEEC00B7658B /* URL+withHttps.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -663,6 +666,7 @@
 				F53DAF28259083B300D3F0A9 /* DefaultFilter.swift in Sources */,
 				19D8A75924B9A2D5000AE5A5 /* FeedParser.swift in Sources */,
 				19097C3524A9F2070006B8B2 /* FeedCache.swift in Sources */,
+				F578886E259BAEEC00B7658B /* URL+withHttps.swift in Sources */,
 				19D8A75724B89D72000AE5A5 /* MD5.swift in Sources */,
 				19D5BF3725756D52002A9558 /* StorageKey.swift in Sources */,
 				F59A9285259B5359000CA1B5 /* HelpView.swift in Sources */,

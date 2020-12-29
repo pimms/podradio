@@ -75,24 +75,29 @@ class FeedStore: ObservableObject {
     }
 
     private func addRssFeed(from url: URL, then completion: ((Bool) -> Void)?) {
-        guard feedCache.cache.filter({ $0.feedUrl == url }).isEmpty else {
-            log.debug("Feed '\(url.absoluteString)' already exists in cache")
+        guard let httpsUrl = url.withHttps else {
+            completion?(false)
+            return
+        }
+
+        guard feedCache.cache.filter({ $0.feedUrl == httpsUrl }).isEmpty else {
+            log.debug("Feed '\(httpsUrl.absoluteString)' already exists in cache")
             completion?(true)
             return
         }
 
-        httpClient.get(url) { [weak self] response in
+        httpClient.get(httpsUrl) { [weak self] response in
             switch response {
             case .success(let data):
                 guard let data = data,
-                      let feed = FeedParser.parseRssData(data, url: url) else {
+                      let feed = FeedParser.parseRssData(data, url: httpsUrl) else {
                     DispatchQueue.main.async {
                         completion?(false)
                     }
                     return
                 }
 
-                self?.feedCache.cacheFeed(url, feedContent: data)
+                self?.feedCache.cacheFeed(httpsUrl, feedContent: data)
                 DispatchQueue.main.async {
                     self?.feeds.append(feed)
                     completion?(true)

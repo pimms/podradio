@@ -28,13 +28,15 @@ private struct HelpView: View {
                     FaqView(item: item)
                         .padding(.bottom, 30)
                 }
+
+                ContactButtonGroup()
             }
             .padding()
         }
     }
 }
 
-struct FaqItem: Identifiable {
+private struct FaqItem: Identifiable {
     var id: String { title }
     let title: String
     let description: String
@@ -50,10 +52,12 @@ struct FaqItem: Identifiable {
                 description: "RSS feeds are required for APPNAME to work, and Spotify does not share these publicly."),
         FaqItem(title: "Why can't I select which episode to play?",
                 description: "APPNAME acts like a radio player, and just like you have no control over what the radio broadcasts, you have no control over what APPNAME plays."),
+        FaqItem(title: "The app is 💩👎",
+                description: "Feel free to contact me with any kind of feedback — I'm psyched if anyone uses it.")
     ]
 }
 
-struct FaqView: View {
+private struct FaqView: View {
     let item: FaqItem
 
     var body: some View {
@@ -73,8 +77,51 @@ struct FaqView: View {
     }
 }
 
+private struct ContactButtonGroup: View {
+    var body: some View {
+        HStack {
+            ContactButton(imageName: "twitter", text: "@superpimms", action: {
+                guard let url = URL(string: "https://twitter.com/superpimms") else { return }
+                UIApplication.shared.open(url)
+            })
+            Spacer()
+        }
+    }
+}
+
+private struct ContactButton: View {
+    let imageName: String
+    let text: String
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            HStack {
+                Image(imageName)
+                    .resizable()
+                    .frame(width: 30, height: 30)
+                Text(text)
+                    .foregroundColor(.primary)
+            }
+            .padding([.leading], 20)
+            .padding([.trailing], 25)
+            .padding([.bottom, .top], 10)
+        }
+        .background(Color.tertiaryLabel)
+        .cornerRadius(8)
+    }
+}
+
 struct HelpView_Previews: PreviewProvider {
     static var previews: some View {
-        HelpRootView()
+        Group {
+            HelpRootView()
+            ContactButtonGroup()
+                .preferredColorScheme(.light)
+                .previewLayout(.sizeThatFits)
+            ContactButtonGroup()
+                .preferredColorScheme(.dark)
+                .previewLayout(.sizeThatFits)
+        }
     }
 }

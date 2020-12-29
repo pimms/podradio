@@ -43,9 +43,10 @@ class DefaultEpisodePicker: EpisodePicker {
         let currentPeriodStart = currentPeriodStartTime()
 
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd-HH"
+        formatter.dateFormat = "yyyy-MM-dd"
 
         let seedString = formatter.string(from: currentPeriodStart)
+        log.debug("seed string: \(seedString)")
         var rng = randomNumberGenerator(from: seedString)
         var streamable = makeStreamable(using: &rng, startTime: currentPeriodStart)
 
