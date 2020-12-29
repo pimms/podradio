@@ -51,6 +51,7 @@
 		F5768FF5259B384100FD551A /* ITunesLinkExtractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5768FF4259B384100FD551A /* ITunesLinkExtractorTests.swift */; };
 		F5768FFB259B396F00FD551A /* MockHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5768FFA259B396F00FD551A /* MockHttpClient.swift */; };
 		F59A927F259B44B5000CA1B5 /* FeedHelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59A927E259B44B5000CA1B5 /* FeedHelpView.swift */; };
+		F59A9285259B5359000CA1B5 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59A9284259B5359000CA1B5 /* HelpView.swift */; };
 		F5B49E92259126A300399ADF /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B49E91259126A300399ADF /* Log.swift */; };
 		F86018884F2B5AD6859FB3DD /* Pods_podcast_shuffler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A8583148065509C2927A05F /* Pods_podcast_shuffler.framework */; };
 /* End PBXBuildFile section */
@@ -129,6 +130,7 @@
 		F5768FF4259B384100FD551A /* ITunesLinkExtractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITunesLinkExtractorTests.swift; sourceTree = "<group>"; };
 		F5768FFA259B396F00FD551A /* MockHttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHttpClient.swift; sourceTree = "<group>"; };
 		F59A927E259B44B5000CA1B5 /* FeedHelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedHelpView.swift; sourceTree = "<group>"; };
+		F59A9284259B5359000CA1B5 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 		F5B49E91259126A300399ADF /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -230,6 +232,7 @@
 		19168D3724A4F92D0064A0B6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F59A9283259B5351000CA1B5 /* Help */,
 				19D5BF2125756080002A9558 /* Settings */,
 				19168D4624A501900064A0B6 /* RootView */,
 				19168D4024A4FE7F0064A0B6 /* Feed */,
@@ -429,6 +432,14 @@
 				F5768FFA259B396F00FD551A /* MockHttpClient.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		F59A9283259B5351000CA1B5 /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				F59A9284259B5359000CA1B5 /* HelpView.swift */,
+			);
+			path = Help;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -654,6 +665,7 @@
 				19097C3524A9F2070006B8B2 /* FeedCache.swift in Sources */,
 				19D8A75724B89D72000AE5A5 /* MD5.swift in Sources */,
 				19D5BF3725756D52002A9558 /* StorageKey.swift in Sources */,
+				F59A9285259B5359000CA1B5 /* HelpView.swift in Sources */,
 				19115D7C24A4C8E8008E8BAC /* Main.swift in Sources */,
 				19FD32F924AB40CA00FB9FF6 /* Streamable.swift in Sources */,
 				19D5BF152573EDE6002A9558 /* AirPlayButton.swift in Sources */,
