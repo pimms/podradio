@@ -23,7 +23,7 @@ struct AddFeedView: View {
                 }
 
                 VStack {
-                    TextField("Feed URL", text: $feedUrl, onCommit: {
+                    TextField("Podcast feed URL", text: $feedUrl, onCommit: {
                         self.commitFeed()
                     })
                     .onChange(of: feedUrl, perform: { _ in
@@ -48,10 +48,14 @@ struct AddFeedView: View {
 
                     Spacer()
 
+                    NavigationLink("How do I find the feed URL?", destination: FeedHelpRootView())
+                        .padding(.bottom, 20)
+
                     Button(action: commitFeed) {
                         Text("Add feed")
                     }
                     .disabled(state != .readyToSubmit)
+                    .padding(.bottom, 20)
                 }
                 .padding()
                 .navigationTitle("Add a feed")
