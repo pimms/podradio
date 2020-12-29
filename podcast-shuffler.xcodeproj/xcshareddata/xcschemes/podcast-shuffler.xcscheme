@@ -38,16 +38,6 @@
                ReferencedContainer = "container:podcast-shuffler.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "19115D9324A4C8E9008E8BAC"
-               BuildableName = "podcast-shufflerUITests.xctest"
-               BlueprintName = "podcast-shufflerUITests"
-               ReferencedContainer = "container:podcast-shuffler.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

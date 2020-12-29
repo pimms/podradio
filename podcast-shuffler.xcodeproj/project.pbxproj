@@ -45,6 +45,11 @@
 		F53DAF322590912400D3F0A9 /* FilterStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DAF312590912400D3F0A9 /* FilterStore.swift */; };
 		F55B1C2025841CAE004E1380 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55B1C1F25841CAE004E1380 /* FilterView.swift */; };
 		F5768FD7259A843300FD551A /* Color+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5768FD6259A843300FD551A /* Color+UIColor.swift */; };
+		F5768FDF259B340500FD551A /* ITunesLinkExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5768FDE259B340500FD551A /* ITunesLinkExtractor.swift */; };
+		F5768FE5259B343500FD551A /* ITunesIdExtractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5768FE4259B343500FD551A /* ITunesIdExtractorTests.swift */; };
+		F5768FED259B347500FD551A /* ITunesIdExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5768FEC259B347500FD551A /* ITunesIdExtractor.swift */; };
+		F5768FF5259B384100FD551A /* ITunesLinkExtractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5768FF4259B384100FD551A /* ITunesLinkExtractorTests.swift */; };
+		F5768FFB259B396F00FD551A /* MockHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5768FFA259B396F00FD551A /* MockHttpClient.swift */; };
 		F5B49E92259126A300399ADF /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B49E91259126A300399ADF /* Log.swift */; };
 		F86018884F2B5AD6859FB3DD /* Pods_podcast_shuffler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A8583148065509C2927A05F /* Pods_podcast_shuffler.framework */; };
 /* End PBXBuildFile section */
@@ -117,6 +122,11 @@
 		F53DAF312590912400D3F0A9 /* FilterStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterStore.swift; sourceTree = "<group>"; };
 		F55B1C1F25841CAE004E1380 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		F5768FD6259A843300FD551A /* Color+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+UIColor.swift"; sourceTree = "<group>"; };
+		F5768FDE259B340500FD551A /* ITunesLinkExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITunesLinkExtractor.swift; sourceTree = "<group>"; };
+		F5768FE4259B343500FD551A /* ITunesIdExtractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITunesIdExtractorTests.swift; sourceTree = "<group>"; };
+		F5768FEC259B347500FD551A /* ITunesIdExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITunesIdExtractor.swift; sourceTree = "<group>"; };
+		F5768FF4259B384100FD551A /* ITunesLinkExtractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITunesLinkExtractorTests.swift; sourceTree = "<group>"; };
+		F5768FFA259B396F00FD551A /* MockHttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockHttpClient.swift; sourceTree = "<group>"; };
 		F5B49E91259126A300399ADF /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -198,6 +208,7 @@
 		19115D8C24A4C8E9008E8BAC /* podcast-shufflerTests */ = {
 			isa = PBXGroup;
 			children = (
+				F5768FF9259B396700FD551A /* Mocks */,
 				F53DAF0F259080F700D3F0A9 /* Model */,
 				19115D8D24A4C8E9008E8BAC /* podcast_shufflerTests.swift */,
 				19115D8F24A4C8E9008E8BAC /* Info.plist */,
@@ -344,6 +355,7 @@
 		F53DAF0F259080F700D3F0A9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F5768FE3259B342700FD551A /* ITunesLink */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -383,6 +395,8 @@
 		F5768FDC259B33BC00FD551A /* iTunesLink */ = {
 			isa = PBXGroup;
 			children = (
+				F5768FDE259B340500FD551A /* ITunesLinkExtractor.swift */,
+				F5768FEC259B347500FD551A /* ITunesIdExtractor.swift */,
 			);
 			path = iTunesLink;
 			sourceTree = "<group>";
@@ -395,6 +409,23 @@
 				F538DC0525987BDB005B6E5D /* DefaultEpisodePicker.swift */,
 			);
 			path = Picker;
+			sourceTree = "<group>";
+		};
+		F5768FE3259B342700FD551A /* ITunesLink */ = {
+			isa = PBXGroup;
+			children = (
+				F5768FE4259B343500FD551A /* ITunesIdExtractorTests.swift */,
+				F5768FF4259B384100FD551A /* ITunesLinkExtractorTests.swift */,
+			);
+			path = ITunesLink;
+			sourceTree = "<group>";
+		};
+		F5768FF9259B396700FD551A /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				F5768FFA259B396F00FD551A /* MockHttpClient.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -596,6 +627,7 @@
 				F55B1C2025841CAE004E1380 /* FilterView.swift in Sources */,
 				F538DC0625987BDB005B6E5D /* DefaultEpisodePicker.swift in Sources */,
 				19097C3024A9C1FE0006B8B2 /* SystemServices.swift in Sources */,
+				F5768FED259B347500FD551A /* ITunesIdExtractor.swift in Sources */,
 				19D5BF232575608A002A9558 /* SettingsRootView.swift in Sources */,
 				19168D5124A50A6A0064A0B6 /* HttpClient.swift in Sources */,
 				19168D3F24A4FE440064A0B6 /* Feed.swift in Sources */,
@@ -611,6 +643,7 @@
 				19168D4A24A503280064A0B6 /* FeedStore.swift in Sources */,
 				19FDA725256A960300BBF6B1 /* DispatchQueue.swift in Sources */,
 				19168D4824A5019B0064A0B6 /* AppRootView.swift in Sources */,
+				F5768FDF259B340500FD551A /* ITunesLinkExtractor.swift in Sources */,
 				199D710425727A5B00B72E23 /* CustomPlayerConfiguration.swift in Sources */,
 				F53DAF28259083B300D3F0A9 /* DefaultFilter.swift in Sources */,
 				19D8A75924B9A2D5000AE5A5 /* FeedParser.swift in Sources */,
@@ -633,6 +666,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5768FFB259B396F00FD551A /* MockHttpClient.swift in Sources */,
+				F5768FE5259B343500FD551A /* ITunesIdExtractorTests.swift in Sources */,
+				F5768FF5259B384100FD551A /* ITunesLinkExtractorTests.swift in Sources */,
 				19115D8E24A4C8E9008E8BAC /* podcast_shufflerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
