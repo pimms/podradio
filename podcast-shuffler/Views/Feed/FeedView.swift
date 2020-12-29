@@ -5,13 +5,20 @@ struct FeedRootView: View {
     @EnvironmentObject var feedStore: FeedStore
 
     var body: some View {
-        List() {
-            ForEach(feedStore.feeds) { feed in
-                NavigationLink(destination: PlayerRootView(feed: feed)) {
-                    FeedCell(feed: feed)
+        Group {
+            let feeds = feedStore.feeds
+            if feeds.isEmpty {
+                NoFeedsView()
+            } else {
+                List() {
+                    ForEach(feedStore.feeds) { feed in
+                        NavigationLink(destination: PlayerRootView(feed: feed)) {
+                            FeedCell(feed: feed)
+                        }
+                    }
+                    .onDelete(perform: onDelete)
                 }
             }
-            .onDelete(perform: onDelete)
         }
         .navigationTitle("Feeds")
         .navigationBarItems(leading: NavBarButton(), trailing: AddFeedButton())
@@ -21,6 +28,23 @@ struct FeedRootView: View {
         Array(indexSet)
             .map { feedStore.feeds[$0] }
             .forEach { feedStore.deleteFeed($0) }
+    }
+}
+
+private struct NoFeedsView: View {
+    var body: some View {
+        VStack {
+            Spacer()
+            Text("No feeds!")
+                .font(Font.largeTitle.bold())
+                .padding(.bottom)
+            Text("Add your favorite podcast to start listening.")
+                .font(Font.title2.bold())
+                .multilineTextAlignment(.center)
+            Spacer()
+        }
+        .opacity(0.2)
+        .padding()
     }
 }
 
@@ -144,10 +168,8 @@ struct FeedRootView_Previews: PreviewProvider {
                 FeedRootView()
                     .modifier(SystemServices())
             }
-            NavigationView {
-                FeedRootView()
-                    .modifier(SystemServices())
-            }
+
+            NoFeedsView()
         }.modifier(SystemServices())
     }
 }
