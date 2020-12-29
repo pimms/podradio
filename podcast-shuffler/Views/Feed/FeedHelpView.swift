@@ -4,7 +4,7 @@ import SwiftUI
 struct FeedHelpRootView: View {
     var body: some View {
         TabView {
-            HelpProcessView(title: "Apple Podcasts", items: HelpItem.appleItems)
+            HelpProcessView(iconImage: "Apple-Icon", title: "Apple Podcasts", items: HelpItem.appleItems)
         }
         .edgesIgnoringSafeArea(.bottom)
         .navigationTitle("Finding the URL")
@@ -26,6 +26,7 @@ private struct HelpItem: Identifiable {
 }
 
 private struct HelpProcessView: View {
+    let iconImage: String
     let title: String
     let items: [HelpItem]
 
@@ -33,14 +34,22 @@ private struct HelpProcessView: View {
         GeometryReader { metrics in
             ScrollView {
                 VStack {
-                    Text(title)
-                        .font(Font.title.bold())
-                        .padding()
+                    HStack {
+                        Image(iconImage)
+                            .resizable()
+                            .frame(width: 44, height: 44)
+                            .aspectRatio(contentMode: .fit)
+                            .cornerRadius(8)
+                            .shadow(radius: 2)
+                        Text(title)
+                            .font(Font.title.bold())
+                            .padding()
+                    }
                     ForEach(items) { item in
                         HelpItemView(item: item)
                             .frame(height: metrics.size.height * 0.8)
                     }
-                }.padding(.bottom)
+                }.padding([.bottom, .top])
             }
         }
     }
