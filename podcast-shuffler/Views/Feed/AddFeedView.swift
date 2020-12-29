@@ -5,6 +5,7 @@ struct AddFeedView: View {
         case noInput
         case readyToSubmit
         case invalidUrl
+        case spotifyUrl
         case downloading
         case incorrectContent
     }
@@ -24,13 +25,17 @@ struct AddFeedView: View {
 
                 VStack {
                     TextField("Podcast feed URL", text: $feedUrl, onCommit: {
-                        self.commitFeed()
+                        if state == .readyToSubmit {
+                            self.commitFeed()
+                        }
                     })
                     .onChange(of: feedUrl, perform: { _ in
                         if feedUrl.isEmpty {
                             state = .noInput
                         } else if !isValidUrl() {
                             state = .invalidUrl
+                        } else if isSpotifyUrl() {
+                            state = .spotifyUrl
                         } else {
                             state = .readyToSubmit
                         }
@@ -42,6 +47,8 @@ struct AddFeedView: View {
 
                     if state == .invalidUrl {
                         Text("Not a valid URL").foregroundColor(.red)
+                    } else if state == .spotifyUrl {
+                        Text("Spotify URLs are not supported").foregroundColor(.red)
                     } else if state == .incorrectContent {
                         Text("Not a valid RSS feed").foregroundColor(.red)
                     }
@@ -73,6 +80,10 @@ struct AddFeedView: View {
         guard url.host != nil else { return false }
 
         return true
+    }
+
+    private func isSpotifyUrl() -> Bool {
+        return feedUrl.contains("open.spotify.com")
     }
 
     private func commitFeed() {
