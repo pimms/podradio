@@ -5,6 +5,7 @@ struct FeedHelpRootView: View {
     var body: some View {
         TabView {
             HelpProcessView(iconImage: "Apple-Icon", title: "Apple Podcasts", items: HelpItem.appleItems)
+            HelpProcessView(iconImage: nil, title: "Other apps", items: HelpItem.genericItems)
         }
         .edgesIgnoringSafeArea(.bottom)
         .navigationTitle("Finding the URL")
@@ -23,10 +24,14 @@ private struct HelpItem: Identifiable {
         HelpItem(imageName: "Apple-1", title: "Step 1", description: "Find the podcast in the app."),
         HelpItem(imageName: "Apple-2", title: "Step 2", description: "Long press and tap the 'Copy Link' button."),
     ]
+
+    static let genericItems = [
+        HelpItem(imageName: "Generic-1", title: "Search the web", description: "Feed URLs are unfortunately not often exposed by podcast applications, but the podcast creators often have feeds available. Try searching the web.\n\nI'm rooting for you! 🤞")
+    ]
 }
 
 private struct HelpProcessView: View {
-    let iconImage: String
+    let iconImage: String?
     let title: String
     let items: [HelpItem]
 
@@ -35,12 +40,14 @@ private struct HelpProcessView: View {
             ScrollView {
                 VStack {
                     HStack {
-                        Image(iconImage)
-                            .resizable()
-                            .frame(width: 44, height: 44)
-                            .aspectRatio(contentMode: .fit)
-                            .cornerRadius(8)
-                            .shadow(radius: 2)
+                        if let iconImage = iconImage {
+                            Image(iconImage)
+                                .resizable()
+                                .frame(width: 44, height: 44)
+                                .aspectRatio(contentMode: .fit)
+                                .cornerRadius(8)
+                                .shadow(radius: 2)
+                        }
                         Text(title)
                             .font(Font.title.bold())
                             .padding()
@@ -74,6 +81,8 @@ private struct HelpItemView: View {
             }
             Text(item.description)
                 .font(.callout)
+                .padding([.leading, .trailing])
+                .multilineTextAlignment(.center)
         }
         .padding(.bottom)
     }
