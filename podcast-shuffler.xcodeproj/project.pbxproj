@@ -237,17 +237,11 @@
 		19168D3B24A4F96B0064A0B6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F5768FDD259B33C500FD551A /* Picker */,
+				F5768FDC259B33BC00FD551A /* iTunesLink */,
+				F5768FDB259B33B000FD551A /* Feed */,
 				F53DAF1B2590836A00D3F0A9 /* Filter */,
-				19FD32F324AA9B0A00FB9FF6 /* EpisodePicker.swift */,
-				65BAA70E5B537AE2CFE2447F /* BingeEpisodePicker.swift */,
-				19FD32F824AB40CA00FB9FF6 /* Streamable.swift */,
-				19168D3C24A4F9740064A0B6 /* Episode.swift */,
-				19168D3E24A4FE440064A0B6 /* Feed.swift */,
-				19168D4924A503280064A0B6 /* FeedStore.swift */,
-				19097C3424A9F2070006B8B2 /* FeedCache.swift */,
 				19168D5024A50A6A0064A0B6 /* HttpClient.swift */,
-				19D8A75824B9A2D5000AE5A5 /* FeedParser.swift */,
-				F538DC0525987BDB005B6E5D /* DefaultEpisodePicker.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -371,6 +365,36 @@
 				F55B1C1F25841CAE004E1380 /* FilterView.swift */,
 			);
 			path = Filter;
+			sourceTree = "<group>";
+		};
+		F5768FDB259B33B000FD551A /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				19FD32F824AB40CA00FB9FF6 /* Streamable.swift */,
+				19168D3C24A4F9740064A0B6 /* Episode.swift */,
+				19D8A75824B9A2D5000AE5A5 /* FeedParser.swift */,
+				19168D3E24A4FE440064A0B6 /* Feed.swift */,
+				19168D4924A503280064A0B6 /* FeedStore.swift */,
+				19097C3424A9F2070006B8B2 /* FeedCache.swift */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		F5768FDC259B33BC00FD551A /* iTunesLink */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = iTunesLink;
+			sourceTree = "<group>";
+		};
+		F5768FDD259B33C500FD551A /* Picker */ = {
+			isa = PBXGroup;
+			children = (
+				19FD32F324AA9B0A00FB9FF6 /* EpisodePicker.swift */,
+				65BAA70E5B537AE2CFE2447F /* BingeEpisodePicker.swift */,
+				F538DC0525987BDB005B6E5D /* DefaultEpisodePicker.swift */,
+			);
+			path = Picker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
