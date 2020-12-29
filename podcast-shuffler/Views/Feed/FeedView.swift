@@ -14,7 +14,7 @@ struct FeedRootView: View {
             .onDelete(perform: onDelete)
         }
         .navigationTitle("Feeds")
-        .navigationBarItems(leading: SettingsButton(), trailing: AddFeedButton())
+        .navigationBarItems(leading: NavBarButton(), trailing: AddFeedButton())
     }
 
     private func onDelete(_ indexSet: IndexSet) {
@@ -73,6 +73,33 @@ private struct FeedImageView: View {
                 Image("defaultFeedImage").resizable()
             }
         }
+    }
+}
+
+private struct NavBarButton: View {
+    var body: some View {
+        HStack {
+            #if DEBUG
+            SettingsButton()
+            #endif
+            HelpButton()
+        }
+    }
+}
+
+private struct HelpButton: View {
+    @State var isPresenting = false
+
+    var body: some View {
+        Button(action: {
+            self.isPresenting = true
+        }, label: {
+            Image(systemName: "questionmark.circle")
+        })
+        .sheet(isPresented: $isPresenting, content: {
+            HelpRootView()
+                .modifier(SystemServices())
+        })
     }
 }
 

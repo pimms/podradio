@@ -2,6 +2,15 @@ import SwiftUI
 
 struct HelpRootView: View {
     var body: some View {
+        NavigationView {
+            HelpView()
+                .navigationTitle("FAQ")
+        }
+    }
+}
+
+private struct HelpView: View {
+    var body: some View {
         ScrollView {
             VStack {
                 HStack {
@@ -13,7 +22,7 @@ struct HelpRootView: View {
                         .shadow(radius: 5)
                     Spacer()
                 }
-                .padding([.bottom, .top])
+                .padding([.bottom])
 
                 ForEach(FaqItem.items) { item in
                     FaqView(item: item)
