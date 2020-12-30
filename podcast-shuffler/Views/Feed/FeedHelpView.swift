@@ -21,7 +21,7 @@ private struct InitialHelpView: View {
             Text("Finding the feed URL")
                 .font(Font.title.bold())
                 .padding()
-            Text("Adding feeds is kind of technical, but it's something you only need to do once.\n\nIf your favorite app is not included, remember that you can (almost) always use the built-in Podcast application to find the feed.\n\nScroll to learn more.")
+            Text("Adding feeds is kind of technical, but it's something you only need to do once.\n\nIf your favorite app is not included, remember that you can (almost) always use the built-in Apple Podcast application to find the feed.\n\nScroll to learn more.")
                 .multilineTextAlignment(.leading)
                 .padding()
             Image(systemName: "arrow.forward.circle")
