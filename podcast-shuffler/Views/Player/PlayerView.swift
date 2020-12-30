@@ -79,9 +79,12 @@ private struct PlayerContentView: View {
                                 .onDisappear(perform: reconfigure)
                         }
                     Spacer()
-                    AirPlayButton()
-                        .frame(width: 40, height: 40)
-                        .padding(.trailing, 20)
+
+                    if !ProcessInfo.processInfo.isMacCatalystApp && !ProcessInfo.processInfo.isiOSAppOnMac {
+                        AirPlayButton()
+                            .frame(width: 40, height: 40)
+                            .padding(.trailing, 20)
+                    }
                 }
             }
             ProgressBarView(player: player)
