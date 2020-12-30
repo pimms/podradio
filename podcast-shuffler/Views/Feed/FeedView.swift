@@ -7,7 +7,7 @@ struct FeedRootView: View {
     var body: some View {
         Group {
             let feeds = feedStore.feeds
-            if feeds.isEmpty {
+            if feeds.isEmpty && !ProcessInfo.isiPad {
                 NoFeedsView()
             } else {
                 List() {
@@ -18,6 +18,7 @@ struct FeedRootView: View {
                     }
                     .onDelete(perform: onDelete)
                 }
+                .listStyle(SidebarListStyle())
             }
         }
         .navigationTitle("Feeds")
@@ -28,23 +29,6 @@ struct FeedRootView: View {
         Array(indexSet)
             .map { feedStore.feeds[$0] }
             .forEach { feedStore.deleteFeed($0) }
-    }
-}
-
-private struct NoFeedsView: View {
-    var body: some View {
-        VStack {
-            Spacer()
-            Text("No feeds!")
-                .font(Font.largeTitle.bold())
-                .padding(.bottom)
-            Text("Add your favorite podcast to start listening.")
-                .font(Font.title2.bold())
-                .multilineTextAlignment(.center)
-            Spacer()
-        }
-        .opacity(0.2)
-        .padding()
     }
 }
 
@@ -168,8 +152,6 @@ struct FeedRootView_Previews: PreviewProvider {
                 FeedRootView()
                     .modifier(SystemServices())
             }
-
-            NoFeedsView()
         }.modifier(SystemServices())
     }
 }

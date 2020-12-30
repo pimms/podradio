@@ -80,7 +80,7 @@ private struct PlayerContentView: View {
                         }
                     Spacer()
 
-                    if !ProcessInfo.processInfo.isMacCatalystApp && !ProcessInfo.processInfo.isiOSAppOnMac {
+                    if !ProcessInfo.isiPad {
                         AirPlayButton()
                             .frame(width: 40, height: 40)
                             .padding(.trailing, 20)
