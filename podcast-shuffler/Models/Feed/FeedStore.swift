@@ -8,6 +8,7 @@ class FeedStore: ObservableObject {
     // MARK: - Internal properties
 
     @Published var feeds: [Feed]
+    @Published var feedsLoaded: Bool = false
 
     // MARK: - Private properties
 
@@ -61,6 +62,7 @@ class FeedStore: ObservableObject {
     // MARK: - Private methods
 
     private func loadCachedFeeds() {
+        var tempFeeds = [Feed]()
         feedCache.cache.forEach { cacheEntry in
             guard let data = cacheEntry.feedContent,
                   let feed = FeedParser.parseRssData(data, url: cacheEntry.feedUrl) else {
@@ -68,9 +70,13 @@ class FeedStore: ObservableObject {
                 return
             }
 
-            DispatchQueue.main.async {
-                self.feeds.append(feed)
-            }
+            tempFeeds.append(feed)
+        }
+
+        DispatchQueue.main.async {
+            self.feeds = tempFeeds
+            self.feedsLoaded = true
+            self.log.debug("feeds loaded: \(self.feeds.map { $0.id })")
         }
     }
 

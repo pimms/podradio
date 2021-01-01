@@ -5,8 +5,8 @@ private let testImageUrl = URL(string: "https://cdn.pixabay.com/photo/2018/10/08
 
 struct Feed: Identifiable, Hashable {
     static let testData = [
-        Feed(id: "1", episodes: Episode.testData, title: "Feed 1", imageUrl: testImageUrl, url: URL(string: "https://www.google.com")!),
-        Feed(id: "2", episodes: Episode.testData, title: "Feed 2", imageUrl: testImageUrl, url: URL(string: "https://www.google.com")!),
+        Feed(episodes: Episode.testData, title: "Feed 1", imageUrl: testImageUrl, url: URL(string: "https://www.google.com/1")!),
+        Feed(episodes: Episode.testData, title: "Feed 2", imageUrl: testImageUrl, url: URL(string: "https://www.google.com/2")!),
     ]
 
     struct Section: Identifiable, Hashable {
@@ -15,15 +15,16 @@ struct Feed: Identifiable, Hashable {
         var episodes: [Episode]
     }
 
-    var id: String
+    typealias Id = Int
+
+    var id: Id { Int(url.absoluteString.uppercased().stableHash) }
     var episodes: [Episode] { didSet { rebuildSections() } }
     var title: String
     var imageUrl: URL?
     var url: URL
     private(set) var sections: [Section]
 
-    init(id: String, episodes: [Episode], title: String, imageUrl: URL?, url: URL) {
-        self.id = id
+    init(episodes: [Episode], title: String, imageUrl: URL?, url: URL) {
         self.episodes = episodes
         self.title = title
         self.imageUrl = imageUrl

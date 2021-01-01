@@ -32,8 +32,7 @@ final class FeedParser {
 
         let episodes = mapEpisodes(from: rssFeed.items ?? [])
 
-        return Feed(id: rssFeed.title ?? rssFeed.link ?? UUID().uuidString,
-                    episodes: episodes,
+        return Feed(episodes: episodes,
                     title: rssFeed.title ?? "Unnamed Feed",
                     imageUrl: imageUrl,
                     url: url)

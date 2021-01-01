@@ -2,7 +2,30 @@ import SwiftUI
 import struct Kingfisher.KFImage
 
 struct FeedRootView: View {
-    @EnvironmentObject var feedStore: FeedStore
+    private let feedStore: FeedStore
+
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+    @AppStorage("selectedFeedId") private var selectedId: Feed.Id?
+
+    private static let log = Log(Self.self)
+
+    init(feedStore: FeedStore) {
+        self.feedStore = feedStore
+    }
+
+    private var navigationLink: NavigationLink<EmptyView,PlayerRootView>? {
+        guard let selectedId = selectedId,
+              let selectedFeed = feedStore.feeds.first(where: { $0.id == selectedId }) else {
+            return nil
+        }
+
+        return NavigationLink(
+            destination: PlayerRootView(feed: selectedFeed),
+            tag: selectedId,
+            selection: $selectedId) {
+            EmptyView()
+        }
+    }
 
     var body: some View {
         Group {
@@ -10,30 +33,46 @@ struct FeedRootView: View {
             if feeds.isEmpty && !ProcessInfo.isiPad {
                 NoFeedsView()
             } else {
-                List() {
-                    ForEach(feedStore.feeds) { feed in
-                        NavigationLink(destination: PlayerRootView(feed: feed)) {
-                            FeedCell(feed: feed)
+                ZStack {
+                    navigationLink
+                    List() {
+                        ForEach(feedStore.feeds) { feed in
+                            Button(action: {
+                                self.selectedId = feed.id
+                            }) {
+                                FeedCell(feed: feed)
+                            }
+                            .listRowBackground(
+                                (selectedId == feed.id) ? Color.accentColor : Color.systemBackground
+                            )
                         }
+                        .onDelete(perform: onDelete)
                     }
-                    .onDelete(perform: onDelete)
                 }
-                .listStyle(SidebarListStyle())
+                .onChange(of: selectedId, perform: { _ in
+                    Self.log.debug("onChange to: \(selectedId)")
+                })
             }
         }
         .navigationTitle("Feeds")
         .navigationBarItems(leading: NavBarButton(), trailing: AddFeedButton())
+        .onAppear(perform: {
+            let exists = feedStore.feeds.firstIndex(where: { $0.id == selectedId }) != nil
+            if !exists, horizontalSizeClass == .regular {
+                selectedId = feedStore.feeds.first?.id
+            }
+        })
     }
 
     private func onDelete(_ indexSet: IndexSet) {
-        Array(indexSet)
-            .map { feedStore.feeds[$0] }
-            .forEach { feedStore.deleteFeed($0) }
+        let feeds = Array(indexSet).map { feedStore.feeds[$0] }
+
+        feeds.forEach { feedStore.deleteFeed($0) }
     }
 }
 
 private struct FeedCell: View {
-    var feed: Feed
+    let feed: Feed
 
     var body: some View {
         HStack {
@@ -149,8 +188,7 @@ struct FeedRootView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             NavigationView {
-                FeedRootView()
-                    .modifier(SystemServices())
+                FeedRootView(feedStore: FeedStore())
             }
         }.modifier(SystemServices())
     }

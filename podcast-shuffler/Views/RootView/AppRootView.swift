@@ -1,12 +1,20 @@
 import SwiftUI
 
 struct AppRootView: View {
-    var body: some View {
-        NavigationView {
-            FeedRootView()
+    @EnvironmentObject private var feedStore: FeedStore
 
-            // This view will only be visible on iPad
-            NoFeedsView()
+    var body: some View {
+        Group {
+            if feedStore.feedsLoaded {
+                NavigationView() {
+                    FeedRootView(feedStore: feedStore)
+
+                    // This view will only be visible on iPad
+                    NoFeedsView()
+                }
+            } else {
+                EmptyView()
+            }
         }
     }
 }
