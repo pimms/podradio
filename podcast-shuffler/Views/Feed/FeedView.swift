@@ -49,9 +49,6 @@ struct FeedRootView: View {
                         .onDelete(perform: onDelete)
                     }
                 }
-                .onChange(of: selectedId, perform: { _ in
-                    Self.log.debug("onChange to: \(selectedId)")
-                })
             }
         }
         .navigationTitle("Feeds")
