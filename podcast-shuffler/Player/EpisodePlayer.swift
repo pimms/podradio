@@ -71,16 +71,18 @@ class EpisodePlayer: ObservableObject {
     // MARK: - Private methods
 
     private func configure(with streamable: Streamable) {
-        self.streamable = streamable
+        setStreamable(streamable)
 
         let url = streamable.episode.url
         let media = ModernAVPlayerMedia(url: url, type: .stream(isLive: true))
 
         let position = streamable.startTime.distance(to: Date())
         player.load(media: media, autostart: false, position: position)
-
         log.info("Loading episode: \(url.absoluteString) at position \(position)")
+    }
 
+    private func setStreamable(_ streamable: Streamable) {
+        self.streamable = streamable
         DispatchQueue.syncOnMain {
             self.currentEpisode = streamable.episode
         }
@@ -228,7 +230,11 @@ extension EpisodePlayer {
 
         let now = Date()
         guard streamable.endTime > now else {
-            configure(with: streamable.nextStreamable)
+            var next = streamable.nextStreamable
+            while next.endTime < now {
+                next = next.nextStreamable
+            }
+            setStreamable(next)
             return
         }
 
