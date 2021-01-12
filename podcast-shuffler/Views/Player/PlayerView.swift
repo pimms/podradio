@@ -118,7 +118,7 @@ private struct PlayerContentView: View {
         switch player.state {
         case .playing, .buffering:
             player.pause()
-        case .paused:
+        case .paused, .error:
             player.play()
         }
     }
@@ -192,6 +192,8 @@ private struct PlayButton: View {
             return "network"
         case .paused:
             return "play.fill"
+        case .error:
+            return "exclamationmark.icloud.fill"
         }
     }
 }
@@ -209,6 +211,9 @@ struct PlayerView_Previews: PreviewProvider {
             .previewLayout(.sizeThatFits)
             .padding()
         PlayButton(state: .playing, onTap: {})
+            .previewLayout(.sizeThatFits)
+            .padding()
+        PlayButton(state: .error, onTap: {})
             .previewLayout(.sizeThatFits)
             .padding()
     }

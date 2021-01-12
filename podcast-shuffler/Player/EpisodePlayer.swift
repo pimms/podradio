@@ -10,6 +10,7 @@ class EpisodePlayer: ObservableObject {
         case playing
         case buffering
         case paused
+        case error
     }
 
     // MARK: - Published properties
@@ -165,12 +166,16 @@ extension EpisodePlayer: ModernAVPlayerDelegate {
              .waitingForNetwork:
             self.state = .buffering
             startSimulatedProgressTimer()
-        case .failed,
-             .loaded,
+        case .loaded,
              .paused,
              .stopped:
             self.state = .paused
             startSimulatedProgressTimer()
+        case .failed:
+            self.state = .error
+            self.playRequested = false
+            self.isTransitioningToNextEpisode = false
+            self.timer = nil
         }
         log.debug("State changed: \(state)")
 
