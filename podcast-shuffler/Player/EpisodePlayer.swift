@@ -31,6 +31,7 @@ class EpisodePlayer: ObservableObject {
     private var timer: Timer? { willSet { timer?.invalidate() } }
 
     private var isTransitioningToNextEpisode = false
+    private var playRequested = false
 
     private var isCurrent: Bool { Self.current === self }
 
@@ -53,12 +54,14 @@ class EpisodePlayer: ObservableObject {
     }
 
     func pause() {
+        playRequested = false
         player.pause()
     }
 
     func play() {
         guard let streamable = streamable else { fatalError("No streamable") }
 
+        playRequested = true
         makeCurrent()
 
         let position = streamable.startTime.distance(to: Date())
@@ -175,7 +178,13 @@ extension EpisodePlayer: ModernAVPlayerDelegate {
         // After loading the next episode, we enter the "stopped" state, from which
         // we can start playing the next episode.
         if state == .stopped, isTransitioningToNextEpisode {
+            log.debug("Transitioning to nest episode: playing")
             isTransitioningToNextEpisode = false
+            play()
+        }
+
+        if state == .loaded, playRequested {
+            log.debug("Done loading, play requested: playing")
             play()
         }
     }
