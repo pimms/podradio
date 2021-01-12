@@ -90,7 +90,7 @@ private struct FeedCell: View {
     }
 }
 
-private struct FeedImageView: View {
+struct FeedImageView: View {
     var imageUrl: URL?
 
     var body: some View {

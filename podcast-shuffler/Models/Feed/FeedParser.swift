@@ -6,6 +6,16 @@ final class FeedParser {
     // MARK: - Static internal methods
 
     static func parseRssData(_ data: Data, url: URL) -> Feed? {
+        return parseRssData(data, url: url, lastRefreshDate: nil)
+    }
+
+    static func parseRssData(_ data: Data, cacheEntry: FeedCache.CacheEntry) -> Feed? {
+        return parseRssData(data, url: cacheEntry.feedUrl, lastRefreshDate: cacheEntry.lastRefreshed)
+    }
+
+    // MARK: - Static private methods
+
+    static func parseRssData(_ data: Data, url: URL, lastRefreshDate: Date?) -> Feed? {
         let parser = FeedKit.FeedParser(data: data)
         let result = parser.parse()
 
@@ -17,14 +27,12 @@ final class FeedParser {
                 return nil
             }
 
-            let mappedFeed = self.mapFeed(rssFeed: rssFeed, url: url)
+            let mappedFeed = self.mapFeed(rssFeed: rssFeed, url: url, lastRefreshDate: lastRefreshDate ?? Date())
             return mappedFeed
         }
     }
 
-    // MARK: - Static private methods
-
-    static private func mapFeed(rssFeed: RSSFeed, url: URL) -> Feed {
+    static private func mapFeed(rssFeed: RSSFeed, url: URL, lastRefreshDate: Date) -> Feed {
         var imageUrl: URL? = nil
         if let imageHref = rssFeed.iTunes?.iTunesImage?.attributes?.href {
             imageUrl = URL(string: imageHref)
@@ -35,7 +43,8 @@ final class FeedParser {
         return Feed(episodes: episodes,
                     title: rssFeed.title ?? "Unnamed Feed",
                     imageUrl: imageUrl,
-                    url: url)
+                    url: url,
+                    lastRefreshDate: lastRefreshDate)
     }
 
     static private func mapEpisodes(from items: [RSSFeedItem]) -> [Episode] {

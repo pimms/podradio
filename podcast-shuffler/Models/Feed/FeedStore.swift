@@ -50,6 +50,7 @@ class FeedStore: ObservableObject {
     }
 
     func deleteFeed(_ feed: Feed) {
+        log.debug("Deleting feed '\(feed.title)' ('\(feed.url)')")
         feedCache.cache
             .filter { $0.feedUrl == feed.url }
             .forEach { feedCache.remove($0) }
@@ -60,19 +61,17 @@ class FeedStore: ObservableObject {
     }
 
     func refreshFeeds(olderThan date: Date) {
-        feedCache.cache.forEach { cacheEntry in
-            if cacheEntry.lastRefreshed < date {
-                httpClient.get(cacheEntry.feedUrl) { [weak self] response in
-                    switch response {
-                    case .success(let data):
-                        self?.log.debug("Refreshed feed '\(cacheEntry.feedUrl)'")
-                        self?.handleFeedData(url: cacheEntry.feedUrl, data: data)
-                    case .failure(let err):
-                        self?.log.error("Failed to refresh feed '\(cacheEntry.feedUrl)': \(err)")
-                    }
-                }
-            }
-        }
+        feedCache.cache
+            .filter { $0.lastRefreshed < date }
+            .forEach { refreshFeed(withUrl: $0.feedUrl) }
+    }
+
+    func refreshFeed(_ feed: Feed) {
+        refreshFeed(withUrl: feed.url)
+    }
+
+    func lastRefreshDate(for feed: Feed) -> Date {
+        return feedCache.cache.first(where: { $0.feedUrl == feed.url })?.lastRefreshed ?? Date()
     }
 
     // MARK: - Private methods
@@ -128,6 +127,18 @@ class FeedStore: ObservableObject {
         }
     }
 
+    private func refreshFeed(withUrl url: URL) {
+        log.debug("Refreshing feed '\(url)'")
+        httpClient.get(url) { [weak self] response in
+            switch response {
+            case .success(let data):
+                self?.handleFeedData(url: url, data: data)
+            case .failure(let err):
+                self?.log.error("Failed to refresh feed '\(url)': \(err)")
+            }
+        }
+    }
+
     @discardableResult
     private func handleFeedData(url: URL, data: Data?) -> Bool {
         guard let data = data, let feed = FeedParser.parseRssData(data, url: url) else {
@@ -137,7 +148,7 @@ class FeedStore: ObservableObject {
         self.feedCache.cacheFeed(url, feedContent: data)
 
         DispatchQueue.syncOnMain {
-            if let existingIndex = feeds.firstIndex(where: { $0.id == feed.id }) {
+            if let existingIndex = feeds.firstIndex(where: { $0.url == feed.url }) {
                 feeds[existingIndex] = feed
             } else {
                 self.feeds.append(feed)
