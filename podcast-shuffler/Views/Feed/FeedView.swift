@@ -40,12 +40,11 @@ struct FeedRootView: View {
                             Button(action: { self.selectedId = feed.id }) {
                                 FeedCell(feed: feed)
                             }
-                            .listRowBackground(
-                                (selectedId == feed.id) ? Color.accentColor : Color.systemBackground
-                            )
+                            .listRowBackground((selectedId == feed.id) ? Color.accentColor.opacity(0.75) : Color.systemBackground)
                         }
                         .onDelete(perform: onDelete)
                     }
+                    .listStyle(InsetGroupedListStyle())
                 }
             }
         }
@@ -76,15 +75,9 @@ private struct FeedCell: View {
             VStack {
                 HStack {
                     Text(feed.title)
+                        .foregroundColor(.primary)
                     Spacer()
                 }
-                HStack {
-                    Text(feed.url.absoluteString)
-                        .font(.caption2)
-                        .foregroundColor(.secondary)
-                    Spacer()
-                }
-                .padding(.top, 2)
             }
         }
     }
@@ -183,7 +176,7 @@ struct FeedRootView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             NavigationView {
-                FeedRootView(feedStore: FeedStore())
+                FeedRootView(feedStore: FeedStore.testStore)
             }
         }.modifier(SystemServices())
     }
