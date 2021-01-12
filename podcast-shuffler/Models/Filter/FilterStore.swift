@@ -29,7 +29,7 @@ class FilterStore {
             }
         }
 
-        return DefaultFilter(feed: feed)
+        return BaseFilter(feed: feed)
     }
 
     func setFilter(_ filter: Filter) {

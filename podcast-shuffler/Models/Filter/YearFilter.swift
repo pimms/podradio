@@ -2,7 +2,7 @@ import Foundation
 
 class YearFilter: Filter {
 
-    // MARK: - Internal methods
+    // MARK: - Internal properties
 
     let feed: Feed
     let episodes: [Episode]
@@ -12,7 +12,7 @@ class YearFilter: Filter {
 
     init(feed: Feed, years: [Int]) {
         self.feed = feed
-        self.episodes = feed.episodes.filter { years.contains($0.year) }
+        self.episodes = BaseFilter(feed: feed).episodes.filter { years.contains($0.year) }
         self.years = years
     }
 }

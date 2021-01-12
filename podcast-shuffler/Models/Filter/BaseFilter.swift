@@ -1,13 +1,15 @@
 import Foundation
 
-class DefaultFilter: Filter {
+class BaseFilter: Filter {
+
+    static private var cutoffDate: Date { Calendar.current.startOfDay(for: Date()) }
 
     // MARK: - Internal properties
 
     let feed: Feed
 
     var episodes: [Episode] {
-        return feed.episodes
+        return feed.episodes.filter { $0.date < Self.cutoffDate }
     }
 
     // MARK: - Setup
@@ -18,6 +20,6 @@ class DefaultFilter: Filter {
 
 }
 
-extension DefaultFilter: CustomStringConvertible {
+extension BaseFilter: CustomStringConvertible {
     var description: String { "[DefaultFilter]" }
 }

@@ -111,7 +111,7 @@ private struct PlayerContentView: View {
             player.play()
         }
 
-        hasCustomFilter = !(FilterStore.shared.filter(for: feed) is DefaultFilter)
+        hasCustomFilter = !(FilterStore.shared.filter(for: feed) is BaseFilter)
     }
 
     private func onPlayButtonTap() {

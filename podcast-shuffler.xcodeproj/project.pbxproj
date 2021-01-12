@@ -41,7 +41,7 @@
 		F51832A5259F6071006BEC70 /* String+stableHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51832A4259F6071006BEC70 /* String+stableHash.swift */; };
 		F538DC0625987BDB005B6E5D /* DefaultEpisodePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F538DC0525987BDB005B6E5D /* DefaultEpisodePicker.swift */; };
 		F53DAF142590833900D3F0A9 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DAF132590833900D3F0A9 /* Filter.swift */; };
-		F53DAF28259083B300D3F0A9 /* DefaultFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DAF27259083B300D3F0A9 /* DefaultFilter.swift */; };
+		F53DAF28259083B300D3F0A9 /* BaseFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DAF27259083B300D3F0A9 /* BaseFilter.swift */; };
 		F53DAF2D2590840700D3F0A9 /* YearFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DAF2C2590840700D3F0A9 /* YearFilter.swift */; };
 		F53DAF322590912400D3F0A9 /* FilterStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DAF312590912400D3F0A9 /* FilterStore.swift */; };
 		F55B1C2025841CAE004E1380 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55B1C1F25841CAE004E1380 /* FilterView.swift */; };
@@ -124,7 +124,7 @@
 		F51832A4259F6071006BEC70 /* String+stableHash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+stableHash.swift"; sourceTree = "<group>"; };
 		F538DC0525987BDB005B6E5D /* DefaultEpisodePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultEpisodePicker.swift; sourceTree = "<group>"; };
 		F53DAF132590833900D3F0A9 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
-		F53DAF27259083B300D3F0A9 /* DefaultFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultFilter.swift; sourceTree = "<group>"; };
+		F53DAF27259083B300D3F0A9 /* BaseFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFilter.swift; sourceTree = "<group>"; };
 		F53DAF2C2590840700D3F0A9 /* YearFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearFilter.swift; sourceTree = "<group>"; };
 		F53DAF312590912400D3F0A9 /* FilterStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterStore.swift; sourceTree = "<group>"; };
 		F55B1C1F25841CAE004E1380 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
@@ -382,7 +382,7 @@
 			isa = PBXGroup;
 			children = (
 				F53DAF132590833900D3F0A9 /* Filter.swift */,
-				F53DAF27259083B300D3F0A9 /* DefaultFilter.swift */,
+				F53DAF27259083B300D3F0A9 /* BaseFilter.swift */,
 				F53DAF2C2590840700D3F0A9 /* YearFilter.swift */,
 				F53DAF312590912400D3F0A9 /* FilterStore.swift */,
 			);
@@ -675,7 +675,7 @@
 				19168D4824A5019B0064A0B6 /* AppRootView.swift in Sources */,
 				F5768FDF259B340500FD551A /* ITunesLinkExtractor.swift in Sources */,
 				199D710425727A5B00B72E23 /* CustomPlayerConfiguration.swift in Sources */,
-				F53DAF28259083B300D3F0A9 /* DefaultFilter.swift in Sources */,
+				F53DAF28259083B300D3F0A9 /* BaseFilter.swift in Sources */,
 				19D8A75924B9A2D5000AE5A5 /* FeedParser.swift in Sources */,
 				19097C3524A9F2070006B8B2 /* FeedCache.swift in Sources */,
 				F578886E259BAEEC00B7658B /* URL+withHttps.swift in Sources */,
