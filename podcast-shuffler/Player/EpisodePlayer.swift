@@ -64,7 +64,7 @@ class EpisodePlayer: ObservableObject {
         guard let streamable = streamable else { fatalError("No streamable") }
 
         playRequested = true
-        makeCurrent()
+        becomeCurrent()
 
         let position = streamable.startTime.distance(to: Date())
         log.debug("Playing from position \(position)")
@@ -93,11 +93,15 @@ class EpisodePlayer: ObservableObject {
         }
     }
 
-    private func makeCurrent() {
+    private func becomeCurrent() {
         if !isCurrent {
-            Self.current?.pause()
+            Self.current?.resignCurrent()
             Self.current = self
         }
+    }
+
+    private func resignCurrent() {
+        pause()
     }
 
     private func makeMetadata() -> ModernAVPlayerMediaMetadata? {
