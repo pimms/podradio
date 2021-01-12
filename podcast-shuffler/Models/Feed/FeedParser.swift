@@ -43,7 +43,7 @@ final class FeedParser {
         var seenEpisodes = Set<String>()
 
         for item in items {
-            if let url = URL(string: item.link ?? item.enclosure?.attributes?.url ?? ""),
+            if let url = URL(string: item.enclosure?.attributes?.url ?? item.link ?? ""),
                let title = item.title,
                let date = item.pubDate,
                let duration = item.iTunes?.iTunesDuration,
