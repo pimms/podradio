@@ -60,7 +60,19 @@ class FeedStore: ObservableObject {
     }
 
     func refreshFeeds(olderThan date: Date) {
-        fatalError("TODO")
+        feedCache.cache.forEach { cacheEntry in
+            if cacheEntry.lastRefreshed < date {
+                httpClient.get(cacheEntry.feedUrl) { [weak self] response in
+                    switch response {
+                    case .success(let data):
+                        self?.log.debug("Refreshed feed '\(cacheEntry.feedUrl)'")
+                        self?.handleFeedData(url: cacheEntry.feedUrl, data: data)
+                    case .failure(let err):
+                        self?.log.error("Failed to refresh feed '\(cacheEntry.feedUrl)': \(err)")
+                    }
+                }
+            }
+        }
     }
 
     // MARK: - Private methods
@@ -112,6 +124,7 @@ class FeedStore: ObservableObject {
         }
     }
 
+    @discardableResult
     private func handleFeedData(url: URL, data: Data?) -> Bool {
         guard let data = data, let feed = FeedParser.parseRssData(data, url: url) else {
             return false
