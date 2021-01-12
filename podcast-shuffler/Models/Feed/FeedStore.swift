@@ -59,6 +59,10 @@ class FeedStore: ObservableObject {
         }
     }
 
+    func refreshFeeds(olderThan date: Date) {
+        fatalError("TODO")
+    }
+
     // MARK: - Private methods
 
     private func loadCachedFeeds() {
@@ -95,18 +99,10 @@ class FeedStore: ObservableObject {
         httpClient.get(httpsUrl) { [weak self] response in
             switch response {
             case .success(let data):
-                guard let data = data,
-                      let feed = FeedParser.parseRssData(data, url: httpsUrl) else {
-                    DispatchQueue.main.async {
-                        completion?(false)
-                    }
-                    return
-                }
-
-                self?.feedCache.cacheFeed(httpsUrl, feedContent: data)
+                guard let self = self else { return }
+                let result = self.handleFeedData(url: httpsUrl, data: data)
                 DispatchQueue.main.async {
-                    self?.feeds.append(feed)
-                    completion?(true)
+                    completion?(result)
                 }
             case .failure:
                 DispatchQueue.main.async {
@@ -114,5 +110,22 @@ class FeedStore: ObservableObject {
                 }
             }
         }
+    }
+
+    private func handleFeedData(url: URL, data: Data?) -> Bool {
+        guard let data = data, let feed = FeedParser.parseRssData(data, url: url) else {
+            return false
+        }
+
+        self.feedCache.cacheFeed(url, feedContent: data)
+
+        DispatchQueue.syncOnMain {
+            if let existingIndex = feeds.firstIndex(where: { $0.id == feed.id }) {
+                feeds[existingIndex] = feed
+            } else {
+                self.feeds.append(feed)
+            }
+        }
+        return true
     }
 }

@@ -16,6 +16,14 @@ struct AppRootView: View {
                 EmptyView()
             }
         }
+        .onAppear(perform: didEnterForeground)
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+            didEnterForeground()
+        }
+    }
+
+    private func didEnterForeground() {
+        feedStore.refreshFeeds(olderThan: Date().addingTimeInterval(-86400))
     }
 }
 
