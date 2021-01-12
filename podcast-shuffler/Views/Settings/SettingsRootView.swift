@@ -48,13 +48,47 @@ fileprivate struct FeedSettingsView: View {
                 }
 
                 Spacer()
+
                 HStack {
-                    Text("Last refreshed:")
-                        .font(.footnote)
-                    lastRefreshText
-                        .font(.footnote)
-                    Spacer()
+                    VStack {
+                        HStack {
+                            Text("Last refreshed")
+                                .font(.footnote)
+                            Spacer()
+                        }
+                        HStack {
+                            Text("Episodes")
+                                .font(.footnote)
+                            Spacer()
+                        }
+                        HStack {
+                            Text("Last episode")
+                                .font(.footnote)
+                            Spacer()
+                        }
+                    }
+                    VStack {
+                        HStack {
+                            lastRefreshText
+                                .fontWeight(.semibold)
+                                .font(.footnote)
+                            Spacer()
+                        }
+                        HStack {
+                            Text("\(String(feed.episodes.count))")
+                                .fontWeight(.semibold)
+                                .font(.footnote)
+                            Spacer()
+                        }
+                        HStack {
+                            Text("\(feed.episodes.sorted(by: { $0.date < $1.date }).last?.date ?? Date(), formatter: Self.dateFormatter)")
+                                .fontWeight(.semibold)
+                                .font(.footnote)
+                            Spacer()
+                        }
+                    }
                 }
+
                 Spacer()
                 HStack {
                     Text(feed.url.absoluteString)
