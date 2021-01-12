@@ -41,8 +41,8 @@ class EpisodePlayer: ObservableObject {
 
     init() {
         let config = CustomPlayerConfiguration()
-        player = ModernAVPlayer(config: config, loggerDomains: [.error])
-        player.remoteCommands = [ makePlayCommand(), makeStopCommand() ]
+        player = ModernAVPlayer(config: config, loggerDomains: [.error, .unavailableCommand, .remoteCommand])
+        player.remoteCommands = [ makePlayCommand(), makeStopCommand(), makePlayPauseCommand() ]
         player.delegate = self
         startSimulatedProgressTimer()
     }
@@ -135,7 +135,30 @@ class EpisodePlayer: ObservableObject {
         }
 
         command.addTarget(handler: handler)
-        return ModernAVPlayerRemoteCommand(reference: command, debugDescription: "PSPlay", isEnabled: isEnabled)
+        return ModernAVPlayerRemoteCommand(reference: command, debugDescription: "PodRadio-play", isEnabled: isEnabled)
+    }
+
+    private func makePlayPauseCommand() -> ModernAVPlayerRemoteCommand {
+        let command = MPRemoteCommandCenter.shared().togglePlayPauseCommand
+        let isEnabled: (MediaType) -> Bool = { [weak self] _ in
+            self?.isCurrent ?? false
+        }
+
+        let handler: (MPRemoteCommandEvent) -> MPRemoteCommandHandlerStatus = { [weak self] _ in
+            guard let self = self, self.isCurrent else { return .noSuchContent }
+
+            switch self.state {
+            case .buffering, .playing:
+                self.pause()
+            case .paused, .error:
+                self.play()
+            }
+
+            return .success
+        }
+
+        command.addTarget(handler: handler)
+        return ModernAVPlayerRemoteCommand(reference: command, debugDescription: "PodRadio-togglePlayPause", isEnabled: isEnabled)
     }
 
     private func makeStopCommand() -> ModernAVPlayerRemoteCommand {
@@ -154,7 +177,7 @@ class EpisodePlayer: ObservableObject {
         }
 
         command.addTarget(handler: handler)
-        return ModernAVPlayerRemoteCommand(reference: command, debugDescription: "PSStop", isEnabled: isEnabled)
+        return ModernAVPlayerRemoteCommand(reference: command, debugDescription: "PodRadio-stop", isEnabled: isEnabled)
     }
 }
 
