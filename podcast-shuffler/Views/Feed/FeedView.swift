@@ -40,9 +40,7 @@ struct FeedRootView: View {
                             Button(action: { self.selectedId = feed.id }) {
                                 FeedCell(feed: feed)
                             }
-                            .listRowBackground((selectedId == feed.id) ? Color.accentColor.opacity(0.75) : Color.systemBackground)
                         }
-                        .onDelete(perform: onDelete)
                     }
                     .listStyle(InsetGroupedListStyle())
                 }
@@ -56,12 +54,6 @@ struct FeedRootView: View {
                 selectedId = feedStore.feeds.first?.id
             }
         })
-    }
-
-    private func onDelete(_ indexSet: IndexSet) {
-        let feeds = Array(indexSet).map { feedStore.feeds[$0] }
-
-        feeds.forEach { feedStore.deleteFeed($0) }
     }
 }
 
