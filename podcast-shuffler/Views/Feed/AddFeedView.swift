@@ -24,7 +24,7 @@ struct AddFeedView: View {
                 }
 
                 VStack {
-                    TextField("Podcast feed URL", text: $feedUrl, onCommit: {
+                    TextField("addFeed.input.placeholderText", text: $feedUrl, onCommit: {
                         if state == .readyToSubmit {
                             self.commitFeed()
                         }
@@ -46,26 +46,26 @@ struct AddFeedView: View {
                     .disableAutocorrection(true)
 
                     if state == .invalidUrl {
-                        Text("Not a valid URL").foregroundColor(.red)
+                        Text("addFeed.error.invalidUrl").foregroundColor(.red)
                     } else if state == .spotifyUrl {
-                        Text("Spotify URLs are not supported").foregroundColor(.red)
+                        Text("addFeed.error.spotifyUrl").foregroundColor(.red)
                     } else if state == .incorrectContent {
-                        Text("Not a valid RSS feed").foregroundColor(.red)
+                        Text("addFeed.error.invalidRss").foregroundColor(.red)
                     }
 
                     Spacer()
 
-                    NavigationLink("How do I find the feed URL?", destination: FeedHelpRootView())
+                    NavigationLink("addFeed.feedHelpLinkTitle", destination: FeedHelpRootView())
                         .padding(.bottom, 20)
 
                     Button(action: commitFeed) {
-                        Text("Add feed")
+                        Text("addFeed.commitTitle")
                     }
                     .disabled(state != .readyToSubmit)
                     .padding(.bottom, 20)
                 }
                 .padding()
-                .navigationTitle("Add a feed")
+                .navigationTitle("addFeed.title")
                 .multilineTextAlignment(.leading)
             }
         }
@@ -107,7 +107,7 @@ private struct LoadingView: View {
                 Spacer()
                 VStack {
                     Spacer()
-                    ProgressView("Loading")
+                    ProgressView("addFeed.loading")
                         .frame(width: metrics.size.width * 0.4, height: metrics.size.width * 0.4, alignment: .center)
                         .background(Color.secondary.opacity(0.5))
                         .cornerRadius(10)

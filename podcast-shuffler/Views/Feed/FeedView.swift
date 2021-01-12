@@ -46,7 +46,7 @@ struct FeedRootView: View {
                 }
             }
         }
-        .navigationTitle("Feeds")
+        .navigationTitle("frontpage.title")
         .navigationBarItems(leading: NavBarButton(), trailing: AddFeedButton())
         .onAppear(perform: {
             let exists = feedStore.feeds.firstIndex(where: { $0.id == selectedId }) != nil
@@ -153,7 +153,7 @@ private struct AddFeedButton: View {
         Button(action: {
             self.isPresenting = true
         }, label: {
-            Text("Add feed")
+            Text("frontpage.addFeed")
         })
         .sheet(isPresented: $isPresenting) {
             AddFeedView(presenting: self.$isPresenting)

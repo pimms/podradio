@@ -5,7 +5,7 @@ struct SettingsRootView: View {
     var body: some View {
         NavigationView {
             SettingsView()
-                .navigationTitle("Settings")
+                .navigationTitle("settings.title")
         }
     }
 }
@@ -20,7 +20,7 @@ fileprivate struct SettingsView: View {
     var body: some View {
         Form {
             #if DEBUG
-            Toggle("Use binge episode picker", isOn: $useBingeEpisodePicker)
+            Toggle("settings.bingePicker", isOn: $useBingeEpisodePicker)
             #endif
 
             ForEach(feedStore.feeds) { feed in
@@ -52,17 +52,17 @@ fileprivate struct FeedSettingsView: View {
                 HStack {
                     VStack {
                         HStack {
-                            Text("Last refreshed")
+                            Text("settings.feed.lastRefreshed")
                                 .font(.footnote)
                             Spacer()
                         }
                         HStack {
-                            Text("Episodes")
+                            Text("settings.feed.episodeCount")
                                 .font(.footnote)
                             Spacer()
                         }
                         HStack {
-                            Text("Last episode")
+                            Text("settings.feed.lastEpisodeDate")
                                 .font(.footnote)
                             Spacer()
                         }
@@ -101,16 +101,16 @@ fileprivate struct FeedSettingsView: View {
 
             Section {
                 Section {
-                    Button("Refresh", action: { feedStore.refreshFeed(feed) })
+                    Button("settings.feed.refresh", action: { feedStore.refreshFeed(feed) })
                 }
             }
             Section {
-                Button("Delete", action: {
+                Button("settings.feed.delete", action: {
                     self.showingAlert = true
                 }).alert(isPresented: $showingAlert) {
-                    Alert(title: Text("Delete"),
-                          message: Text("Do you really want to delete '\(feed.title)'?"),
-                          primaryButton: .destructive(Text("Delete"), action: { feedStore.deleteFeed(feed) }),
+                    Alert(title: Text("settings.feed.delete.alertTitle"),
+                          message: Text("settings.feed.delete.alertMessage \(feed.title)"),
+                          primaryButton: .destructive(Text("settings.feed.delete"), action: { feedStore.deleteFeed(feed) }),
                           secondaryButton: .cancel())
                 }
                 .foregroundColor(.red)
@@ -121,7 +121,7 @@ fileprivate struct FeedSettingsView: View {
     private var lastRefreshText: Text {
         let refreshDate = feedStore.lastRefreshDate(for: feed)
         if refreshDate.timeIntervalSinceNow > -5 {
-            return Text("just now")
+            return Text("settings.feed.lastRefreshed.justNow")
         }
         return Text("\(refreshDate, formatter: Self.dateFormatter)")
     }

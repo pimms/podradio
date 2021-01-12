@@ -1,0 +1,45 @@
+// FAQ
+"faq.title" = "Spørsmål & svar";
+"faq.item1.title" = "";
+"faq.item1.desc" = "";
+"faq.item2.title" = "";
+"faq.item2.desc" = "";
+"faq.item3.title" = "";
+"faq.item3.desc" = "";
+"faq.item4.title" = "";
+"faq.item4.desc" = "";
+"faq.item5.title" = "";
+"faq.item5.desc" = "";
+"faq.item6.title" = "";
+"faq.item6.desc" = "";
+
+
+// SETTINGS
+"settings.title" = "";
+"settings.bingePicker" = "";
+"settings.feed.lastRefreshed" = "";
+"settings.feed.lastRefreshed.justNow" = "";
+"settings.feed.episodeCount" = "";
+"settings.feed.lastEpisodeDate" = "";
+"settings.feed.delete" = "";
+"settings.feed.delete.alertTitle" = "";
+"settings.feed.delete.alertMessage %@" = "";
+"settings.feed.refresh" = "";
+
+
+// FRONT PAGE
+"frontpage.title" = "";
+"frontpage.addFeed" = "";
+"frontpage.noFeeds.title" = "";
+"frontpage.noFeeds.desc" = "";
+
+
+// ADD FEED
+"addFeed.title" = "";
+"addFeed.input.placeholderText" = "";
+"addFeed.error.invalidUrl" = "";
+"addFeed.error.spotifyUrl" = "";
+"addFeed.error.invalidRss" = "";
+"addFeed.feedHelpLinkTitle" = "";
+"addFeed.commitTitle" = "";
+"addFeed.loading" = "";

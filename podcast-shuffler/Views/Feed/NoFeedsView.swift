@@ -5,10 +5,10 @@ struct NoFeedsView: View {
     var body: some View {
         VStack {
             Spacer()
-            Text("No feeds!")
+            Text("frontpage.noFeeds.title")
                 .font(Font.largeTitle.bold())
                 .padding(.bottom)
-            Text("Add your favorite podcast to start listening.")
+            Text("frontpage.noFeeds.desc")
                 .font(Font.title2.bold())
                 .multilineTextAlignment(.center)
             Spacer()
