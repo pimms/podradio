@@ -8,6 +8,7 @@ class EpisodePlayer: ObservableObject {
 
     enum State {
         case playing
+        case buffering
         case paused
     }
 
@@ -159,15 +160,15 @@ extension EpisodePlayer: ModernAVPlayerDelegate {
             self.state = .playing
             self.timer = nil
         case .buffering,
-             .initialization:
-            self.state = .playing
-            self.timer = nil
+             .initialization,
+             .loading,
+             .waitingForNetwork:
+            self.state = .buffering
+            startSimulatedProgressTimer()
         case .failed,
              .loaded,
-             .loading,
              .paused,
-             .stopped,
-             .waitingForNetwork:
+             .stopped:
             self.state = .paused
             startSimulatedProgressTimer()
         }
@@ -181,9 +182,7 @@ extension EpisodePlayer: ModernAVPlayerDelegate {
             log.debug("Transitioning to nest episode: playing")
             isTransitioningToNextEpisode = false
             play()
-        }
-
-        if state == .loaded, playRequested {
+        } else if state == .loaded, playRequested {
             log.debug("Done loading, play requested: playing")
             play()
         }

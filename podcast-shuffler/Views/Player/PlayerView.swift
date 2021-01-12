@@ -116,7 +116,7 @@ private struct PlayerContentView: View {
 
     private func onPlayButtonTap() {
         switch player.state {
-        case .playing:
+        case .playing, .buffering:
             player.pause()
         case .paused:
             player.play()
@@ -174,6 +174,7 @@ private struct PlayButton: View {
                 Image(systemName: sfButtonName)
                     .resizable()
                     .foregroundColor(Color(UIColor.label))
+                    .aspectRatio(contentMode: .fit)
                     .frame(width: 40, height: 40, alignment: .center)
                 Circle()
                     .stroke(Color.primary, lineWidth: 4)
@@ -187,6 +188,8 @@ private struct PlayButton: View {
         switch state {
         case .playing:
             return "pause.fill"
+        case .buffering:
+            return "network"
         case .paused:
             return "play.fill"
         }
@@ -200,6 +203,9 @@ struct PlayerView_Previews: PreviewProvider {
         PlayerRootView(feed: Feed.testData[0])
 
         PlayButton(state: .paused, onTap: {})
+            .previewLayout(.sizeThatFits)
+            .padding()
+        PlayButton(state: .buffering, onTap: {})
             .previewLayout(.sizeThatFits)
             .padding()
         PlayButton(state: .playing, onTap: {})
