@@ -111,7 +111,8 @@ class EpisodePlayer: ObservableObject {
 
         return ModernAVPlayerMediaMetadata(title: episode.title,
                                            albumTitle: albumTitle,
-                                           artist: feed.title)
+                                           artist: feed.title,
+                                           remoteImageUrl: feed.imageUrl)
     }
 
     private func makePlayCommand() -> ModernAVPlayerRemoteCommand {
