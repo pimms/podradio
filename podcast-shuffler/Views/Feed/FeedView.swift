@@ -37,9 +37,7 @@ struct FeedRootView: View {
                     navigationLink
                     List() {
                         ForEach(feedStore.feeds) { feed in
-                            Button(action: {
-                                self.selectedId = feed.id
-                            }) {
+                            Button(action: { self.selectedId = feed.id }) {
                                 FeedCell(feed: feed)
                             }
                             .listRowBackground(
