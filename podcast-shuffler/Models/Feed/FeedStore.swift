@@ -92,7 +92,11 @@ class FeedStore: ObservableObject {
         DispatchQueue.main.async {
             self.feeds = tempFeeds
             self.feedsLoaded = true
-            self.log.debug("feeds loaded: \(self.feeds.map { $0.id })")
+            self.feeds.forEach { feed in
+                self.log.debug(" - \(feed.title)")
+                self.log.debug("   \(feed.id)")
+                self.log.debug("   \(feed.url)")
+            }
         }
     }
 
