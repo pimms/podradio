@@ -45,6 +45,19 @@
 "addFeed.loading" = "Loading";
 
 
+// FEED HELP
+"help.intro.title" = "Finding the feed URL";
+"help.intro.desc" = "Adding feeds is kind of technical, but it's something you only need to do once.\n\nIf your favorite app is not included, remember that you can (almost) always use the built-in Apple Podcast application to find the feed.\n\nScroll to learn more.";
+"help.apple.title" = "Apple Podcasts";
+"help.apple.step1.title" = "Step 1";
+"help.apple.step1.desc" = "Find the podcast in the app.";
+"help.apple.step2.title" = "Step 2";
+"help.apple.step2.desc" = "Long press and tap the 'Copy Link' button.";
+"help.other.title" = "Other apps";
+"help.other.step1.title" = "Search the web";
+"help.other.step1.desc" = "Feed URLs are unfortunately not often exposed by podcast applications, but the podcast creators often have feeds available.\n\nTry for instance to search for '<podcast name> rss url'.\n\nI'm rooting for you! 🤞";
+
+
 // FILTER
 "filter.yearly.title" = "Yearly filter";
 "filter.yearly.commit" = "Done";

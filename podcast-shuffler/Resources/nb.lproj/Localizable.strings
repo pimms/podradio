@@ -1,5 +1,5 @@
 // FAQ
-"faq.title" = "Spørsmål og svar";
+"faq.title" = "Hjelp";
 "faq.item1.title" = "Hvordan virker PodRadio?";
 "faq.item1.desc" = "PodRadio simulerer radiokanaler for podcaststrømmer. Episodene blir hentet fra podcastenes RSS-strømmer.\n\nAvspilling skjer ved at episodene stokkes og strømmes via internett.";
 "faq.item2.title" = "Hvordan skjer stokkingen?";
@@ -11,7 +11,7 @@
 "faq.item5.title" = "Hvorfor kan jeg ikke velge hvilken episode som spilles?";
 "faq.item5.desc" = "PodRadio etterligner radio, og på lik linje med at du ikke har kontroll over hva som spiller på radio, har du ikke kontroll over hva som spilles i PodRadio.";
 "faq.item6.title" = "Appen er bæsj 💩👎";
-"faq.item6.desc" = "Ikke nøl med å ta kontakt med tilbakemeldinger!\n\nHvis du er teknisk kyndig, kan du bidra til utviklingen av appen på GitHub.";
+"faq.item6.desc" = "Ikke nøl med å ta kontakt med tilbakemeldinger!\n\nHvis du er teknisk kyndig, kan du også bidra til utviklingen av appen på GitHub.";
 
 
 // SETTINGS
@@ -45,8 +45,21 @@
 "addFeed.loading" = "Laster";
 
 
+// FEED HELP
+"help.intro.title" = "Finne podcaststrømmen";
+"help.intro.desc" = "Å finne podcaststrømmer kan være litt vanskelig, men det er noe du bare må gjøre én gang.\n\nHvis appen du bruker ikke er beskrevet her, husk at du (nesten) alltid kan bruke den innebygde podcast-appen.\n\nBla for å lese mer.";
+"help.apple.title" = "Apple Podcasts";
+"help.apple.step1.title" = "Steg 1";
+"help.apple.step1.desc" = "Find podcasten i appen.";
+"help.apple.step2.title" = "Steg 2";
+"help.apple.step2.desc" = "Trykk lenge på podcasten og velg 'Kopier lenke'.";
+"help.other.title" = "Andre apper";
+"help.other.step1.title" = "Søk på nettet";
+"help.other.step1.desc" = "Podcaststrømmer (RSS) er dessverre ofte ikke mulig å hente ut fra apper, men strømmene finnes ofte tilgjengelig på nett.\n\nPrøv f.eks. å søke på '<podcastnavn> rss url'.\n\nForhåpentligvis finner du den! 🤞";
+
+
 // FILTER
 "filter.yearly.title" = "Årlig filter";
 "filter.yearly.commit" = "Ferdig";
-"filter.yearly.episodeCount %d" = "%d episoder";
+"filter.yearly.episodeCount %lld" = "%lld episoder";
 

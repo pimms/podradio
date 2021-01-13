@@ -5,11 +5,10 @@ struct FeedHelpRootView: View {
     var body: some View {
         TabView {
             InitialHelpView()
-            HelpProcessView(iconImage: "Apple-Icon", title: "Apple Podcasts", items: HelpItem.appleItems)
-            HelpProcessView(iconImage: nil, title: "Other apps", items: HelpItem.genericItems)
+            HelpProcessView(iconImage: "Apple-Icon", title: "help.apple.title", items: HelpItem.appleItems)
+            HelpProcessView(iconImage: nil, title: "help.other.title", items: HelpItem.genericItems)
         }
         .edgesIgnoringSafeArea(.bottom)
-        .navigationTitle("Finding the URL")
         .navigationBarTitleDisplayMode(.inline)
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
     }
@@ -18,11 +17,15 @@ struct FeedHelpRootView: View {
 private struct InitialHelpView: View {
     var body: some View {
         VStack {
-            Text("Finding the feed URL")
-                .font(Font.title.bold())
-                .padding()
-            Text("Adding feeds is kind of technical, but it's something you only need to do once.\n\nIf your favorite app is not included, remember that you can (almost) always use the built-in Apple Podcast application to find the feed.\n\nScroll to learn more.")
+            HStack {
+                Text("help.intro.title")
+                    .font(Font.title.bold())
+                    .padding()
+                Spacer()
+            }
+            Text("help.intro.desc")
                 .multilineTextAlignment(.leading)
+                .font(Font.body)
                 .padding()
             Image(systemName: "arrow.forward.circle")
                 .resizable()
@@ -36,22 +39,22 @@ private struct InitialHelpView: View {
 private struct HelpItem: Identifiable {
     var id: String { imageName }
     let imageName: String
-    let title: String
-    let description: String
+    let title: LocalizedStringKey
+    let description: LocalizedStringKey
 
     static let appleItems = [
-        HelpItem(imageName: "Apple-1", title: "Step 1", description: "Find the podcast in the app."),
-        HelpItem(imageName: "Apple-2", title: "Step 2", description: "Long press and tap the 'Copy Link' button."),
+        HelpItem(imageName: "Apple-1", title: "help.apple.step1.title", description: "help.apple.step1.desc"),
+        HelpItem(imageName: "Apple-2", title: "help.apple.step2.title", description: "help.apple.step2.desc"),
     ]
 
     static let genericItems = [
-        HelpItem(imageName: "Generic-1", title: "Search the web", description: "Feed URLs are unfortunately not often exposed by podcast applications, but the podcast creators often have feeds available. Try searching the web.\n\nI'm rooting for you! 🤞")
+        HelpItem(imageName: "Generic-1", title: "help.other.step1.title", description: "help.other.step1.desc")
     ]
 }
 
 private struct HelpProcessView: View {
     let iconImage: String?
-    let title: String
+    let title: LocalizedStringKey
     let items: [HelpItem]
 
     var body: some View {
