@@ -43,3 +43,10 @@
 "addFeed.feedHelpLinkTitle" = "How do I find the feed URL?";
 "addFeed.commitTitle" = "Add feed";
 "addFeed.loading" = "Loading";
+
+
+// FILTER
+"filter.yearly.title" = "Yearly filter";
+"filter.yearly.commit" = "Done";
+"filter.yearly.episodeCount %lld" = "%lld episodes";
+

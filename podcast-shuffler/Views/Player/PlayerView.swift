@@ -138,6 +138,7 @@ private struct NowPlayingLabel: View {
                 Text("\(player.currentEpisode?.description ?? "")")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
+                    .multilineTextAlignment(.leading)
             }
         }
     }

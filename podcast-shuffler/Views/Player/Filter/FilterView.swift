@@ -9,10 +9,10 @@ struct FilterRootView: View {
     var body: some View {
         NavigationView {
             YearFilterList(feed: feed)
-                .navigationBarTitle("Yearly Filter", displayMode: .inline)
+                .navigationBarTitle("filter.yearly.title", displayMode: .inline)
                 .navigationBarItems(trailing:
                     Button(action: { presentationMode.wrappedValue.dismiss() }) {
-                        Text("Done").bold()
+                        Text("filter.yearly.commit").bold()
                     }
                 )
         }.modifier(SystemServices())
@@ -57,7 +57,7 @@ struct YearFilterList: View {
     var body: some View {
         List(years) { year in
             MultipleSelectionRow(title: "\(String(year.value))",
-                                 description: "\(year.episodeCount) episodes",
+                                 description: "filter.yearly.episodeCount \(year.episodeCount)",
                                  isSelected: year.selected) {
                 yearTapped(year)
             }
@@ -81,8 +81,8 @@ struct YearFilterList: View {
 }
 
 struct MultipleSelectionRow: View {
-    var title: String
-    var description: String
+    var title: LocalizedStringKey
+    var description: LocalizedStringKey
     var isSelected: Bool
     var action: () -> Void
 

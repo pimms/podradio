@@ -43,3 +43,10 @@
 "addFeed.feedHelpLinkTitle" = "";
 "addFeed.commitTitle" = "";
 "addFeed.loading" = "";
+
+
+// FILTER
+"filter.yearly.title" = "";
+"filter.yearly.commit" = "Done";
+"filter.yearly.episodeCount %d" = "%d episoder";
+
