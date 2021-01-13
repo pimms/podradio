@@ -11,7 +11,7 @@
 "faq.item5.title" = "Why can't I select which episode to play?";
 "faq.item5.desc" = "PodRadio acts like a radio player, and just like you have no control over what the radio broadcasts, you have no control over what PodRadio plays.";
 "faq.item6.title" = "The app is 💩👎";
-"faq.item6.desc" = "Feel free to contact me with any kind of feedback!\n\nIf you're technically capable, contributions are welcome on GitHub.";
+"faq.item6.desc" = "Feel free to contact me with any kind of feedback!\n\nThe app is open source, and contributions are welcome.";
 
 
 // SETTINGS
