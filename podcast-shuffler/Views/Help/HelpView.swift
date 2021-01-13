@@ -85,12 +85,22 @@ private struct FaqView: View {
 
 private struct ContactButtonGroup: View {
     var body: some View {
-        HStack {
-            ContactButton(imageName: "twitter", text: "@superpimms", action: {
-                guard let url = URL(string: "https://twitter.com/superpimms") else { return }
-                UIApplication.shared.open(url)
-            })
-            Spacer()
+        VStack {
+            HStack {
+                ContactButton(imageName: "twitter", text: "@superpimms", action: {
+                    guard let url = URL(string: "https://twitter.com/superpimms") else { return }
+                    UIApplication.shared.open(url)
+                })
+                Spacer()
+            }
+
+            HStack {
+                ContactButton(imageName: "github", text: "PodRadio", action: {
+                    guard let url = URL(string: "https://github.com/pimms/podradio") else { return }
+                    UIApplication.shared.open(url)
+                })
+                Spacer()
+            }
         }
     }
 }
@@ -113,7 +123,7 @@ private struct ContactButton: View {
             .padding([.trailing], 25)
             .padding([.bottom, .top], 10)
         }
-        .background(Color.tertiaryLabel)
+        .background(Color.secondarySystemBackground)
         .cornerRadius(8)
     }
 }
