@@ -21,6 +21,7 @@
 "settings.feed.lastRefreshed.justNow" = "just now";
 "settings.feed.episodeCount" = "Episode count";
 "settings.feed.lastEpisodeDate" = "Last episode";
+"settings.feed.copyUrl" = "Copy link";
 "settings.feed.delete" = "Delete";
 "settings.feed.delete.alertTitle" = "Delete channel?";
 "settings.feed.delete.alertMessage %@" = "Do you want to delete '%@'?";

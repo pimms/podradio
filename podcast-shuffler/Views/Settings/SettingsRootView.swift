@@ -97,6 +97,12 @@ fileprivate struct FeedSettingsView: View {
                     Spacer()
                 }
                 Spacer()
+            }.contextMenu {
+                Button(action: {
+                    UIPasteboard.general.string = feed.url.absoluteString
+                }) {
+                    Text("settings.feed.copyUrl")
+                }
             }
 
             Section {

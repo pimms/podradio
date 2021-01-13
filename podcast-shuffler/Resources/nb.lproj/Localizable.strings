@@ -21,6 +21,7 @@
 "settings.feed.lastRefreshed.justNow" = "nå";
 "settings.feed.episodeCount" = "Antall episoder";
 "settings.feed.lastEpisodeDate" = "Siste episode";
+"settings.feed.copyUrl" = "Kopier lenke";
 "settings.feed.delete" = "Slett";
 "settings.feed.delete.alertTitle" = "Slett kanal?";
 "settings.feed.delete.alertMessage %@" = "Vil du slette '%@'?";
