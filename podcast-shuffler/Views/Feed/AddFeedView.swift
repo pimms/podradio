@@ -72,12 +72,9 @@ struct AddFeedView: View {
     }
 
     private func isValidUrl() -> Bool {
-        guard let url = URL(string: feedUrl) else {
+        guard let _ = URL(string: feedUrl) else {
             return false
         }
-
-        guard url.scheme == "https" else { return false }
-        guard url.host != nil else { return false }
 
         return true
     }
@@ -87,7 +84,19 @@ struct AddFeedView: View {
     }
 
     private func commitFeed() {
-        guard let url = URL(string: feedUrl) else { return }
+        guard var url = URL(string: feedUrl) else { return }
+
+        /// If specifying a URL on the form 'example.com/path', the entire URL is considered the path, and
+        /// this makes `url.host == nil` and `url.path == "example.com/path`. This doesn't
+        /// really matter, but when forcefully adding `https` later, the URL becomes `https:example.com/path`.
+        /// THIS IS ALSO FINE, but when displaying the URL it looks unfamiliar, and when exporting it becomes useless.
+        ///
+        /// Therefore, dirtily add `https://` prefix.
+        if url.host == nil && url.scheme == nil {
+            guard let httpsUrl = URL(string: "https://\(url.absoluteString)") else { return }
+            url = httpsUrl
+        }
+
         state = .downloading
 
         feedStore.addFeed(from: url) { success in
