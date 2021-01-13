@@ -3,15 +3,15 @@
 "faq.item1.title" = "How does it work?";
 "faq.item1.desc" = "PodRadio creates simulated radio channels from podcast feeds. As such, it requires RSS podcast feeds to know where to find the episodes.\n\nPlayback is performed locally, and only requires a network connection.";
 "faq.item2.title" = "My friends' channels are playing the same as mine";
-"faq.item2.desc" = "The shuffling of episodes is done in such a way that anyone who listens to the same show with the same filter will hear the same episodes at the same time.";
+"faq.item2.desc" = "The shuffling of episodes is done in such a way that anyone who listens to the same show will hear the same episodes at the same time.";
 "faq.item3.title" = "Does PodRadio cellular data?";
 "faq.item3.desc" = "Unless you are connected to WiFi, cellular data will be used for streaming.";
-"faq.item4.title" = "Why are not Spotify-URLs supported?";
-"faq.item4.desc" = "RSS feeds are required for PodRadio to work, and Spotify does not share these publicly.";
+"faq.item4.title" = "Why aren't Spotify links supported?";
+"faq.item4.desc" = "RSS feeds are required for PodRadio to work, and Spotify does not share these publicly.\n\nMost podcasts are available in the built-in app 'Podcasts', you can copy links from there.";
 "faq.item5.title" = "Why can't I select which episode to play?";
 "faq.item5.desc" = "PodRadio acts like a radio player, and just like you have no control over what the radio broadcasts, you have no control over what PodRadio plays.";
 "faq.item6.title" = "The app is 💩👎";
-"faq.item6.desc" = "Feel free to contact me with any kind of feedback — I'm psyched if anyone uses it.";
+"faq.item6.desc" = "Feel free to contact me with any kind of feedback!\n\nIf you're technically capable, contributions are welcome on GitHub.";
 
 
 // SETTINGS
@@ -22,25 +22,25 @@
 "settings.feed.episodeCount" = "Episode count";
 "settings.feed.lastEpisodeDate" = "Last episode";
 "settings.feed.delete" = "Delete";
-"settings.feed.delete.alertTitle" = "Delete feed?";
+"settings.feed.delete.alertTitle" = "Delete channel?";
 "settings.feed.delete.alertMessage %@" = "Do you want to delete '%@'?";
 "settings.feed.refresh" = "Refresh";
 
 
 // FRONT PAGE
 "frontpage.title" = "PodRadio";
-"frontpage.addFeed" = "Add feed";
-"frontpage.noFeeds.title" = "No feeds!";
+"frontpage.addFeed" = "Add channel";
+"frontpage.noFeeds.title" = "No channels!";
 "frontpage.noFeeds.desc" = "Add your favorite podcast to start listening.";
 
 
 // ADD FEED
 "addFeed.title" = "Add a feed";
-"addFeed.input.placeholderText" = "Podcast feed URL";
-"addFeed.error.invalidUrl" = "Not a valid URL";
-"addFeed.error.spotifyUrl" = "Spotify URLs are not supported";
+"addFeed.input.placeholderText" = "Podcast feed link";
+"addFeed.error.invalidUrl" = "Not a valid link";
+"addFeed.error.spotifyUrl" = "Spotify links are not supported";
 "addFeed.error.invalidRss" = "Not a valid RSS feed";
-"addFeed.feedHelpLinkTitle" = "How do I find the feed URL?";
+"addFeed.feedHelpLinkTitle" = "How to find podcast links?";
 "addFeed.commitTitle" = "Add feed";
 "addFeed.loading" = "Loading";
 

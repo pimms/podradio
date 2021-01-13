@@ -1,52 +1,52 @@
 // FAQ
 "faq.title" = "Spørsmål & svar";
-"faq.item1.title" = "";
-"faq.item1.desc" = "";
-"faq.item2.title" = "";
-"faq.item2.desc" = "";
-"faq.item3.title" = "";
-"faq.item3.desc" = "";
-"faq.item4.title" = "";
-"faq.item4.desc" = "";
-"faq.item5.title" = "";
-"faq.item5.desc" = "";
-"faq.item6.title" = "";
-"faq.item6.desc" = "";
+"faq.item1.title" = "Hvordan virker PodRadio?";
+"faq.item1.desc" = "PodRadio simulerer radiokanaler for podcaststrømmer. Episodene blir hentet fra podcastenes RSS-strømmer.\n\nAvspilling skjer ved at episodene stokkes og strømmes via internett.";
+"faq.item2.title" = "Hvordan skjer stokkingen?";
+"faq.item2.desc" = "Stokkingen av episodene gjøres slik at alle som hører på den samme podcasten vil høre de samme episodene samtidig — akkurat som på radio.";
+"faq.item3.title" = "Bruker PodRadio mobildata?";
+"faq.item3.desc" = "Siden episodene strømmes via internett, vil mobildata brukes når du ikke er tilkoblet WiFi.";
+"faq.item4.title" = "Hvorfor støttes ikke Spotify-lenker?";
+"faq.item4.desc" = "PodRadio trenger RSS-strømmer for å virke, og Spotify deler ikke disse offentlig.\n\nDe fleste podcaster finnes også i den innebygde appen 'Podcaster', og du kan kopiere lenker fra den.";
+"faq.item5.title" = "Hvorfor kan jeg ikke velge hvilken episode som spilles?";
+"faq.item5.desc" = "PodRadio etterligner radio, og på lik linje med at du ikke har kontroll over hva som spiller på radio, har du ikke kontroll over hva som spilles i PodRadio.";
+"faq.item6.title" = "Appen er bæsj 💩👎";
+"faq.item6.desc" = "Ikke nøl med å ta kontakt med tilbakemeldinger!\n\nHvis du er teknisk kyndig, kan du bidra til utviklingen av appen på GitHub.";
 
 
 // SETTINGS
-"settings.title" = "";
-"settings.bingePicker" = "";
-"settings.feed.lastRefreshed" = "";
-"settings.feed.lastRefreshed.justNow" = "";
-"settings.feed.episodeCount" = "";
-"settings.feed.lastEpisodeDate" = "";
-"settings.feed.delete" = "";
-"settings.feed.delete.alertTitle" = "";
-"settings.feed.delete.alertMessage %@" = "";
-"settings.feed.refresh" = "";
+"settings.title" = "Innstillinger";
+"settings.bingePicker" = "Use binge episode picker";
+"settings.feed.lastRefreshed" = "Sist oppdatert";
+"settings.feed.lastRefreshed.justNow" = "nå";
+"settings.feed.episodeCount" = "Antall episoder";
+"settings.feed.lastEpisodeDate" = "Siste episode";
+"settings.feed.delete" = "Slett";
+"settings.feed.delete.alertTitle" = "Slett kanal?";
+"settings.feed.delete.alertMessage %@" = "Vil du slette '%@'?";
+"settings.feed.refresh" = "Oppdater";
 
 
 // FRONT PAGE
-"frontpage.title" = "";
-"frontpage.addFeed" = "";
-"frontpage.noFeeds.title" = "";
-"frontpage.noFeeds.desc" = "";
+"frontpage.title" = "PodRadio";
+"frontpage.addFeed" = "Legg til";
+"frontpage.noFeeds.title" = "Ingen kanaler!";
+"frontpage.noFeeds.desc" = "Legg til favorittpodcasten for å begynne å lytte.";
 
 
 // ADD FEED
-"addFeed.title" = "";
-"addFeed.input.placeholderText" = "";
-"addFeed.error.invalidUrl" = "";
-"addFeed.error.spotifyUrl" = "";
-"addFeed.error.invalidRss" = "";
-"addFeed.feedHelpLinkTitle" = "";
-"addFeed.commitTitle" = "";
-"addFeed.loading" = "";
+"addFeed.title" = "Legg til kanal";
+"addFeed.input.placeholderText" = "Lneke til podcaststrøm";
+"addFeed.error.invalidUrl" = "Ugyldig lenke";
+"addFeed.error.spotifyUrl" = "Spotify-lenker støttes ikke";
+"addFeed.error.invalidRss" = "Ikke en gyldig RSS-strøm";
+"addFeed.feedHelpLinkTitle" = "Hvordan finner jeg podcaststrømmen?";
+"addFeed.commitTitle" = "Legg til";
+"addFeed.loading" = "Laster";
 
 
 // FILTER
-"filter.yearly.title" = "";
-"filter.yearly.commit" = "Done";
+"filter.yearly.title" = "Årlig filter";
+"filter.yearly.commit" = "Ferdig";
 "filter.yearly.episodeCount %d" = "%d episoder";
 
