@@ -37,6 +37,7 @@
 		19FD32F924AB40CA00FB9FF6 /* Streamable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FD32F824AB40CA00FB9FF6 /* Streamable.swift */; };
 		19FDA725256A960300BBF6B1 /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19FDA724256A960300BBF6B1 /* DispatchQueue.swift */; };
 		65BAA57414707A6CEE97720D /* BingeEpisodePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65BAA70E5B537AE2CFE2447F /* BingeEpisodePicker.swift */; };
+		744DD3C6D2BBC5A512D8CA11 /* Pods-podcast-shuffler-metadata.plist in Resources */ = {isa = PBXBuildFile; fileRef = F6CC2C02CE32B8BDE39D9C3E /* Pods-podcast-shuffler-metadata.plist */; };
 		A38FDD52BB02CAE74F332233 /* Pods_podcast_shufflerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB014E618A106F1CAB45B27A /* Pods_podcast_shufflerTests.framework */; };
 		F51832A5259F6071006BEC70 /* String+stableHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51832A4259F6071006BEC70 /* String+stableHash.swift */; };
 		F538DC0625987BDB005B6E5D /* DefaultEpisodePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F538DC0525987BDB005B6E5D /* DefaultEpisodePicker.swift */; };
@@ -143,6 +144,7 @@
 		F5B49E91259126A300399ADF /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		F5B9D15325AE46BC00A962B9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F5B9D15825AE46BE00A962B9 /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F6CC2C02CE32B8BDE39D9C3E /* Pods-podcast-shuffler-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-podcast-shuffler-metadata.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -369,6 +371,7 @@
 				D5B1B3D33276F8E20E6DE881 /* Pods-podcast-shuffler.release.xcconfig */,
 				42EE41CD3B76CF70CA5F0DC7 /* Pods-podcast-shufflerTests.debug.xcconfig */,
 				7658280C9C6EE3082A3DBD20 /* Pods-podcast-shufflerTests.release.xcconfig */,
+				F6CC2C02CE32B8BDE39D9C3E /* Pods-podcast-shuffler-metadata.plist */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -576,6 +579,7 @@
 				19115D8324A4C8E9008E8BAC /* Preview Assets.xcassets in Resources */,
 				19115D8024A4C8E9008E8BAC /* Assets.xcassets in Resources */,
 				F5B9D15225AE46BC00A962B9 /* Localizable.strings in Resources */,
+				744DD3C6D2BBC5A512D8CA11 /* Pods-podcast-shuffler-metadata.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
