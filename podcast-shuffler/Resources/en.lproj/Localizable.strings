@@ -31,7 +31,7 @@
 "frontpage.title" = "PodRadio";
 "frontpage.addFeed" = "Add channel";
 "frontpage.noFeeds.title" = "No channels!";
-"frontpage.noFeeds.desc" = "Add your favorite podcast to start listening.";
+"frontpage.noFeeds.desc" = "Add your favorite podcast to start listening";
 
 
 // ADD FEED

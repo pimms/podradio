@@ -31,7 +31,7 @@
 "frontpage.title" = "PodRadio";
 "frontpage.addFeed" = "Legg til";
 "frontpage.noFeeds.title" = "Ingen kanaler!";
-"frontpage.noFeeds.desc" = "Legg til favorittpodcasten for å begynne å lytte.";
+"frontpage.noFeeds.desc" = "Legg til favorittpodcasten din for å begynne å lytte";
 
 
 // ADD FEED

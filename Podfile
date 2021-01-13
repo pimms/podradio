@@ -1,4 +1,4 @@
-plugin 'cocoapods-acknowledgements'
+plugin 'cocoapods-acknowledgements', :settings_bundle => true
 
 target 'podcast-shuffler' do
   # Comment the next line if you don't want to use dynamic frameworks
