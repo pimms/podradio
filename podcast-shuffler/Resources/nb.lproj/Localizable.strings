@@ -1,5 +1,5 @@
 // FAQ
-"faq.title" = "Spørsmål & svar";
+"faq.title" = "Spørsmål og svar";
 "faq.item1.title" = "Hvordan virker PodRadio?";
 "faq.item1.desc" = "PodRadio simulerer radiokanaler for podcaststrømmer. Episodene blir hentet fra podcastenes RSS-strømmer.\n\nAvspilling skjer ved at episodene stokkes og strømmes via internett.";
 "faq.item2.title" = "Hvordan skjer stokkingen?";
@@ -36,7 +36,7 @@
 
 // ADD FEED
 "addFeed.title" = "Legg til kanal";
-"addFeed.input.placeholderText" = "Lneke til podcaststrøm";
+"addFeed.input.placeholderText" = "Lenke til podcaststrøm";
 "addFeed.error.invalidUrl" = "Ugyldig lenke";
 "addFeed.error.spotifyUrl" = "Spotify-lenker støttes ikke";
 "addFeed.error.invalidRss" = "Ikke en gyldig RSS-strøm";
