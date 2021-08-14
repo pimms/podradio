@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19197" systemVersion="21A5294g" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+    <entity name="Episode" representedClassName="Episode" syncable="YES">
+        <attribute name="detailedDescription" optional="YES" attributeType="String"/>
+        <attribute name="duration" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="publishDate" attributeType="Date" defaultDateTimeInterval="649158960" usesScalarValueType="NO"/>
+        <attribute name="title" attributeType="String" defaultValueString=""/>
+        <attribute name="url" attributeType="URI" defaultValueString="I"/>
+        <relationship name="feed" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Feed" inverseName="episodes" inverseEntity="Feed"/>
+    </entity>
+    <entity name="Feed" representedClassName="Feed" syncable="YES">
+        <attribute name="imageUrl" optional="YES" attributeType="URI"/>
+        <attribute name="lastRefresh" attributeType="Date" defaultDateTimeInterval="-927298800" usesScalarValueType="NO"/>
+        <attribute name="title" attributeType="String" defaultValueString=""/>
+        <attribute name="url" attributeType="URI" defaultValueString="https://example.url"/>
+        <relationship name="episodes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Episode" inverseName="feed" inverseEntity="Episode"/>
+    </entity>
+    <elements>
+        <element name="Episode" positionX="-54" positionY="27" width="128" height="119"/>
+        <element name="Feed" positionX="-63" positionY="-9" width="128" height="104"/>
+    </elements>
+</model>
