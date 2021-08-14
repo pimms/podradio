@@ -7,7 +7,26 @@ struct PersistenceController {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
 
-        // TODO: We should add some dummy feeds here
+        func makeFeed(title: String, episodeCount: Int) {
+            let feed = Feed(context: viewContext)
+            feed.title = title
+            feed.url = URL(string: "https://\(title).com")!
+            feed.imageUrl = URL(string: "https://thumbs.dreamstime.com/b/owls-portrait-owl-eyes-close-up-image-owls-portrait-owl-eyes-image-136855731.jpg")
+
+            for index in 0 ... episodeCount {
+                let episode = Episode(context: viewContext)
+                episode.title = "Episode \(index+1)"
+                episode.url = URL(string: "https://\(title).com/episode/\(index)")
+                episode.detailedDescription = "Episode \(index+1), this is where it gets real yo"
+                episode.publishDate = Date().addingTimeInterval(-86400 * 3 * Double(index))
+                episode.duration = 3937
+                feed.addToEpisodes(episode)
+            }
+        }
+
+        makeFeed(title: "feeda", episodeCount: 100)
+        makeFeed(title: "feedb", episodeCount: 5)
+        makeFeed(title: "feedc", episodeCount: 1538)
 
         do {
             try viewContext.save()

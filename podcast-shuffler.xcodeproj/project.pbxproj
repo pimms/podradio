@@ -69,6 +69,8 @@
 		F58AE0FF26B15F770015419E /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58AE0FE26B15F770015419E /* Log.swift */; };
 		F59A927F259B44B5000CA1B5 /* FeedHelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59A927E259B44B5000CA1B5 /* FeedHelpView.swift */; };
 		F59A9285259B5359000CA1B5 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59A9284259B5359000CA1B5 /* HelpView.swift */; };
+		F59BD28F26C7B62200B3AAB8 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59BD28E26C7B62200B3AAB8 /* SettingsView.swift */; };
+		F59BD29126C7C7FB00B3AAB8 /* FeedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59BD29026C7C7FB00B3AAB8 /* FeedImageView.swift */; };
 		F5B49E92259126A300399ADF /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B49E91259126A300399ADF /* Log.swift */; };
 		F5B9D15225AE46BC00A962B9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F5B9D15425AE46BC00A962B9 /* Localizable.strings */; };
 		F5C40AC626B6FE520062FB3F /* ITunes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C40AC526B6FE520062FB3F /* ITunes.swift */; };
@@ -181,6 +183,8 @@
 		F58AE0FE26B15F770015419E /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		F59A927E259B44B5000CA1B5 /* FeedHelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedHelpView.swift; sourceTree = "<group>"; };
 		F59A9284259B5359000CA1B5 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
+		F59BD28E26C7B62200B3AAB8 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		F59BD29026C7C7FB00B3AAB8 /* FeedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageView.swift; sourceTree = "<group>"; };
 		F5B49E91259126A300399ADF /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		F5B9D15325AE46BC00A962B9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F5B9D15825AE46BE00A962B9 /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -552,6 +556,7 @@
 		F58AE0F726B157910015419E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F59BD28D26C7B61700B3AAB8 /* Settings */,
 				F5D7AA5026B16F4D00BED013 /* Help */,
 				F58AE0F826B157950015419E /* Feed */,
 			);
@@ -565,6 +570,7 @@
 				F58AE0FB26B15E6E0015419E /* NoFeedsView.swift */,
 				F5D7AA4426B16E6C00BED013 /* AddFeedView.swift */,
 				F5D7AA4626B16E9700BED013 /* FeedHelpView.swift */,
+				F59BD29026C7C7FB00B3AAB8 /* FeedImageView.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -584,6 +590,14 @@
 				F59A9284259B5359000CA1B5 /* HelpView.swift */,
 			);
 			path = Help;
+			sourceTree = "<group>";
+		};
+		F59BD28D26C7B61700B3AAB8 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				F59BD28E26C7B62200B3AAB8 /* SettingsView.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		F5B9D13325AE456C00A962B9 /* Resources */ = {
@@ -999,10 +1013,12 @@
 				F5D7AA5226B16F5500BED013 /* HelpView.swift in Sources */,
 				F58AE0FA26B1579F0015419E /* FeedView.swift in Sources */,
 				F5D7AA4726B16E9800BED013 /* FeedHelpView.swift in Sources */,
+				F59BD28F26C7B62200B3AAB8 /* SettingsView.swift in Sources */,
 				F5D7AA4E26B16F2100BED013 /* Episode.swift in Sources */,
 				F5C40AC626B6FE520062FB3F /* ITunes.swift in Sources */,
 				F5D7AA4F26B16F2100BED013 /* Feed.swift in Sources */,
 				F58AE0FF26B15F770015419E /* Log.swift in Sources */,
+				F59BD29126C7C7FB00B3AAB8 /* FeedImageView.swift in Sources */,
 				F58AE0EF26B154660015419E /* Persistence.swift in Sources */,
 				F5C40ACE26B7006B0062FB3F /* FeedParser.swift in Sources */,
 				F5C40ACC26B6FEB20062FB3F /* HttpClient.swift in Sources */,

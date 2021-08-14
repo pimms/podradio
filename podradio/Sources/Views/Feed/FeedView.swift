@@ -1,5 +1,4 @@
 import SwiftUI
-import struct Kingfisher.KFImage
 
 struct FeedRootView: View {
 
@@ -46,40 +45,10 @@ private struct FeedCell: View {
     }
 }
 
-struct FeedImageView: View {
-    var imageUrl: URL?
-
-    var body: some View {
-        imageView
-            .cornerRadius(8)
-            .aspectRatio(CGSize(width: 1, height: 1), contentMode: .fill)
-            .frame(minWidth: 15,
-                   idealWidth: 30,
-                   maxWidth: 40,
-                   minHeight: 15,
-                   idealHeight: 30,
-                   maxHeight: 40,
-                   alignment: .center)
-            .padding([.bottom, .trailing, .top], 10)
-    }
-
-    private var imageView: some View {
-        Group {
-            if let imageUrl = imageUrl {
-                KFImage(imageUrl).resizable()
-            } else {
-                Image("defaultFeedImage").resizable()
-            }
-        }
-    }
-}
-
 private struct NavBarButton: View {
     var body: some View {
         HStack {
-            #if DEBUG
             SettingsButton()
-            #endif
             HelpButton()
         }
     }
@@ -111,9 +80,7 @@ private struct SettingsButton: View {
             Image(systemName: "gear")
         })
         .sheet(isPresented: $isPresenting) {
-            Text("TODO")
-            //SettingsRootView()
-            //    .modifier(SystemServices())
+            SettingsRootView()
         }
     }
 }

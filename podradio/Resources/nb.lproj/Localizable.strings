@@ -13,27 +13,17 @@
 "faq.item6.title" = "Appen er bæsj 💩👎";
 "faq.item6.desc" = "Ikke nøl med å ta kontakt med tilbakemeldinger!\n\nKildekoden til appen er åpen, og alle bidrag er hjertelig velkomne.";
 
-
 // SETTINGS
 "settings.title" = "Innstillinger";
-"settings.bingePicker" = "Use binge episode picker";
-"settings.feed.lastRefreshed" = "Sist oppdatert";
-"settings.feed.lastRefreshed.justNow" = "nå";
-"settings.feed.episodeCount" = "Antall episoder";
-"settings.feed.lastEpisodeDate" = "Siste episode";
-"settings.feed.copyUrl" = "Kopier lenke";
-"settings.feed.delete" = "Slett";
-"settings.feed.delete.alertTitle" = "Slett kanal?";
-"settings.feed.delete.alertMessage %@" = "Vil du slette '%@'?";
-"settings.feed.refresh" = "Oppdater";
-
+"settings.feed.episodeCount %@" = "%@ episoder";
+"settings.feed.lastRefreshed %@" = "Oppdatert for %@";
+"settings.feed.refreshAction" = "Oppdater";
 
 // FRONT PAGE
 "frontpage.title" = "PodRadio";
 "frontpage.addFeed" = "Legg til";
 "frontpage.noFeeds.title" = "Ingen kanaler!";
 "frontpage.noFeeds.desc" = "Legg til favorittpodcasten din for å begynne å lytte";
-
 
 // ADD FEED
 "addFeed.title" = "Legg til kanal";
@@ -44,7 +34,6 @@
 "addFeed.feedHelpLinkTitle" = "Hvordan finner jeg podcaststrømmen?";
 "addFeed.commitTitle" = "Legg til";
 "addFeed.loading" = "Laster";
-
 
 // FEED HELP
 "help.intro.title" = "Finne podcaststrømmen";
@@ -58,9 +47,7 @@
 "help.other.step1.title" = "Søk på nettet";
 "help.other.step1.desc" = "Podcaststrømmer (RSS) er dessverre ofte ikke mulig å hente ut fra apper, men strømmene finnes ofte tilgjengelig på nett.\n\nPrøv f.eks. å søke på '<podcastnavn> rss url'.\n\nForhåpentligvis finner du den! 🤞";
 
-
 // FILTER
 "filter.yearly.title" = "Årlig filter";
 "filter.yearly.commit" = "Ferdig";
 "filter.yearly.episodeCount %lld" = "%lld episoder";
-

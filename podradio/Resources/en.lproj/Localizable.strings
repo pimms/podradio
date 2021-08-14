@@ -13,27 +13,17 @@
 "faq.item6.title" = "The app is 💩👎";
 "faq.item6.desc" = "Feel free to contact me with any kind of feedback!\n\nThe app is open source, and contributions are welcome.";
 
-
 // SETTINGS
 "settings.title" = "Settings";
-"settings.bingePicker" = "Use binge episode picker";
-"settings.feed.lastRefreshed" = "Last refreshed";
-"settings.feed.lastRefreshed.justNow" = "just now";
-"settings.feed.episodeCount" = "Episode count";
-"settings.feed.lastEpisodeDate" = "Last episode";
-"settings.feed.copyUrl" = "Copy link";
-"settings.feed.delete" = "Delete";
-"settings.feed.delete.alertTitle" = "Delete channel?";
-"settings.feed.delete.alertMessage %@" = "Do you want to delete '%@'?";
-"settings.feed.refresh" = "Refresh";
-
+"settings.feed.episodeCount %lld" = "%lld episodes";
+"settings.feed.lastRefreshed %@" = "Updated %@";
+"settings.feed.refreshAction" = "Refresh";
 
 // FRONT PAGE
 "frontpage.title" = "PodRadio";
 "frontpage.addFeed" = "Add channel";
 "frontpage.noFeeds.title" = "No channels!";
 "frontpage.noFeeds.desc" = "Add your favorite podcast to start listening";
-
 
 // ADD FEED
 "addFeed.title" = "Add a feed";
@@ -44,7 +34,6 @@
 "addFeed.feedHelpLinkTitle" = "How to find podcast links?";
 "addFeed.commitTitle" = "Add feed";
 "addFeed.loading" = "Loading";
-
 
 // FEED HELP
 "help.intro.title" = "Finding the feed URL";
@@ -57,7 +46,6 @@
 "help.other.title" = "Other apps";
 "help.other.step1.title" = "Search the web";
 "help.other.step1.desc" = "Feed URLs are unfortunately not often exposed by podcast applications, but the podcast creators often have feeds available.\n\nTry for instance to search for '<podcast name> rss url'.\n\nI'm rooting for you! 🤞";
-
 
 // FILTER
 "filter.yearly.title" = "Yearly filter";
