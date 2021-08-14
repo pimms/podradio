@@ -64,7 +64,6 @@ private struct HelpButton: View {
             Image(systemName: "questionmark.circle")
         })
         .sheet(isPresented: $isPresenting, content: {
-            Text("TODO")
             HelpRootView()
         })
     }
