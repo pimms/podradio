@@ -9,7 +9,7 @@ struct PlayerRootView: View {
     var body: some View {
         VStack {
             FeedImageView(feed: feed)
-            Text(feed.title).font(.title)
+            Text(feed.title!).font(.title)
             Spacer()
             PlayControlSheet()
         }

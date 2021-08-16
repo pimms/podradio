@@ -67,6 +67,7 @@
 		F58AE0FA26B1579F0015419E /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58AE0F926B1579F0015419E /* FeedView.swift */; };
 		F58AE0FC26B15E6E0015419E /* NoFeedsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58AE0FB26B15E6E0015419E /* NoFeedsView.swift */; };
 		F58AE0FF26B15F770015419E /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58AE0FE26B15F770015419E /* Log.swift */; };
+		F593681C26CAE13400335911 /* ModelExtensions.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = F593681B26CAE13400335911 /* ModelExtensions.swift.swift */; };
 		F59A927F259B44B5000CA1B5 /* FeedHelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59A927E259B44B5000CA1B5 /* FeedHelpView.swift */; };
 		F59A9285259B5359000CA1B5 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59A9284259B5359000CA1B5 /* HelpView.swift */; };
 		F59BD28F26C7B62200B3AAB8 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59BD28E26C7B62200B3AAB8 /* SettingsView.swift */; };
@@ -85,8 +86,6 @@
 		F5D7AA4526B16E6C00BED013 /* AddFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D7AA4426B16E6C00BED013 /* AddFeedView.swift */; };
 		F5D7AA4726B16E9800BED013 /* FeedHelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D7AA4626B16E9700BED013 /* FeedHelpView.swift */; };
 		F5D7AA4B26B16EE300BED013 /* Color+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D7AA4A26B16EE300BED013 /* Color+UIColor.swift */; };
-		F5D7AA4E26B16F2100BED013 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D7AA4C26B16F2100BED013 /* Episode.swift */; };
-		F5D7AA4F26B16F2100BED013 /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D7AA4D26B16F2100BED013 /* Feed.swift */; };
 		F5D7AA5226B16F5500BED013 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D7AA5126B16F5500BED013 /* HelpView.swift */; };
 		F86018884F2B5AD6859FB3DD /* Pods_podcast_shuffler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A8583148065509C2927A05F /* Pods_podcast_shuffler.framework */; };
 /* End PBXBuildFile section */
@@ -184,6 +183,7 @@
 		F58AE0F926B1579F0015419E /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		F58AE0FB26B15E6E0015419E /* NoFeedsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoFeedsView.swift; sourceTree = "<group>"; };
 		F58AE0FE26B15F770015419E /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		F593681B26CAE13400335911 /* ModelExtensions.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelExtensions.swift.swift; sourceTree = "<group>"; };
 		F59A927E259B44B5000CA1B5 /* FeedHelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedHelpView.swift; sourceTree = "<group>"; };
 		F59A9284259B5359000CA1B5 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 		F59BD28E26C7B62200B3AAB8 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -204,8 +204,6 @@
 		F5D7AA4426B16E6C00BED013 /* AddFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFeedView.swift; sourceTree = "<group>"; };
 		F5D7AA4626B16E9700BED013 /* FeedHelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedHelpView.swift; sourceTree = "<group>"; };
 		F5D7AA4A26B16EE300BED013 /* Color+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+UIColor.swift"; sourceTree = "<group>"; };
-		F5D7AA4C26B16F2100BED013 /* Episode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
-		F5D7AA4D26B16F2100BED013 /* Feed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
 		F5D7AA5126B16F5500BED013 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -551,10 +549,9 @@
 		F58AE0F626B156660015419E /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F5D7AA4C26B16F2100BED013 /* Episode.swift */,
-				F5D7AA4D26B16F2100BED013 /* Feed.swift */,
-				F58AE0EE26B154660015419E /* Persistence.swift */,
 				F58AE0F026B154660015419E /* podradio.xcdatamodeld */,
+				F593681B26CAE13400335911 /* ModelExtensions.swift.swift */,
+				F58AE0EE26B154660015419E /* Persistence.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1037,11 +1034,10 @@
 				F57A64CB26C7A6680011B54D /* FeedFetcher.swift in Sources */,
 				F5D7AA5226B16F5500BED013 /* HelpView.swift in Sources */,
 				F58AE0FA26B1579F0015419E /* FeedView.swift in Sources */,
+				F593681C26CAE13400335911 /* ModelExtensions.swift.swift in Sources */,
 				F5D7AA4726B16E9800BED013 /* FeedHelpView.swift in Sources */,
 				F59BD28F26C7B62200B3AAB8 /* SettingsView.swift in Sources */,
-				F5D7AA4E26B16F2100BED013 /* Episode.swift in Sources */,
 				F5C40AC626B6FE520062FB3F /* ITunes.swift in Sources */,
-				F5D7AA4F26B16F2100BED013 /* Feed.swift in Sources */,
 				F58AE0FF26B15F770015419E /* Log.swift in Sources */,
 				F59BD29126C7C7FB00B3AAB8 /* ListFeedImageView.swift in Sources */,
 				F58AE0EF26B154660015419E /* Persistence.swift in Sources */,

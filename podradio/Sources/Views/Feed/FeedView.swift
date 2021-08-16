@@ -40,7 +40,7 @@ private struct FeedCell: View {
 
             VStack {
                 HStack {
-                    Text(feed.title)
+                    Text(feed.title!)
                         .foregroundColor(.primary)
                     Spacer()
                 }

@@ -55,7 +55,7 @@ private struct FeedSettingsView: View {
         fetchRequest = FetchRequest<Episode>(
             entity: Episode.entity(),
             sortDescriptors: [],
-            predicate: NSPredicate(format: "feed.url == %@", feed.url.absoluteString))
+            predicate: NSPredicate(format: "feed.url == %@", feed.url!.absoluteString))
     }
 
     var body: some View {
@@ -79,13 +79,13 @@ private struct FeedSettingsView: View {
     }
 
     private func lastRefreshString() -> String {
-        Self.dateFormatter.localizedString(for: feed.lastRefresh, relativeTo: Date())
+        Self.dateFormatter.localizedString(for: feed.lastRefresh!, relativeTo: Date())
     }
 
     private func refresh() {
         isRefreshing = true
         let feedFetcher = FeedFetcher(managedObjectContext: managedObjectContext)
-        feedFetcher.fetchFeed(from: feed.url) { _ in
+        feedFetcher.fetchFeed(from: feed.url!) { _ in
             isRefreshing = false
         }
     }
