@@ -16,7 +16,11 @@ struct FeedRootView: View {
             } else {
                 List() {
                     ForEach(feeds) { feed in
-                        FeedCell(feed: feed)
+                        NavigationLink(destination: {
+                            PlayerRootView(feed: feed)
+                        }, label: {
+                            FeedCell(feed: feed)
+                        })
                     }
                 }
             }
@@ -32,7 +36,7 @@ private struct FeedCell: View {
 
     var body: some View {
         HStack {
-            FeedImageView(imageUrl: feed.imageUrl)
+            ListFeedImageView(imageUrl: feed.imageUrl)
 
             VStack {
                 HStack {

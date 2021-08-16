@@ -2,7 +2,7 @@ import Foundation
 import struct Kingfisher.KFImage
 import SwiftUI
 
-struct FeedImageView: View {
+struct ListFeedImageView: View {
     var imageUrl: URL?
 
     var body: some View {

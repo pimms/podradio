@@ -61,7 +61,7 @@ private struct FeedSettingsView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
-                FeedImageView(imageUrl: feed.imageUrl)
+                ListFeedImageView(imageUrl: feed.imageUrl)
                 Text(feed.title ?? "")
                     .font(.title3)
             }
