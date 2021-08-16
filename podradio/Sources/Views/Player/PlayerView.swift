@@ -11,7 +11,7 @@ struct PlayerRootView: View {
             FeedImageView(feed: feed)
             Text(feed.title!).font(.title)
             Spacer()
-            PlayControlSheet()
+            PlayControlSheet(feed: feed)
         }
     }
 }
@@ -30,6 +30,8 @@ private struct FeedImageView: View {
 }
 
 private struct PlayControlSheet: View {
+    let feed: Feed
+
     var body: some View {
         VStack {
             Spacer().frame(width: 0, height: 20)
@@ -42,7 +44,7 @@ private struct PlayControlSheet: View {
                     .aspectRatio(1, contentMode: .fit)
                     .frame(width: 35, height: 35, alignment: .center)
                 Spacer()
-                FilterButton()
+                FilterButton(feed: feed)
                 Spacer()
             }
             Spacer().frame(width: 0, height: 20)
@@ -55,8 +57,43 @@ private struct PlayControlSheet: View {
 }
 
 struct FilterButton: View {
+    @StateObject var feed: Feed
+    @State private var isPresentingFilter: Bool = false
+
+    /// We need a `@StateObject` on the `FeedFilter` to get updates
+    /// when the filter changes.
+    private struct FilterBindingView: View {
+        @StateObject var filter: FeedFilter
+        var body: some View {
+            return Image(systemName: "line.horizontal.3.decrease.circle.fill")
+                .tint(Color(UIColor.systemBlue))
+        }
+    }
+
+    private var image: some View {
+        Group {
+            if let filter = feed.filter, let seasons = filter.includedSeasons, !seasons.isEmpty {
+                FilterBindingView(filter: filter)
+            } else {
+                Image(systemName: "line.horizontal.3.decrease.circle")
+                    .tint(.label)
+            }
+        }
+    }
+
     var body: some View {
-        Image(systemName: "line.horizontal.3.decrease.circle")
+        return Button(action: onTap) {
+            image.frame(width: 24, height: 24)
+        }
+        .sheet(isPresented: $isPresentingFilter, onDismiss: nil) {
+            NavigationView {
+                FilterRootView(feed: feed)
+            }
+        }
+    }
+
+    private func onTap() {
+        isPresentingFilter.toggle()
     }
 }
 
