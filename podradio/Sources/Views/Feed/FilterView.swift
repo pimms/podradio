@@ -6,7 +6,10 @@ struct FilterRootView: View {
     let feed: Feed
 
     var body: some View {
-        FilterView(feed: feed)
+        NavigationView {
+            FilterView(feed: feed)
+                .navigationTitle("filter.title")
+        }
     }
 }
 

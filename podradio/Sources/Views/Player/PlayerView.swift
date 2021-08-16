@@ -86,9 +86,7 @@ struct FilterButton: View {
             image.frame(width: 24, height: 24)
         }
         .sheet(isPresented: $isPresentingFilter, onDismiss: nil) {
-            NavigationView {
-                FilterRootView(feed: feed)
-            }
+            FilterRootView(feed: feed)
         }
     }
 
