@@ -79,7 +79,15 @@ private struct FeedSettingsView: View {
     }
 
     private func lastRefreshString() -> String {
-        Self.dateFormatter.localizedString(for: feed.lastRefresh!, relativeTo: Date())
+        guard let lastRefresh = feed.lastRefresh else { return "" }
+
+        let now = Date()
+        let delta = now.timeIntervalSince1970 - lastRefresh.timeIntervalSince1970
+        if delta < 30 {
+            return NSLocalizedString("settings.feed.refreshedNow", comment: "Now")
+        }
+
+        return Self.dateFormatter.localizedString(for: lastRefresh, relativeTo: now)
     }
 
     private func refresh() {

@@ -18,6 +18,7 @@
 "settings.feed.episodeCount %lld" = "%lld episodes";
 "settings.feed.lastRefreshed %@" = "Updated %@";
 "settings.feed.refreshAction" = "Refresh";
+"settings.feed.refreshedNow" = "just now";
 
 // FRONT PAGE
 "frontpage.title" = "PodRadio";
