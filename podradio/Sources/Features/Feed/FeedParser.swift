@@ -101,7 +101,7 @@ final class FeedParser {
         for (year, episodeSubset) in yearMap {
             let season = Season(context: context)
             season.name = "\(year)"
-            season.uniqueId = UUID().uuidString
+            season.uniqueId = season.name
             episodeSubset.forEach({
                 season.addToEpisodes($0)
                 $0.season = season

@@ -64,7 +64,7 @@ class FeedFetcher {
         guard let data = data else { return false }
 
         return managedObjectContext.performAndWait {
-            let localFeed = localFeed(withUrl: url)
+            let existingFeed = localFeed(withUrl: url)
 
             let parser = FeedParser(context: managedObjectContext)
             guard let feed = parser.parseRssData(data, url: url) else {
@@ -73,13 +73,30 @@ class FeedFetcher {
             }
 
             do {
-                if let localFeed = localFeed {
+                if let existingFeed = existingFeed {
                     log.debug("Replacing previously fetched feed")
-                    managedObjectContext.delete(localFeed)
+                    if let existingFilter = existingFeed.filter {
+                        let previousSeasons = existingFilter.includedSeasons ?? []
+                        let seasons = feed.seasons!.allObjects.compactMap({ $0 as? Season })
+                        let includedSeasons = previousSeasons.filter({ seasonId in
+                            seasons.contains(where: { season in
+                                season.uniqueId == seasonId
+                            })
+                        })
+
+                        if !includedSeasons.isEmpty {
+                            let newFilter = SeasonFilter(context: managedObjectContext)
+                            newFilter.feed = feed
+                            feed.filter = newFilter
+                            newFilter.includedSeasons = includedSeasons
+                        }
+                    }
+
+                    managedObjectContext.delete(existingFeed)
                 }
 
                 try managedObjectContext.save()
-                log.debug("Successfully added feed \(url) with \(feed.episodes?.count) episodes")
+                log.debug("Successfully added feed \(url) with \(feed.episodes?.count ?? 0) episodes")
                 return true
             } catch {
                 managedObjectContext.rollback()
