@@ -50,5 +50,6 @@
 "help.other.step1.desc" = "Feed URLs are unfortunately not often exposed by podcast applications, but the podcast creators often have feeds available.\n\nTry for instance to search for '<podcast name> rss url'.\n\nI'm rooting for you! 🤞";
 
 // FILTER
-"filter.title" = "Filter";
-
+"filter.yearly.title" = "Yearly filter";
+"filter.yearly.commit" = "Done";
+"filter.yearly.episodeCount %lld" = "%lld episodes";
