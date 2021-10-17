@@ -49,6 +49,13 @@ final class FeedParser {
 
         let episodes = mapEpisodes(from: rssFeed.items ?? [])
         episodes.forEach({ $0.feed = feed })
+
+        let seasons = buildSeasons(fromEpisodes: episodes)
+        seasons.forEach({
+            feed.addToSeasons($0)
+            $0.feed = feed
+        })
+
         return feed
     }
 
@@ -76,5 +83,31 @@ final class FeedParser {
         }
 
         return episodes
+    }
+
+    private func buildSeasons(fromEpisodes episodes: [Episode]) -> [Season] {
+        // Build a map from publication year to episodes
+        var yearMap: [Int: [Episode]] = [:]
+        for episode in episodes {
+            let year = episode.year
+            if !yearMap.keys.contains(year) {
+                yearMap[year] = []
+            }
+            yearMap[year]?.append(episode)
+        }
+
+        // Build Season-objects from the map
+        var seasons: [Season] = []
+        for (year, episodeSubset) in yearMap {
+            let season = Season(context: context)
+            season.name = "\(year)"
+            episodeSubset.forEach({
+                season.addToEpisodes($0)
+                $0.season = season
+            })
+            seasons.append(season)
+        }
+
+        return seasons
     }
 }

@@ -45,15 +45,20 @@ private struct FeedSettingsView: View {
     private static let dateFormatter = RelativeDateTimeFormatter()
 
     var feed: Feed
-    var fetchRequest: FetchRequest<Episode>
+    var episodeFetchRequest: FetchRequest<Episode>
+    var seasonFetchRequest: FetchRequest<Season>
     @State private var isRefreshing: Bool = false
 
     @Environment(\.managedObjectContext) private var managedObjectContext
 
     init(feed: Feed) {
         self.feed = feed
-        fetchRequest = FetchRequest<Episode>(
+        episodeFetchRequest = FetchRequest<Episode>(
             entity: Episode.entity(),
+            sortDescriptors: [],
+            predicate: NSPredicate(format: "feed.url == %@", feed.url!.absoluteString))
+        seasonFetchRequest = FetchRequest<Season>(
+            entity: Season.entity(),
             sortDescriptors: [],
             predicate: NSPredicate(format: "feed.url == %@", feed.url!.absoluteString))
     }
@@ -65,7 +70,8 @@ private struct FeedSettingsView: View {
                 Text(feed.title ?? "")
                     .font(.title3)
             }
-            Text("settings.feed.episodeCount \(fetchRequest.wrappedValue.count)")
+            Text("settings.feed.episodeCount \(episodeFetchRequest.wrappedValue.count)")
+            Text("settings.feed.seasonCount \(seasonFetchRequest.wrappedValue.count)")
             Text("settings.feed.lastRefreshed \(lastRefreshString())")
             Spacer()
             HStack(alignment: .center) {

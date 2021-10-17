@@ -63,7 +63,7 @@ struct FilterButton: View {
     /// We need a `@StateObject` on the `FeedFilter` to get updates
     /// when the filter changes.
     private struct FilterBindingView: View {
-        @StateObject var filter: FeedFilter
+        @StateObject var filter: SeasonFilter
         var body: some View {
             return Image(systemName: "line.horizontal.3.decrease.circle.fill")
                 .tint(Color(UIColor.systemBlue))

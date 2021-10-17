@@ -75,7 +75,7 @@ private struct FilterView: View {
             }
             feed.filter = nil
         } else {
-            let filter = FeedFilter(context: managedObjectContext)
+            let filter = SeasonFilter(context: managedObjectContext)
             filter.includedSeasons = selectedYears.map(String.init)
             feed.filter = filter
         }

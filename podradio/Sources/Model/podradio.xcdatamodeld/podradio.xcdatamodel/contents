@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19197" systemVersion="21A5304g" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19206" systemVersion="21A5543b" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="Episode" representedClassName="Episode" syncable="YES" codeGenerationType="class">
         <attribute name="detailedDescription" optional="YES" attributeType="String"/>
         <attribute name="duration" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -7,6 +7,7 @@
         <attribute name="title" attributeType="String" defaultValueString=""/>
         <attribute name="url" attributeType="URI" defaultValueString="I"/>
         <relationship name="feed" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Feed" inverseName="episodes" inverseEntity="Feed"/>
+        <relationship name="season" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Season" inverseName="episodes" inverseEntity="Season"/>
     </entity>
     <entity name="Feed" representedClassName="Feed" syncable="YES" codeGenerationType="class">
         <attribute name="imageUrl" optional="YES" attributeType="URI"/>
@@ -14,15 +15,22 @@
         <attribute name="title" attributeType="String" defaultValueString=""/>
         <attribute name="url" attributeType="URI" defaultValueString="https://example.url"/>
         <relationship name="episodes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Episode" inverseName="feed" inverseEntity="Episode"/>
-        <relationship name="filter" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="FeedFilter" inverseName="feed" inverseEntity="FeedFilter"/>
+        <relationship name="filter" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="SeasonFilter" inverseName="feed" inverseEntity="SeasonFilter"/>
+        <relationship name="seasons" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Season" inverseName="feed" inverseEntity="Season"/>
     </entity>
-    <entity name="FeedFilter" representedClassName="FeedFilter" syncable="YES" codeGenerationType="class">
+    <entity name="Season" representedClassName="Season" syncable="YES" codeGenerationType="class">
+        <attribute name="name" attributeType="String" defaultValueString=""/>
+        <relationship name="episodes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Episode" inverseName="season" inverseEntity="Episode"/>
+        <relationship name="feed" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Feed" inverseName="seasons" inverseEntity="Feed"/>
+    </entity>
+    <entity name="SeasonFilter" representedClassName="SeasonFilter" syncable="YES" codeGenerationType="class">
         <attribute name="includedSeasons" optional="YES" attributeType="Transformable" customClassName="[String]"/>
         <relationship name="feed" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Feed" inverseName="filter" inverseEntity="Feed"/>
     </entity>
     <elements>
-        <element name="Episode" positionX="-54" positionY="27" width="128" height="119"/>
-        <element name="Feed" positionX="-63" positionY="-9" width="128" height="119"/>
-        <element name="FeedFilter" positionX="-63" positionY="63" width="128" height="59"/>
+        <element name="Episode" positionX="-54" positionY="27" width="128" height="134"/>
+        <element name="Feed" positionX="-63" positionY="-9" width="128" height="134"/>
+        <element name="SeasonFilter" positionX="-63" positionY="63" width="128" height="59"/>
+        <element name="Season" positionX="-54" positionY="63" width="128" height="74"/>
     </elements>
 </model>

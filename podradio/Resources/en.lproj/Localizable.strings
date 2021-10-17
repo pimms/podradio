@@ -16,6 +16,7 @@
 // SETTINGS
 "settings.title" = "Settings";
 "settings.feed.episodeCount %lld" = "%lld episodes";
+"settings.feed.seasonCount %lld" = "%lld seasons";
 "settings.feed.lastRefreshed %@" = "Updated %@";
 "settings.feed.refreshAction" = "Refresh";
 "settings.feed.refreshedNow" = "just now";
