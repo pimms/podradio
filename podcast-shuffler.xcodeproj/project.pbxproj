@@ -534,7 +534,7 @@
 		F58AE0F726B157910015419E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F59BD29826C81CFF00B3AAB8 /* General */,
+				F59BD29826C81CFF00B3AAB8 /* Library */,
 				F59BD29326C80DF700B3AAB8 /* Player */,
 				F59BD28D26C7B61700B3AAB8 /* Settings */,
 				F5D7AA5026B16F4D00BED013 /* Help */,
@@ -590,12 +590,12 @@
 			path = Player;
 			sourceTree = "<group>";
 		};
-		F59BD29826C81CFF00B3AAB8 /* General */ = {
+		F59BD29826C81CFF00B3AAB8 /* Library */ = {
 			isa = PBXGroup;
 			children = (
 				F59BD29926C81D0A00B3AAB8 /* RoundedCorners.swift */,
 			);
-			path = General;
+			path = Library;
 			sourceTree = "<group>";
 		};
 		F5B9D13325AE456C00A962B9 /* Resources */ = {

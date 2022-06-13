@@ -59,6 +59,7 @@ struct AddFeedView: View {
 
                     Button(action: commitFeed) {
                         Text("addFeed.commitTitle")
+                            .bold()
                     }
                     .disabled(state != .readyToSubmit)
                     .padding(.bottom, 20)
