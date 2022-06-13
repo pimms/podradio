@@ -23,17 +23,15 @@ private struct AirPlayButtonRepresentable: UIViewControllerRepresentable {
 private class AirPlayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        let isDarkMode = self.traitCollection.userInterfaceStyle == .dark
-
         let button = UIButton()
         let boldConfig = UIImage.SymbolConfiguration(scale: .large)
         let boldSearch = UIImage(systemName: "airplayaudio", withConfiguration: boldConfig)
 
         button.setImage(boldSearch, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-        button.tintColor = isDarkMode ? .white : .black
-
+        button.tintColor = .secondarySystemBackground
         button.addTarget(self, action: #selector(self.showAirPlayMenu(_:)), for: .touchUpInside)
+
         self.view.addSubview(button)
     }
 

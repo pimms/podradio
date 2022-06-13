@@ -24,7 +24,7 @@ private struct FeedImageView: View {
             .resizable()
             .aspectRatio(1, contentMode: .fit)
             .cornerRadius(30)
-            .shadow(color: .label, radius: 20)
+            .shadow(color: .gray, radius: 20)
             .padding(30)
     }
 }
@@ -39,24 +39,37 @@ private struct PlayControlSheet: View {
                 Spacer()
                 AirPlayButton()
                 Spacer()
-                Image(systemName: "play.fill")
-                    .resizable()
-                    .aspectRatio(1, contentMode: .fit)
-                    .frame(width: 35, height: 35, alignment: .center)
+                PlayButton()
                 Spacer()
                 FilterButton(feed: feed)
                 Spacer()
             }
             Spacer().frame(width: 0, height: 20)
         }
-        .background(RoundedCorners(color: .tertiaryLabel, tl: 20, tr: 20, bl: 0, br: 0)
-                        .ignoresSafeArea(.all, edges: .bottom)
+        .background(
+            RoundedCorners(color: .tertiaryLabel, tl: 20, tr: 20, bl: 0, br: 0)
+                .ignoresSafeArea(.all, edges: .bottom)
         )
-
     }
 }
 
-struct FilterButton: View {
+private struct PlayButton: View {
+    var body: some View {
+        Button(action: playButtonTapped, label: {
+            Image(systemName: "play.fill")
+                .resizable()
+                .aspectRatio(1, contentMode: .fit)
+                .frame(width: 35, height: 35, alignment: .center)
+        })
+        .foregroundColor(.secondarySystemBackground)
+    }
+
+    private func playButtonTapped() {
+        print("Play button tapped")
+    }
+}
+
+private struct FilterButton: View {
     @StateObject var feed: Feed
     @State private var isPresentingFilter: Bool = false
 
@@ -76,7 +89,7 @@ struct FilterButton: View {
                 FilterBindingView(filter: filter)
             } else {
                 Image(systemName: "line.horizontal.3.decrease.circle")
-                    .tint(.label)
+                    .tint(.secondarySystemBackground)
             }
         }
     }
