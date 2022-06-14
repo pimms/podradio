@@ -58,9 +58,12 @@ private struct FilterView: View {
         } else {
             if feed.filter == nil {
                 let filter = SeasonFilter(context: managedObjectContext)
+                filter.includedSeasons = selectedSeasonIds
                 feed.filter = filter
+            } else {
+                feed.filter!.includedSeasons = selectedSeasonIds
+                feed.filter = feed.filter
             }
-            feed.filter!.includedSeasons = selectedSeasonIds
         }
 
         // Persist

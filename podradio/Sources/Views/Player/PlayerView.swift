@@ -5,14 +5,19 @@ import struct Kingfisher.KFImage
 
 struct PlayerRootView: View {
     let feed: Feed
+    @EnvironmentObject var player: Player
 
     var body: some View {
         VStack {
             FeedImageView(feed: feed)
             Text(feed.title!).font(.title)
+            Text(player.atom?.title ?? "").font(.headline)
+            Text(player.atom?.description ?? "").font(.subheadline)
             Spacer()
             PlayControlSheet(feed: feed)
-        }
+        }.onAppear(perform: {
+            self.player.configure(with: feed)
+        })
     }
 }
 
@@ -54,9 +59,11 @@ private struct PlayControlSheet: View {
 }
 
 private struct PlayButton: View {
+    @EnvironmentObject var player: Player
+
     var body: some View {
         Button(action: playButtonTapped, label: {
-            Image(systemName: "play.fill")
+            Image(systemName: player.playerState == .playing ? "pause.fill" : "play.fill")
                 .resizable()
                 .aspectRatio(1, contentMode: .fit)
                 .frame(width: 35, height: 35, alignment: .center)
@@ -66,6 +73,7 @@ private struct PlayButton: View {
 
     private func playButtonTapped() {
         print("Play button tapped")
+        player.togglePlay()
     }
 }
 
@@ -116,8 +124,15 @@ struct PlayerRootView_Preview: PreviewProvider {
         return result.first!
     }
 
+    private static var mockPlayer: Player {
+        let player = Player()
+        player.configure(with: feed)
+        return player
+    }
+
     static var previews: some View {
         PlayerRootView(feed: feed)
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+            .environmentObject(mockPlayer)
     }
 }
