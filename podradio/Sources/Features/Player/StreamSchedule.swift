@@ -1,6 +1,12 @@
 import Foundation
 
-class StreamSchedule {
+protocol StreamScheduling {
+    func currentAtom() -> StreamAtom
+    func nextAtom(after atom: StreamAtom) -> StreamAtom
+    func previousAtom(before atom: StreamAtom) -> StreamAtom
+}
+
+class StreamSchedule: StreamScheduling {
     private let feed: Feed
 
     init(feed: Feed) {
@@ -27,13 +33,13 @@ class StreamSchedule {
         return atom
     }
 
-    func streamable(after current: StreamAtom) -> StreamAtom {
+    func nextAtom(after current: StreamAtom) -> StreamAtom {
         let seedString = "after-\(current.episode.url!.hashValue)"
         var rng = randomNumberGenerator(from: seedString)
         return makeAtom(using: &rng, startTime: current.endTime)
     }
 
-    func streamable(before current: StreamAtom) -> StreamAtom {
+    func previousAtom(before current: StreamAtom) -> StreamAtom {
         let seedString = "before-\(current.episode.url!.hashValue)"
         var rng = randomNumberGenerator(from: seedString)
         return makeAtom(using: &rng, endingAt: current.endTime)

@@ -2,12 +2,12 @@ import Foundation
 import ModernAVPlayer
 
 class StreamAtom {
-    private let schedule: StreamSchedule
+    private let schedule: StreamScheduling
 
     let episode: Episode
     let startTime: Date
 
-    init(schedule: StreamSchedule, episode: Episode, startTime: Date) {
+    init(schedule: StreamScheduling, episode: Episode, startTime: Date) {
         self.schedule = schedule
         self.episode = episode
         self.startTime = startTime
@@ -24,11 +24,11 @@ extension StreamAtom {
     }
 
     var previousAtom: StreamAtom {
-        schedule.streamable(before: self)
+        schedule.previousAtom(before: self)
     }
 
     var nextAtom: StreamAtom {
-        schedule.streamable(after: self)
+        schedule.nextAtom(after: self)
     }
 
     var endTime: Date {
