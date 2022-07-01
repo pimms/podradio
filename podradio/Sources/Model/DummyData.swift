@@ -22,23 +22,23 @@ struct DummyData {
         return feed
     }
 
-    static func makeAbraham(context: NSManagedObjectContext) -> Feed {
+    static func makeExampleFeed(context: NSManagedObjectContext) -> Feed {
         let feed = Feed(context: context)
-        feed.title = "Abraham Loop"
+        feed.title = "Example"
         feed.url = URL(string: "https://www.google.com/")!
-        feed.imageUrl = URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Abraham_Lincoln_by_Byers%2C_1858_-_crop.jpg/340px-Abraham_Lincoln_by_Byers%2C_1858_-_crop.jpg")!
+        feed.imageUrl = URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/SIPI_Jelly_Beans_4.1.07.tiff/lossy-page1-256px-SIPI_Jelly_Beans_4.1.07.tiff.jpg")!
 
         let season = Season(context: context)
-        season.name = "1863"
-        season.uniqueId = "1863"
+        season.name = "1999"
+        season.uniqueId = "1999"
         feed.addToSeasons(season)
 
         for index in 0 ... 2 {
             let episode = Episode(context: context)
             episode.title = "Episode 1"
-            episode.url = URL(string: "https://www2.cs.uic.edu/~i101/SoundFiles/gettysburg10.wav")!
+            episode.url = URL(string: "https://download.samplelib.com/mp3/sample-6s.mp3")!
             episode.publishDate = Date().addingTimeInterval(-86400 * 7 * (TimeInterval(index) + 1.0))
-            episode.duration = 10
+            episode.duration = 9
             feed.addToEpisodes(episode)
             season.addToEpisodes(episode)
         }

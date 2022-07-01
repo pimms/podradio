@@ -9,7 +9,7 @@ struct podradioApp: App {
             let controller = PersistenceController(inMemory: true)
 
             let context = controller.container.viewContext
-            let feed = DummyData.makeAbraham(context: context)
+            let feed = DummyData.makeExampleFeed(context: context)
             try! context.save()
 
             return controller

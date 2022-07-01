@@ -61,9 +61,18 @@ private struct PlayControlSheet: View {
 private struct PlayButton: View {
     @EnvironmentObject var player: Player
 
+    var playerIconSystemName: String {
+        switch player.playerState {
+        case .playing, .episodeTransition:
+            return "pause.fill"
+        case .waitingToPlay, .paused, .none:
+            return "play.fill"
+        }
+    }
+
     var body: some View {
         Button(action: playButtonTapped, label: {
-            Image(systemName: player.playerState == .playing ? "pause.fill" : "play.fill")
+            Image(systemName: playerIconSystemName)
                 .resizable()
                 .aspectRatio(1, contentMode: .fit)
                 .frame(width: 35, height: 35, alignment: .center)

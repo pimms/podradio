@@ -26,7 +26,7 @@ class StreamSchedule: StreamScheduling {
         var atom = makeAtom(using: &rng, startTime: currentPeriodStart)
 
         let now = Date()
-        while atom.endTime.distance(to: now) > 15 {
+        while atom.endTime.distance(to: now) > 0 {
             atom = atom.nextAtom
         }
 

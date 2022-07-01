@@ -1,7 +1,7 @@
 import Foundation
 import ModernAVPlayer
 
-class StreamAtom {
+class StreamAtom: Equatable {
     private let schedule: StreamScheduling
 
     let episode: Episode
@@ -11,6 +11,10 @@ class StreamAtom {
         self.schedule = schedule
         self.episode = episode
         self.startTime = startTime
+    }
+
+    static func == (lhs: StreamAtom, rhs: StreamAtom) -> Bool {
+        return lhs.episode.url == rhs.episode.url
     }
 }
 
