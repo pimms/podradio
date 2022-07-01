@@ -1,8 +1,22 @@
 import SwiftUI
 
+private let ABRAHAM = true
+
 @main
 struct podradioApp: App {
-    let persistenceController = PersistenceController.shared
+    let persistenceController: PersistenceController = {
+        if ABRAHAM {
+            let controller = PersistenceController(inMemory: true)
+
+            let context = controller.container.viewContext
+            let feed = DummyData.makeAbraham(context: context)
+            try! context.save()
+
+            return controller
+        } else {
+            return PersistenceController.shared
+        }
+    }()
     let player = Player()
 
     var body: some Scene {
