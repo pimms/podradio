@@ -65,7 +65,7 @@ private struct PlayButton: View {
         switch player.playerState {
         case .playing, .episodeTransition:
             return "pause.fill"
-        case .waitingToPlay, .paused, .none:
+        case .waitingToPlay, .paused, .readyToPlay, .none:
             return "play.fill"
         }
     }

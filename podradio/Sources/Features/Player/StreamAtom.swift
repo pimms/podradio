@@ -39,6 +39,10 @@ extension StreamAtom {
         startTime.addingTimeInterval(episode.duration)
     }
 
+    var duration: TimeInterval {
+        episode.duration
+    }
+
     var media: ModernAVPlayerMedia {
         ModernAVPlayerMedia(url: episode.url!, type: .clip)
     }

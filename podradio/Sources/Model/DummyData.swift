@@ -33,10 +33,10 @@ struct DummyData {
         season.uniqueId = "1999"
         feed.addToSeasons(season)
 
-        for index in 0 ... 2 {
+        for index in 0 ... 100 {
             let episode = Episode(context: context)
-            episode.title = "Episode 1"
-            episode.url = URL(string: "https://download.samplelib.com/mp3/sample-6s.mp3")!
+            episode.title = "Episode \(index+1)"
+            episode.url = URL(string: "https://download.samplelib.com/mp3/sample-6s.mp3?foobar=\(index)")!
             episode.publishDate = Date().addingTimeInterval(-86400 * 7 * (TimeInterval(index) + 1.0))
             episode.duration = 9
             feed.addToEpisodes(episode)

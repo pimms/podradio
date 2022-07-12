@@ -179,6 +179,7 @@ class EpisodePlayer: ObservableObject {
         command.addTarget(handler: handler)
         return ModernAVPlayerRemoteCommand(reference: command, debugDescription: "PodRadio-stop", isEnabled: isEnabled)
     }
+
 }
 
 extension EpisodePlayer: ModernAVPlayerDelegate {
