@@ -56,10 +56,7 @@ private struct PlayControlSheet: View {
                     FilterButton(feed: feed)
                     Spacer()
                 }
-                ProgressView(value: 0.5, total: 1)
-                    .tint(.secondarySystemBackground)
-                    .padding(.horizontal, 20)
-                    .padding(.top, 5)
+                ProgressBar()
             }
             Spacer().frame(width: 0, height: 20)
         }
@@ -67,6 +64,17 @@ private struct PlayControlSheet: View {
             RoundedCorners(color: .tertiaryLabel, tl: 20, tr: 20, bl: 0, br: 0)
                 .ignoresSafeArea(.all, edges: .bottom)
         )
+    }
+}
+
+private struct ProgressBar: View {
+    @EnvironmentObject var player: Player
+
+    var body: some View {
+        ProgressView(value: player.currentTime, total: player.atom?.duration ?? 1)
+            .tint(.secondarySystemBackground)
+            .padding(.horizontal, 20)
+            .padding(.top, 5)
     }
 }
 

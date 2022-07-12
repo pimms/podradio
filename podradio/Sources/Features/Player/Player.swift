@@ -21,13 +21,21 @@ class Player: ObservableObject {
         }
     }
     @Published private(set) var feed: Feed?
-    @Published private(set) var atom: StreamAtom?
+    @Published private(set) var atom: StreamAtom? {
+        didSet {
+            currentTimeReporter.atom = atom
+        }
+    }
+    @Published private(set) var currentTime: TimeInterval = 0
+
 
     // MARK: - Private properties
 
     private var schedule: StreamSchedule?
     private var player: ModernAVPlayerExposable
-    private var subscription: AnyCancellable?
+    private let currentTimeReporter = CurrentTimeReporter()
+    private var feedFilterSubscription: AnyCancellable?
+    private var currentTimeSubscription: AnyCancellable?
 
     // MARK: - Internal methods
 
@@ -40,11 +48,30 @@ class Player: ObservableObject {
             player.delegate = self
             player.remoteCommands = [ makePlayCommand(), makeStopCommand(), makePlayPauseCommand() ]
         }
+
+        currentTimeReporter.onUpdateTime = { [weak self] currentTime in
+            self?.currentTime = currentTime
+        }
+        currentTimeReporter.onAtomCompleted = { [weak self] in
+            guard let self else { return }
+            guard let schedule = self.schedule else { return }
+            switch self.playerState {
+            case .readyToPlay,
+                 .waitingToPlay(autostart: false),
+                 .paused,
+                 .none:
+                self.loadAtomAndSeek(schedule.currentAtom(), autostart: false)
+            case .waitingToPlay(autostart: true),
+                 .playing,
+                 .episodeTransition:
+                break
+            }
+        }
     }
 
     func configure(with feed: Feed) {
-        subscription?.cancel()
-        subscription = nil
+        feedFilterSubscription?.cancel()
+        feedFilterSubscription = nil
 
         let schedule = StreamSchedule(feed: feed)
         self.feed = feed
@@ -52,7 +79,7 @@ class Player: ObservableObject {
         self.atom = nil
         loadAtomAndSeek(schedule.currentAtom(), autostart: false)
 
-        subscription = feed.publisher(for: \.filter)
+        feedFilterSubscription = feed.publisher(for: \.filter)
             .dropFirst()
             .sink(receiveValue: { [weak self] _ in
                 self?.filterReloaded()

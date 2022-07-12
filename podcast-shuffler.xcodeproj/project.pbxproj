@@ -94,6 +94,7 @@
 		F5D7AA4B26B16EE300BED013 /* Color+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D7AA4A26B16EE300BED013 /* Color+UIColor.swift */; };
 		F5D7AA5226B16F5500BED013 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D7AA5126B16F5500BED013 /* HelpView.swift */; };
 		F5E02B09287DF54E007D4735 /* DummyModernAVPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E02B08287DF54E007D4735 /* DummyModernAVPlayer.swift */; };
+		F5E02B0B287DFDC2007D4735 /* CurrentTimeReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E02B0A287DFDC2007D4735 /* CurrentTimeReporter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -206,6 +207,7 @@
 		F5D7AA4A26B16EE300BED013 /* Color+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+UIColor.swift"; sourceTree = "<group>"; };
 		F5D7AA5126B16F5500BED013 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 		F5E02B08287DF54E007D4735 /* DummyModernAVPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyModernAVPlayer.swift; sourceTree = "<group>"; };
+		F5E02B0A287DFDC2007D4735 /* CurrentTimeReporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTimeReporter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -442,6 +444,7 @@
 				F527A5D02857C43400498D95 /* StreamSchedule.swift */,
 				F5651F5A285902E100DB77C7 /* StreamAtom.swift */,
 				F5E02B08287DF54E007D4735 /* DummyModernAVPlayer.swift */,
+				F5E02B0A287DFDC2007D4735 /* CurrentTimeReporter.swift */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -941,6 +944,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5D7AA4526B16E6C00BED013 /* AddFeedView.swift in Sources */,
+				F5E02B0B287DFDC2007D4735 /* CurrentTimeReporter.swift in Sources */,
 				F57A64CB26C7A6680011B54D /* FeedFetcher.swift in Sources */,
 				F5651F5B285902E100DB77C7 /* StreamAtom.swift in Sources */,
 				F5D7AA5226B16F5500BED013 /* HelpView.swift in Sources */,
