@@ -12,8 +12,14 @@ struct PlayerRootView: View {
             FeedImageView(feed: feed)
             Text(feed.title!).font(.title)
             Text(player.atom?.title ?? "").font(.headline)
-            Text(player.atom?.description ?? "").font(.subheadline)
-            Spacer()
+
+            ScrollView {
+                // TODO: Make it so that this text doesn't offset the image above
+                Text(player.atom?.description ?? "")
+                    .font(.subheadline)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding()
+            }
             PlayControlSheet(feed: feed)
         }.onAppear(perform: {
             self.player.configure(with: feed)
@@ -40,14 +46,20 @@ private struct PlayControlSheet: View {
     var body: some View {
         VStack {
             Spacer().frame(width: 0, height: 20)
-            HStack {
-                Spacer()
-                AirPlayButton()
-                Spacer()
-                PlayButton()
-                Spacer()
-                FilterButton(feed: feed)
-                Spacer()
+            VStack {
+                HStack {
+                    Spacer()
+                    AirPlayButton()
+                    Spacer()
+                    PlayButton()
+                    Spacer()
+                    FilterButton(feed: feed)
+                    Spacer()
+                }
+                ProgressView(value: 0.5, total: 1)
+                    .tint(.secondarySystemBackground)
+                    .padding(.horizontal, 20)
+                    .padding(.top, 5)
             }
             Spacer().frame(width: 0, height: 20)
         }
@@ -126,22 +138,20 @@ private struct FilterButton: View {
 }
 
 struct PlayerRootView_Preview: PreviewProvider {
+    private static var persistenceController = PersistenceController.preview
     private static var feed: Feed {
-        let moc = PersistenceController.preview.container.viewContext
-        let req = Feed.fetchRequest()
-        let result = try! moc.fetch(req)
-        return result.first!
+        let moc = persistenceController.container.viewContext
+        return DummyData.makeExampleFeed(context: moc)
     }
 
     private static var mockPlayer: Player {
-        let player = Player()
+        let player = Player(dummyPlayer: true)
         player.configure(with: feed)
         return player
     }
 
     static var previews: some View {
         PlayerRootView(feed: feed)
-            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
             .environmentObject(mockPlayer)
     }
 }

@@ -93,6 +93,7 @@
 		F5D7AA4726B16E9800BED013 /* FeedHelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D7AA4626B16E9700BED013 /* FeedHelpView.swift */; };
 		F5D7AA4B26B16EE300BED013 /* Color+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D7AA4A26B16EE300BED013 /* Color+UIColor.swift */; };
 		F5D7AA5226B16F5500BED013 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D7AA5126B16F5500BED013 /* HelpView.swift */; };
+		F5E02B09287DF54E007D4735 /* DummyModernAVPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E02B08287DF54E007D4735 /* DummyModernAVPlayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -204,6 +205,7 @@
 		F5D7AA4626B16E9700BED013 /* FeedHelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedHelpView.swift; sourceTree = "<group>"; };
 		F5D7AA4A26B16EE300BED013 /* Color+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+UIColor.swift"; sourceTree = "<group>"; };
 		F5D7AA5126B16F5500BED013 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
+		F5E02B08287DF54E007D4735 /* DummyModernAVPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyModernAVPlayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -439,6 +441,7 @@
 				F527A5CD2857C36900498D95 /* Player.swift */,
 				F527A5D02857C43400498D95 /* StreamSchedule.swift */,
 				F5651F5A285902E100DB77C7 /* StreamAtom.swift */,
+				F5E02B08287DF54E007D4735 /* DummyModernAVPlayer.swift */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -944,6 +947,7 @@
 				F58AE0FA26B1579F0015419E /* FeedView.swift in Sources */,
 				F527A5CE2857C36900498D95 /* Player.swift in Sources */,
 				F593681C26CAE13400335911 /* ModelExtensions.swift.swift in Sources */,
+				F5E02B09287DF54E007D4735 /* DummyModernAVPlayer.swift in Sources */,
 				F5D7AA4726B16E9800BED013 /* FeedHelpView.swift in Sources */,
 				F59BD28F26C7B62200B3AAB8 /* SettingsView.swift in Sources */,
 				F593681E26CAE3BC00335911 /* FilterView.swift in Sources */,

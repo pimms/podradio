@@ -26,15 +26,20 @@ class Player: ObservableObject {
     // MARK: - Private properties
 
     private var schedule: StreamSchedule?
-    private var player: ModernAVPlayer
+    private var player: ModernAVPlayerExposable
     private var subscription: AnyCancellable?
 
     // MARK: - Internal methods
 
-    init() {
-        player = ModernAVPlayer()
-        player.delegate = self
-        player.remoteCommands = [ makePlayCommand(), makeStopCommand(), makePlayPauseCommand() ]
+    init(dummyPlayer: Bool = false) {
+        if dummyPlayer {
+            player = DummyModernAVPlayer()
+        } else {
+            let player = ModernAVPlayer()
+            self.player = player
+            player.delegate = self
+            player.remoteCommands = [ makePlayCommand(), makeStopCommand(), makePlayPauseCommand() ]
+        }
     }
 
     func configure(with feed: Feed) {
