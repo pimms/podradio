@@ -102,9 +102,10 @@ class Player: ObservableObject {
                 loadAtomAndSeek(currentAtom, autostart: true)
             }
 
-        case .playing, .waitingToPlay, .episodeTransition:
+        case .waitingToPlay(autostart: false):
+            playerState = .waitingToPlay(autostart: true)
+        case .playing, .waitingToPlay(autostart: true), .episodeTransition:
             player.pause()
-            playerState = .paused
         case .paused, .none:
             startPlayer()
         }

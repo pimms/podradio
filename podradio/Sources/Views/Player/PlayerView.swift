@@ -80,22 +80,45 @@ private struct ProgressBar: View {
 
 private struct PlayButton: View {
     @EnvironmentObject var player: Player
+    @State private var rotation: Double = 0
+
+    var isLoading: Bool {
+        switch player.playerState {
+        case .playing,
+             .paused,
+             .readyToPlay,
+             .none:
+            return false
+        case .episodeTransition,
+             .waitingToPlay:
+            return true
+        }
+    }
 
     var playerIconSystemName: String {
         switch player.playerState {
-        case .playing, .episodeTransition:
+        case .playing:
             return "pause.fill"
-        case .waitingToPlay, .paused, .readyToPlay, .none:
+        case .paused, .readyToPlay, .none:
             return "play.fill"
+        case .episodeTransition, .waitingToPlay:
+            // never shown
+            return "pause.fill"
         }
     }
 
     var body: some View {
-        Button(action: playButtonTapped, label: {
-            Image(systemName: playerIconSystemName)
-                .resizable()
-                .aspectRatio(1, contentMode: .fit)
-                .frame(width: 35, height: 35, alignment: .center)
+        return Button(action: playButtonTapped, label: {
+            if isLoading {
+                LoadingView()
+                    .aspectRatio(1, contentMode: .fit)
+                    .frame(width: 35, height: 35, alignment: .center)
+            } else {
+                Image(systemName: playerIconSystemName)
+                    .resizable()
+                    .aspectRatio(1, contentMode: .fit)
+                    .frame(width: 35, height: 35, alignment: .center)
+            }
         })
         .foregroundColor(.secondarySystemBackground)
     }
@@ -103,6 +126,20 @@ private struct PlayButton: View {
     private func playButtonTapped() {
         print("Play button tapped")
         player.togglePlay()
+    }
+}
+
+private struct LoadingView: View {
+    @State var isVisible: Bool = false
+
+    var body: some View {
+        Image(systemName: "circle.dotted")
+            .resizable()
+            .rotationEffect(.degrees(isVisible ? 360 : 0))
+            .animation(Animation.linear(duration: 1).repeatForever())
+            .onAppear {
+                isVisible = true
+            }
     }
 }
 
