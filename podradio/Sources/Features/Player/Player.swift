@@ -77,7 +77,10 @@ class Player: ObservableObject {
         self.feed = feed
         self.schedule = schedule
         self.atom = nil
-        loadAtomAndSeek(schedule.currentAtom(), autostart: false)
+
+        if !isRunningPreviews() {
+            loadAtomAndSeek(schedule.currentAtom(), autostart: false)
+        }
 
         feedFilterSubscription = feed.publisher(for: \.filter)
             .dropFirst()

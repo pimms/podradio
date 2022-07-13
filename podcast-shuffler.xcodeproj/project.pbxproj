@@ -83,6 +83,10 @@
 		F59BD29A26C81D0A00B3AAB8 /* RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59BD29926C81D0A00B3AAB8 /* RoundedCorners.swift */; };
 		F5B49E92259126A300399ADF /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B49E91259126A300399ADF /* Log.swift */; };
 		F5B9D15225AE46BC00A962B9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F5B9D15425AE46BC00A962B9 /* Localizable.strings */; };
+		F5C34B7F287F2CA70049893A /* PlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C34B7E287F2CA70049893A /* PlayButton.swift */; };
+		F5C34B81287F34C10049893A /* PlayerControlSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C34B80287F34C10049893A /* PlayerControlSheet.swift */; };
+		F5C34B83287F35040049893A /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C34B82287F35040049893A /* FilterButton.swift */; };
+		F5C34B85287F36720049893A /* IsRunningPreviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C34B84287F36720049893A /* IsRunningPreviews.swift */; };
 		F5C40AC626B6FE520062FB3F /* ITunes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C40AC526B6FE520062FB3F /* ITunes.swift */; };
 		F5C40ACC26B6FEB20062FB3F /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C40ACB26B6FEB20062FB3F /* HttpClient.swift */; };
 		F5C40ACE26B7006B0062FB3F /* FeedParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C40ACD26B7006B0062FB3F /* FeedParser.swift */; };
@@ -195,6 +199,10 @@
 		F5B49E91259126A300399ADF /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		F5B9D15325AE46BC00A962B9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F5B9D15825AE46BE00A962B9 /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F5C34B7E287F2CA70049893A /* PlayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayButton.swift; sourceTree = "<group>"; };
+		F5C34B80287F34C10049893A /* PlayerControlSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlSheet.swift; sourceTree = "<group>"; };
+		F5C34B82287F35040049893A /* FilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
+		F5C34B84287F36720049893A /* IsRunningPreviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsRunningPreviews.swift; sourceTree = "<group>"; };
 		F5C40AC526B6FE520062FB3F /* ITunes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITunes.swift; sourceTree = "<group>"; };
 		F5C40ACB26B6FEB20062FB3F /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
 		F5C40ACD26B7006B0062FB3F /* FeedParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedParser.swift; sourceTree = "<group>"; };
@@ -593,6 +601,7 @@
 			children = (
 				F58AE0E526B154650015419E /* podradioApp.swift */,
 				F58AE0FE26B15F770015419E /* Log.swift */,
+				F5C34B84287F36720049893A /* IsRunningPreviews.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -618,6 +627,9 @@
 			children = (
 				F59BD29426C80E0400B3AAB8 /* PlayerView.swift */,
 				F59BD29626C80FE200B3AAB8 /* AirPlayButton.swift */,
+				F5C34B7E287F2CA70049893A /* PlayButton.swift */,
+				F5C34B80287F34C10049893A /* PlayerControlSheet.swift */,
+				F5C34B82287F35040049893A /* FilterButton.swift */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -945,7 +957,10 @@
 			files = (
 				F5D7AA4526B16E6C00BED013 /* AddFeedView.swift in Sources */,
 				F5E02B0B287DFDC2007D4735 /* CurrentTimeReporter.swift in Sources */,
+				F5C34B81287F34C10049893A /* PlayerControlSheet.swift in Sources */,
 				F57A64CB26C7A6680011B54D /* FeedFetcher.swift in Sources */,
+				F5C34B85287F36720049893A /* IsRunningPreviews.swift in Sources */,
+				F5C34B83287F35040049893A /* FilterButton.swift in Sources */,
 				F5651F5B285902E100DB77C7 /* StreamAtom.swift in Sources */,
 				F5D7AA5226B16F5500BED013 /* HelpView.swift in Sources */,
 				F58AE0FA26B1579F0015419E /* FeedView.swift in Sources */,
@@ -960,6 +975,7 @@
 				F59BD29126C7C7FB00B3AAB8 /* ListFeedImageView.swift in Sources */,
 				F58AE0EF26B154660015419E /* Persistence.swift in Sources */,
 				F5C40ACE26B7006B0062FB3F /* FeedParser.swift in Sources */,
+				F5C34B7F287F2CA70049893A /* PlayButton.swift in Sources */,
 				F59BD29A26C81D0A00B3AAB8 /* RoundedCorners.swift in Sources */,
 				F5C40ACC26B6FEB20062FB3F /* HttpClient.swift in Sources */,
 				F527A5D12857C43400498D95 /* StreamSchedule.swift in Sources */,
@@ -1280,7 +1296,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1314,7 +1330,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
