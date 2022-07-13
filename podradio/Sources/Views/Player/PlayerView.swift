@@ -7,6 +7,8 @@ struct PlayerRootView: View {
     let feed: Feed
     @EnvironmentObject var player: Player
 
+    // TODO: We are currently only displaying the currently playing atom, even if
+    // `feed` is not the feed being played.
     var body: some View {
         GeometryReader { metrics in
             ZStack {
@@ -14,13 +16,19 @@ struct PlayerRootView: View {
                     FeedImageView(feed: feed)
                         .frame(width: metrics.size.width)
                         .fixedSize()
-                    Text(feed.title!).font(.title)
-                    Text(player.atom?.title ?? "Episode title goes here")
+                    Text(player.atom?.title ?? "Title")
+                        .font(.title2)
+                        .multilineTextAlignment(.center)
+                    Text(player.atom?.episode.season?.name ?? "Season")
                         .font(.headline)
+                        .multilineTextAlignment(.center)
+                    Text(feed.title!)
+                        .font(.subheadline)
+                        .multilineTextAlignment(.center)
 
                     ScrollView {
                         VStack {
-                            Text(player.atom?.title ?? [String](repeating: "prompetiss\n", count: 100).joined())
+                            Text(player.atom?.description ?? "")
                                 .font(.subheadline)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .padding(.horizontal)
@@ -37,9 +45,10 @@ struct PlayerRootView: View {
                     PlayerControlSheet(feed: feed)
                 }
             }.onAppear(perform: {
-                self.player.configure(with: feed)
+                self.player.configureIfUnconfigured(with: feed)
             })
         }
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
@@ -52,7 +61,8 @@ private struct FeedImageView: View {
             .aspectRatio(1, contentMode: .fit)
             .cornerRadius(30)
             .shadow(color: .gray, radius: 20)
-            .padding(30)
+            .padding(.horizontal, 40)
+            .padding(.vertical, 20)
     }
 }
 

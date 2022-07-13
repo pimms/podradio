@@ -43,7 +43,7 @@ class Player: ObservableObject {
         if dummyPlayer {
             player = DummyModernAVPlayer()
         } else {
-            let player = ModernAVPlayer()
+            let player = ModernAVPlayer(config: CustomModernAVPlayerConfiguration())
             self.player = player
             player.delegate = self
             player.remoteCommands = [ makePlayCommand(), makeStopCommand(), makePlayPauseCommand() ]
@@ -57,15 +57,27 @@ class Player: ObservableObject {
             guard let schedule = self.schedule else { return }
             switch self.playerState {
             case .readyToPlay,
-                 .waitingToPlay(autostart: false),
-                 .paused,
-                 .none:
+                    .waitingToPlay(autostart: false),
+                    .paused,
+                    .none:
                 self.loadAtomAndSeek(schedule.currentAtom(), autostart: false)
             case .waitingToPlay(autostart: true),
-                 .playing,
-                 .episodeTransition:
+                    .playing,
+                    .episodeTransition:
                 break
             }
+        }
+    }
+
+    func configureIfUnconfigured(with feed: Feed) {
+        if self.feed == nil {
+            configure(with: feed)
+        }
+    }
+
+    func ensureConfigured(with feed: Feed) {
+        if self.feed != feed {
+            configure(with: feed)
         }
     }
 
@@ -170,6 +182,7 @@ extension Player {
     private func playerPlaying() {
         print("ℹ️ \(#function)")
         playerState = .playing
+        player.updateMetadata(makeMetadata())
     }
 
     private func playerStopped() {
@@ -260,4 +273,20 @@ extension Player {
         return ModernAVPlayerRemoteCommand(reference: command, debugDescription: "PodRadio-stop", isEnabled: isEnabled)
     }
 
+    private func makeMetadata() -> ModernAVPlayerMediaMetadata {
+        guard let atom else { fatalError() }
+        guard let feed else { fatalError() }
+
+        var albumTitle: String?
+
+        if let year = Calendar.current.dateComponents([.year], from: atom.episode.publishDate!).year {
+            albumTitle = "\(year)"
+        }
+
+        return ModernAVPlayerMediaMetadata(
+            title: atom.title,
+            albumTitle: albumTitle,
+            artist: feed.title!,
+            remoteImageUrl: feed.imageUrl)
+    }
 }

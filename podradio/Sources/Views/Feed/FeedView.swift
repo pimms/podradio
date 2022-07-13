@@ -32,6 +32,7 @@ struct FeedRootView: View {
 }
 
 private struct FeedCell: View {
+    @EnvironmentObject var player: Player
     let feed: Feed
 
     var body: some View {
@@ -40,6 +41,11 @@ private struct FeedCell: View {
 
             VStack {
                 HStack {
+                    if player.playerState == .playing && player.feed == feed {
+                        Image(systemName: "play.circle.fill")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                    }
                     Text(feed.title!)
                         .foregroundColor(.primary)
                     Spacer()
@@ -106,11 +112,14 @@ private struct AddFeedButton: View {
 // MARK: - Previews
 
 struct FeedRootView_Previews: PreviewProvider {
+    private static var mockPlayer: Player { Player(dummyPlayer: true) }
+
     static var previews: some View {
         Group {
             NavigationView {
                 FeedRootView()
                     .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+                    .environmentObject(mockPlayer)
             }
         }
     }

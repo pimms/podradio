@@ -87,6 +87,7 @@
 		F5C34B81287F34C10049893A /* PlayerControlSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C34B80287F34C10049893A /* PlayerControlSheet.swift */; };
 		F5C34B83287F35040049893A /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C34B82287F35040049893A /* FilterButton.swift */; };
 		F5C34B85287F36720049893A /* IsRunningPreviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C34B84287F36720049893A /* IsRunningPreviews.swift */; };
+		F5C34B8B287F4E9A0049893A /* CustomModernAVPlayerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C34B8A287F4E9A0049893A /* CustomModernAVPlayerConfiguration.swift */; };
 		F5C40AC626B6FE520062FB3F /* ITunes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C40AC526B6FE520062FB3F /* ITunes.swift */; };
 		F5C40ACC26B6FEB20062FB3F /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C40ACB26B6FEB20062FB3F /* HttpClient.swift */; };
 		F5C40ACE26B7006B0062FB3F /* FeedParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C40ACD26B7006B0062FB3F /* FeedParser.swift */; };
@@ -203,6 +204,7 @@
 		F5C34B80287F34C10049893A /* PlayerControlSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlSheet.swift; sourceTree = "<group>"; };
 		F5C34B82287F35040049893A /* FilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
 		F5C34B84287F36720049893A /* IsRunningPreviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsRunningPreviews.swift; sourceTree = "<group>"; };
+		F5C34B8A287F4E9A0049893A /* CustomModernAVPlayerConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModernAVPlayerConfiguration.swift; sourceTree = "<group>"; };
 		F5C40AC526B6FE520062FB3F /* ITunes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITunes.swift; sourceTree = "<group>"; };
 		F5C40ACB26B6FEB20062FB3F /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
 		F5C40ACD26B7006B0062FB3F /* FeedParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedParser.swift; sourceTree = "<group>"; };
@@ -630,6 +632,7 @@
 				F5C34B7E287F2CA70049893A /* PlayButton.swift */,
 				F5C34B80287F34C10049893A /* PlayerControlSheet.swift */,
 				F5C34B82287F35040049893A /* FilterButton.swift */,
+				F5C34B8A287F4E9A0049893A /* CustomModernAVPlayerConfiguration.swift */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -958,6 +961,7 @@
 				F5D7AA4526B16E6C00BED013 /* AddFeedView.swift in Sources */,
 				F5E02B0B287DFDC2007D4735 /* CurrentTimeReporter.swift in Sources */,
 				F5C34B81287F34C10049893A /* PlayerControlSheet.swift in Sources */,
+				F5C34B8B287F4E9A0049893A /* CustomModernAVPlayerConfiguration.swift in Sources */,
 				F57A64CB26C7A6680011B54D /* FeedFetcher.swift in Sources */,
 				F5C34B85287F36720049893A /* IsRunningPreviews.swift in Sources */,
 				F5C34B83287F35040049893A /* FilterButton.swift in Sources */,

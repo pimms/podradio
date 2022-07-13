@@ -5,6 +5,14 @@ struct PlayerControlSheet: View {
     @EnvironmentObject var player: Player
     let feed: Feed
 
+    private var playerState: Player.PlayerState {
+        if player.feed == feed {
+            return player.playerState
+        } else {
+            return .none
+        }
+    }
+
     var body: some View {
         VStack {
             Spacer()
@@ -14,7 +22,8 @@ struct PlayerControlSheet: View {
                     Spacer()
                     AirPlayButton()
                     Spacer()
-                    PlayButton(playerState: player.playerState, onTap: {
+                    PlayButton(playerState: playerState, onTap: {
+                        player.ensureConfigured(with: feed)
                         player.togglePlay()
                     })
                     Spacer()
