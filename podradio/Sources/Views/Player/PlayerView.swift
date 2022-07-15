@@ -4,16 +4,14 @@ import CoreData
 import struct Kingfisher.KFImage
 
 struct PlayerRootView: View {
-    let feed: Feed
+    let streamSchedule: StreamSchedule
     @EnvironmentObject var player: Player
 
-    // TODO: We are currently only displaying the currently playing atom, even if
-    // `feed` is not the feed being played.
     var body: some View {
         GeometryReader { metrics in
             ZStack {
                 VStack {
-                    FeedImageView(feed: feed)
+                    FeedImageView(feed: streamSchedule.feed)
                         .frame(width: metrics.size.width)
                         .fixedSize()
                     Text(player.atom?.title ?? "Title")
@@ -22,7 +20,7 @@ struct PlayerRootView: View {
                     Text(player.atom?.episode.season?.name ?? "Season")
                         .font(.headline)
                         .multilineTextAlignment(.center)
-                    Text(feed.title!)
+                    Text(streamSchedule.feed.title!)
                         .font(.subheadline)
                         .multilineTextAlignment(.center)
 
@@ -32,20 +30,20 @@ struct PlayerRootView: View {
                                 .font(.subheadline)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .padding(.horizontal)
-                            // This is what makes us able to read the last lines.
-                            // Not a good solution, but it works (right now).
+                            // This is what makes us able to read the last lines. Not a
+                            // good solution, but it works (right now (still garbage tho)).
                             Spacer()
-                                .frame(height: 100)
+                                .frame(height: 130)
                         }
                     }
                 }
 
                 VStack {
                     Spacer()
-                    PlayerControlSheet(feed: feed)
+                    PlayerControlSheet(streamSchedule: streamSchedule)
                 }
             }.onAppear(perform: {
-                self.player.configureIfUnconfigured(with: feed)
+                self.player.configureIfUnconfigured(with: streamSchedule)
             })
         }
         .navigationBarTitleDisplayMode(.inline)
@@ -69,19 +67,20 @@ private struct FeedImageView: View {
 
 struct PlayerRootView_Preview: PreviewProvider {
     private static var persistenceController = PersistenceController.preview
-    private static var feed: Feed {
+    private static var schedule: StreamSchedule {
         let moc = persistenceController.container.viewContext
-        return DummyData.makeExampleFeed(context: moc)
+        let feed = DummyData.makeExampleFeed(context: moc)
+        return StreamSchedule(feed: feed)
     }
 
     private static var mockPlayer: Player {
         let player = Player(dummyPlayer: true)
-        player.configure(with: feed)
+        player.configure(with: schedule)
         return player
     }
 
     static var previews: some View {
-        PlayerRootView(feed: feed)
+        PlayerRootView(streamSchedule: schedule)
             .environmentObject(mockPlayer)
     }
 }

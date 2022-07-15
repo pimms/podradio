@@ -1,23 +1,19 @@
 import SwiftUI
 
 struct FeedRootView: View {
-
     private static let log = Log(Self.self)
 
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Feed.title, ascending: true)],
-        animation: .default)
-    private var feeds: FetchedResults<Feed>
+    @ObservedObject var streamScheduleStore: StreamScheduleStore
 
     var body: some View {
         Group {
-            if feeds.isEmpty {
+            if streamScheduleStore.isEmpty {
                 NoFeedsView()
             } else {
                 List() {
-                    ForEach(feeds) { feed in
+                    ForEach(streamScheduleStore.feeds) { feed in
                         NavigationLink(destination: {
-                            PlayerRootView(feed: feed)
+                            PlayerRootView(streamSchedule: streamScheduleStore.streamSchedule(for: feed))
                         }, label: {
                             FeedCell(feed: feed)
                         })
@@ -28,6 +24,9 @@ struct FeedRootView: View {
         .listStyle(InsetGroupedListStyle())
         .navigationTitle("frontpage.title")
         .navigationBarItems(leading: NavBarButton(), trailing: AddFeedButton())
+        onAppear {
+            print("items: \(streamScheduleStore.feeds.count)")
+        }
     }
 }
 
@@ -117,7 +116,7 @@ struct FeedRootView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             NavigationView {
-                FeedRootView()
+                FeedRootView(streamScheduleStore: DummyData.streamScheduleStore)
                     .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
                     .environmentObject(mockPlayer)
             }

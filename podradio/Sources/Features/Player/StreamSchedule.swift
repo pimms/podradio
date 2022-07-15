@@ -1,13 +1,25 @@
 import Foundation
 
+// TODO: I don't think this protocol is needed
 protocol StreamScheduling {
     func currentAtom() -> StreamAtom
     func nextAtom(after atom: StreamAtom) -> StreamAtom
     func previousAtom(before atom: StreamAtom) -> StreamAtom
 }
 
-class StreamSchedule: StreamScheduling {
-    private let feed: Feed
+class StreamSchedule: StreamScheduling, Equatable {
+
+    // MARK: - Static
+
+    static func == (lhs: StreamSchedule, rhs: StreamSchedule) -> Bool {
+        return lhs.feed == rhs.feed
+    }
+
+    // MARK: - Internal properties
+
+    let feed: Feed
+
+    // MARK: - Init
 
     init(feed: Feed) {
         self.feed = feed

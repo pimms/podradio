@@ -17,12 +17,18 @@ struct podradioApp: App {
             return PersistenceController.shared
         }
     }()
-    let player = Player()
+    let player: Player
+    let streamScheduleStore: StreamScheduleStore
+
+    init() {
+        player = Player()
+        streamScheduleStore = StreamScheduleStore(persistenceController: persistenceController)
+    }
 
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                FeedRootView()
+                FeedRootView(streamScheduleStore: streamScheduleStore)
             }
             .environment(\.managedObjectContext, persistenceController.container.viewContext)
             .environmentObject(player)

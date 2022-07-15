@@ -46,4 +46,8 @@ struct DummyData {
 
         return feed
     }
+
+    static var streamScheduleStore: StreamScheduleStore {
+        return StreamScheduleStore(persistenceController: PersistenceController.preview)
+    }
 }

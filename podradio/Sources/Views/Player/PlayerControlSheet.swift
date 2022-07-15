@@ -3,10 +3,10 @@ import SwiftUI
 
 struct PlayerControlSheet: View {
     @EnvironmentObject var player: Player
-    let feed: Feed
+    let streamSchedule: StreamSchedule
 
     private var playerState: Player.PlayerState {
-        if player.feed == feed {
+        if player.isConfigured(with: streamSchedule) {
             return player.playerState
         } else {
             return .none
@@ -23,11 +23,11 @@ struct PlayerControlSheet: View {
                     AirPlayButton()
                     Spacer()
                     PlayButton(playerState: playerState, onTap: {
-                        player.ensureConfigured(with: feed)
+                        player.ensureConfigured(with: streamSchedule)
                         player.togglePlay()
                     })
                     Spacer()
-                    FilterButton(feed: feed)
+                    FilterButton(feed: streamSchedule.feed)
                     Spacer()
                 }
                 Spacer()
@@ -56,21 +56,22 @@ private struct ProgressBar: View {
 
 struct PlayerControlSheetPreviews: PreviewProvider {
     private static var persistenceController = PersistenceController.preview
-    private static var feed: Feed {
+    private static var schedule: StreamSchedule {
         let moc = persistenceController.container.viewContext
-        return DummyData.makeExampleFeed(context: moc)
+        let feed = DummyData.makeExampleFeed(context: moc)
+        return StreamSchedule(feed: feed)
     }
 
     private static var mockPlayer: Player {
         let player = Player(dummyPlayer: true)
-        player.configure(with: feed)
+        player.configure(with: schedule)
         return player
     }
 
     static var previews: some View {
         VStack {
             Spacer()
-            PlayerControlSheet(feed: feed)
+            PlayerControlSheet(streamSchedule: schedule)
                 .environmentObject(mockPlayer)
                 .foregroundColor(.blue)
         }

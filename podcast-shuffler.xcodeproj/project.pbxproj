@@ -47,6 +47,7 @@
 		F527A5CE2857C36900498D95 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F527A5CD2857C36900498D95 /* Player.swift */; };
 		F527A5D12857C43400498D95 /* StreamSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F527A5D02857C43400498D95 /* StreamSchedule.swift */; };
 		F527A5D42857C60100498D95 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = F527A5D32857C60100498D95 /* Random.swift */; };
+		F52B74302881A0FE00D0AD61 /* Feed+isSameFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52B742F2881A0FE00D0AD61 /* Feed+isSameFeed.swift */; };
 		F538DC0625987BDB005B6E5D /* DefaultEpisodePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F538DC0525987BDB005B6E5D /* DefaultEpisodePicker.swift */; };
 		F53DAF142590833900D3F0A9 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DAF132590833900D3F0A9 /* Filter.swift */; };
 		F53DAF28259083B300D3F0A9 /* BaseFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DAF27259083B300D3F0A9 /* BaseFilter.swift */; };
@@ -88,6 +89,7 @@
 		F5C34B83287F35040049893A /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C34B82287F35040049893A /* FilterButton.swift */; };
 		F5C34B85287F36720049893A /* IsRunningPreviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C34B84287F36720049893A /* IsRunningPreviews.swift */; };
 		F5C34B8B287F4E9A0049893A /* CustomModernAVPlayerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C34B8A287F4E9A0049893A /* CustomModernAVPlayerConfiguration.swift */; };
+		F5C34B8F287F58E80049893A /* StreamScheduleStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C34B8E287F58E80049893A /* StreamScheduleStore.swift */; };
 		F5C40AC626B6FE520062FB3F /* ITunes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C40AC526B6FE520062FB3F /* ITunes.swift */; };
 		F5C40ACC26B6FEB20062FB3F /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C40ACB26B6FEB20062FB3F /* HttpClient.swift */; };
 		F5C40ACE26B7006B0062FB3F /* FeedParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C40ACD26B7006B0062FB3F /* FeedParser.swift */; };
@@ -161,6 +163,7 @@
 		F527A5CD2857C36900498D95 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		F527A5D02857C43400498D95 /* StreamSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamSchedule.swift; sourceTree = "<group>"; };
 		F527A5D32857C60100498D95 /* Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
+		F52B742F2881A0FE00D0AD61 /* Feed+isSameFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Feed+isSameFeed.swift"; sourceTree = "<group>"; };
 		F538DC0525987BDB005B6E5D /* DefaultEpisodePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultEpisodePicker.swift; sourceTree = "<group>"; };
 		F53DAF132590833900D3F0A9 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		F53DAF27259083B300D3F0A9 /* BaseFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFilter.swift; sourceTree = "<group>"; };
@@ -205,6 +208,7 @@
 		F5C34B82287F35040049893A /* FilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
 		F5C34B84287F36720049893A /* IsRunningPreviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsRunningPreviews.swift; sourceTree = "<group>"; };
 		F5C34B8A287F4E9A0049893A /* CustomModernAVPlayerConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModernAVPlayerConfiguration.swift; sourceTree = "<group>"; };
+		F5C34B8E287F58E80049893A /* StreamScheduleStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamScheduleStore.swift; sourceTree = "<group>"; };
 		F5C40AC526B6FE520062FB3F /* ITunes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITunes.swift; sourceTree = "<group>"; };
 		F5C40ACB26B6FEB20062FB3F /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
 		F5C40ACD26B7006B0062FB3F /* FeedParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedParser.swift; sourceTree = "<group>"; };
@@ -463,6 +467,7 @@
 			isa = PBXGroup;
 			children = (
 				F527A5D32857C60100498D95 /* Random.swift */,
+				F5C34B8E287F58E80049893A /* StreamScheduleStore.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -569,6 +574,7 @@
 				F593681B26CAE13400335911 /* ModelExtensions.swift.swift */,
 				F58AE0EE26B154660015419E /* Persistence.swift */,
 				F593681F26CAE54300335911 /* DummyData.swift */,
+				F52B742F2881A0FE00D0AD61 /* Feed+isSameFeed.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -968,6 +974,7 @@
 				F5651F5B285902E100DB77C7 /* StreamAtom.swift in Sources */,
 				F5D7AA5226B16F5500BED013 /* HelpView.swift in Sources */,
 				F58AE0FA26B1579F0015419E /* FeedView.swift in Sources */,
+				F5C34B8F287F58E80049893A /* StreamScheduleStore.swift in Sources */,
 				F527A5CE2857C36900498D95 /* Player.swift in Sources */,
 				F593681C26CAE13400335911 /* ModelExtensions.swift.swift in Sources */,
 				F5E02B09287DF54E007D4735 /* DummyModernAVPlayer.swift in Sources */,
@@ -981,6 +988,7 @@
 				F5C40ACE26B7006B0062FB3F /* FeedParser.swift in Sources */,
 				F5C34B7F287F2CA70049893A /* PlayButton.swift in Sources */,
 				F59BD29A26C81D0A00B3AAB8 /* RoundedCorners.swift in Sources */,
+				F52B74302881A0FE00D0AD61 /* Feed+isSameFeed.swift in Sources */,
 				F5C40ACC26B6FEB20062FB3F /* HttpClient.swift in Sources */,
 				F527A5D12857C43400498D95 /* StreamSchedule.swift in Sources */,
 				F58AE0E626B154650015419E /* podradioApp.swift in Sources */,

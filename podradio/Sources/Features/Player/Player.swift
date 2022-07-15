@@ -69,32 +69,35 @@ class Player: ObservableObject {
         }
     }
 
-    func configureIfUnconfigured(with feed: Feed) {
+    func isConfigured(with schedule: StreamSchedule) -> Bool {
+        return self.schedule == schedule
+    }
+
+    func configureIfUnconfigured(with schedule: StreamSchedule) {
         if self.feed == nil {
-            configure(with: feed)
+            configure(with: schedule)
         }
     }
 
-    func ensureConfigured(with feed: Feed) {
-        if self.feed != feed {
-            configure(with: feed)
+    func ensureConfigured(with schedule: StreamSchedule) {
+        if self.schedule != schedule {
+            configure(with: schedule)
         }
     }
 
-    func configure(with feed: Feed) {
+    func configure(with schedule: StreamSchedule) {
         feedFilterSubscription?.cancel()
         feedFilterSubscription = nil
 
-        let schedule = StreamSchedule(feed: feed)
-        self.feed = feed
         self.schedule = schedule
+        self.feed = schedule.feed
         self.atom = nil
 
         if !isRunningPreviews() {
             loadAtomAndSeek(schedule.currentAtom(), autostart: false)
         }
 
-        feedFilterSubscription = feed.publisher(for: \.filter)
+        feedFilterSubscription = schedule.feed.publisher(for: \.filter)
             .dropFirst()
             .sink(receiveValue: { [weak self] _ in
                 self?.filterReloaded()
