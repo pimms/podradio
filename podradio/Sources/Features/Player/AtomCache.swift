@@ -1,6 +1,6 @@
 import Foundation
 
-class StreamScheduleCache {
+class AtomCache {
     private struct Entry {
         let atom: StreamAtom
         let includedSeasons: [String]?

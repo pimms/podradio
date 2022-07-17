@@ -48,9 +48,10 @@
 		F527A5D12857C43400498D95 /* StreamSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F527A5D02857C43400498D95 /* StreamSchedule.swift */; };
 		F527A5D42857C60100498D95 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = F527A5D32857C60100498D95 /* Random.swift */; };
 		F52B74302881A0FE00D0AD61 /* Feed+isSameFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52B742F2881A0FE00D0AD61 /* Feed+isSameFeed.swift */; };
-		F52B74342881AB6800D0AD61 /* StreamScheduleCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52B74332881AB6800D0AD61 /* StreamScheduleCache.swift */; };
+		F52B74342881AB6800D0AD61 /* AtomCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52B74332881AB6800D0AD61 /* AtomCache.swift */; };
 		F52B74362884029200D0AD61 /* FeedFetchRequestExecutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52B74352884029200D0AD61 /* FeedFetchRequestExecutor.swift */; };
 		F52B74382884238000D0AD61 /* DefaultFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52B74372884238000D0AD61 /* DefaultFeedStore.swift */; };
+		F52B743A2884588900D0AD61 /* AtomGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52B74392884588900D0AD61 /* AtomGenerator.swift */; };
 		F538DC0625987BDB005B6E5D /* DefaultEpisodePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F538DC0525987BDB005B6E5D /* DefaultEpisodePicker.swift */; };
 		F53DAF142590833900D3F0A9 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DAF132590833900D3F0A9 /* Filter.swift */; };
 		F53DAF28259083B300D3F0A9 /* BaseFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DAF27259083B300D3F0A9 /* BaseFilter.swift */; };
@@ -167,9 +168,10 @@
 		F527A5D02857C43400498D95 /* StreamSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamSchedule.swift; sourceTree = "<group>"; };
 		F527A5D32857C60100498D95 /* Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
 		F52B742F2881A0FE00D0AD61 /* Feed+isSameFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Feed+isSameFeed.swift"; sourceTree = "<group>"; };
-		F52B74332881AB6800D0AD61 /* StreamScheduleCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamScheduleCache.swift; sourceTree = "<group>"; };
+		F52B74332881AB6800D0AD61 /* AtomCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtomCache.swift; sourceTree = "<group>"; };
 		F52B74352884029200D0AD61 /* FeedFetchRequestExecutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedFetchRequestExecutor.swift; sourceTree = "<group>"; };
 		F52B74372884238000D0AD61 /* DefaultFeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultFeedStore.swift; sourceTree = "<group>"; };
+		F52B74392884588900D0AD61 /* AtomGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtomGenerator.swift; sourceTree = "<group>"; };
 		F538DC0525987BDB005B6E5D /* DefaultEpisodePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultEpisodePicker.swift; sourceTree = "<group>"; };
 		F53DAF132590833900D3F0A9 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		F53DAF27259083B300D3F0A9 /* BaseFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseFilter.swift; sourceTree = "<group>"; };
@@ -462,10 +464,11 @@
 			children = (
 				F527A5CD2857C36900498D95 /* Player.swift */,
 				F527A5D02857C43400498D95 /* StreamSchedule.swift */,
-				F52B74332881AB6800D0AD61 /* StreamScheduleCache.swift */,
+				F52B74332881AB6800D0AD61 /* AtomCache.swift */,
 				F5651F5A285902E100DB77C7 /* StreamAtom.swift */,
 				F5E02B08287DF54E007D4735 /* DummyModernAVPlayer.swift */,
 				F5E02B0A287DFDC2007D4735 /* CurrentTimeReporter.swift */,
+				F52B74392884588900D0AD61 /* AtomGenerator.swift */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -982,6 +985,7 @@
 				F5C34B83287F35040049893A /* FilterButton.swift in Sources */,
 				F52B74382884238000D0AD61 /* DefaultFeedStore.swift in Sources */,
 				F5651F5B285902E100DB77C7 /* StreamAtom.swift in Sources */,
+				F52B743A2884588900D0AD61 /* AtomGenerator.swift in Sources */,
 				F5D7AA5226B16F5500BED013 /* HelpView.swift in Sources */,
 				F58AE0FA26B1579F0015419E /* FeedView.swift in Sources */,
 				F5C34B8F287F58E80049893A /* StreamScheduleStore.swift in Sources */,
@@ -1004,7 +1008,7 @@
 				F527A5D12857C43400498D95 /* StreamSchedule.swift in Sources */,
 				F58AE0E626B154650015419E /* podradioApp.swift in Sources */,
 				F58AE0F226B154660015419E /* podradio.xcdatamodeld in Sources */,
-				F52B74342881AB6800D0AD61 /* StreamScheduleCache.swift in Sources */,
+				F52B74342881AB6800D0AD61 /* AtomCache.swift in Sources */,
 				F59BD29726C80FE200B3AAB8 /* AirPlayButton.swift in Sources */,
 				F58AE0FC26B15E6E0015419E /* NoFeedsView.swift in Sources */,
 				F59BD29526C80E0400B3AAB8 /* PlayerView.swift in Sources */,
