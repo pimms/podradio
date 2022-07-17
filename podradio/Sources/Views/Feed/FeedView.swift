@@ -7,28 +7,34 @@ struct FeedRootView: View {
 
     var body: some View {
         Group {
-            if streamScheduleStore.isEmpty {
-                NoFeedsView()
-            } else {
-                NavigationStack(path: $path) {
-                    List() {
-                        ForEach(streamScheduleStore.feeds) { feed in
-                            NavigationLink(value: feed) {
-                                FeedCell(feed: feed)
-                            }
-                        }
-                    }
+            NavigationStack(path: $path) {
+                contentView
                     .navigationTitle("frontpage.title")
                     .navigationBarItems(leading: NavBarButton(), trailing: AddFeedButton())
                     .navigationDestination(for: Feed.self) { feed in
                         PlayerRootView(streamSchedule: streamScheduleStore.streamSchedule(for: feed))
                     }
-                }
             }
         }
         .listStyle(InsetGroupedListStyle())
         .onAppear {
             loadInitialFeed()
+        }
+    }
+
+    private var contentView: some View {
+        Group {
+            if streamScheduleStore.isEmpty {
+                NoFeedsView()
+            } else {
+                List() {
+                    ForEach(streamScheduleStore.feeds) { feed in
+                        NavigationLink(value: feed) {
+                            FeedCell(feed: feed)
+                        }
+                    }
+                }
+            }
         }
     }
 
