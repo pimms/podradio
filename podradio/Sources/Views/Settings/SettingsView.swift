@@ -128,7 +128,7 @@ struct SettingsRootView_Previews: PreviewProvider {
         Group {
             SettingsRootView()
                 .environment(\.managedObjectContext,
-                             PersistenceController.preview.container.viewContext)
+                             PersistenceController.preview.mainContext)
         }
     }
 }

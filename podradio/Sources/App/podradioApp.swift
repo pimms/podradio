@@ -8,7 +8,7 @@ struct podradioApp: App {
         if ABRAHAM {
             let controller = PersistenceController(inMemory: true)
 
-            let context = controller.container.viewContext
+            let context = controller.mainContext
             let feed = DummyData.makeExampleFeed(context: context)
             try! context.save()
 
@@ -28,7 +28,7 @@ struct podradioApp: App {
     var body: some Scene {
         WindowGroup {
             FeedRootView(streamScheduleStore: streamScheduleStore)
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environment(\.managedObjectContext, persistenceController.mainContext)
                 .environmentObject(player)
         }
     }

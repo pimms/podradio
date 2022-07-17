@@ -1,11 +1,14 @@
 import CoreData
 
 struct PersistenceController {
+
+    // MARK: - Static
+
     static let shared = PersistenceController()
 
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
-        let viewContext = result.container.viewContext
+        let viewContext = result.mainContext
 
         DummyData.makeFeed(context: viewContext, title: "feeda", episodeCount: 100)
         DummyData.makeFeed(context: viewContext, title: "feedb", episodeCount: 5)
@@ -20,7 +23,15 @@ struct PersistenceController {
         return result
     }()
 
-    let container: NSPersistentCloudKitContainer
+    // MARK: - Internal properties
+
+    var mainContext: NSManagedObjectContext { container.viewContext }
+
+    // MARK: - Private properties
+
+    private let container: NSPersistentCloudKitContainer
+
+    // MARK: - Setup
 
     init(inMemory: Bool = false) {
         container = NSPersistentCloudKitContainer(name: "podradio")

@@ -108,7 +108,7 @@ private struct MultipleSelectionRow: View {
 
 struct FilterRootView_Previews: PreviewProvider {
     static var feed: Feed {
-        let context = PersistenceController.preview.container.viewContext
+        let context = PersistenceController.preview.mainContext
         return DummyData.makeFeed(context: context, title: "Some Feed", episodeCount: 1000)
     }
 

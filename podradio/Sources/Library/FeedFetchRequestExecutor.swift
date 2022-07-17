@@ -16,7 +16,7 @@ class FeedFetchRequestExecutor: NSObject, NSFetchedResultsControllerDelegate {
 
         fetchedResultsController = NSFetchedResultsController(
             fetchRequest: fetchRequest,
-            managedObjectContext: persistenceController.container.viewContext,
+            managedObjectContext: persistenceController.mainContext,
             sectionNameKeyPath: "title",
             cacheName: nil)
         super.init()

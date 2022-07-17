@@ -4,6 +4,7 @@ struct FeedRootView: View {
     private static let log = Log(Self.self)
     @ObservedObject var streamScheduleStore: StreamScheduleStore
     @State private var path: [Feed] = []
+    @Environment(\.managedObjectContext) private var managedObjectContext
 
     var body: some View {
         Group {
@@ -130,7 +131,7 @@ struct FeedRootView_Previews: PreviewProvider {
 
     static var previews: some View {
         FeedRootView(streamScheduleStore: DummyData.streamScheduleStore)
-            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+            .environment(\.managedObjectContext, PersistenceController.preview.mainContext)
             .environmentObject(mockPlayer)
     }
 }

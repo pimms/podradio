@@ -71,7 +71,7 @@ private struct FeedImageView: View {
 struct PlayerRootView_Preview: PreviewProvider {
     private static var persistenceController = PersistenceController.preview
     private static var schedule: StreamSchedule {
-        let moc = persistenceController.container.viewContext
+        let moc = persistenceController.mainContext
         let feed = DummyData.makeExampleFeed(context: moc)
         return StreamSchedule(feed: feed)
     }
