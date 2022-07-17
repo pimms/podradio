@@ -11,6 +11,7 @@ struct FilterButton: View {
         @StateObject var filter: SeasonFilter
         var body: some View {
             return Image(systemName: "line.horizontal.3.decrease.circle.fill")
+                .resizable()
                 .tint(Color(UIColor.systemBlue))
         }
     }
@@ -21,6 +22,7 @@ struct FilterButton: View {
                 FilterBindingView(filter: filter)
             } else {
                 Image(systemName: "line.horizontal.3.decrease.circle")
+                    .resizable()
                     .tint(.secondarySystemBackground)
             }
         }

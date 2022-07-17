@@ -21,6 +21,7 @@ struct PlayerControlSheet: View {
                 HStack {
                     Spacer()
                     AirPlayButton()
+                        .frame(width: 30, height: 30)
                     Spacer()
                     PlayButton(playerState: playerState, onTap: {
                         player.ensureConfigured(with: streamSchedule)
@@ -28,6 +29,7 @@ struct PlayerControlSheet: View {
                     })
                     Spacer()
                     FilterButton(feed: streamSchedule.feed)
+                        .frame(width: 24, height: 24)
                     Spacer()
                 }
                 Spacer()
