@@ -1,21 +1,30 @@
 import Foundation
 
 class StreamScheduleCache {
-    private var atom: StreamAtom?
+    private struct Entry {
+        let atom: StreamAtom
+        let includedSeasons: [String]?
+    }
+    private var entry: Entry?
 
-    func setCurrentAtom(_ atom: StreamAtom) {
-        self.atom = atom
+    func clear() {
+        entry = nil
     }
 
-    func currentAtom() -> StreamAtom? {
-        guard let atom else { return nil }
+    func setCurrentAtom(_ atom: StreamAtom, filter: SeasonFilter?) {
+        self.entry = Entry(atom: atom, includedSeasons: filter?.includedSeasons)
+    }
+
+    func currentAtom(for filter: SeasonFilter?) -> StreamAtom? {
+        guard let entry else { return nil }
+        guard filter?.includedSeasons == entry.includedSeasons else { return nil }
 
         let now = Date()
-        if now >= atom.endTime {
-            self.atom = nil
+        if now >= entry.atom.endTime {
+            self.entry = nil
             return nil
         }
 
-        return atom
+        return entry.atom
     }
 }

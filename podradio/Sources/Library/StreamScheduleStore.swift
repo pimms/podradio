@@ -28,10 +28,12 @@ class StreamScheduleStore: ObservableObject {
     }
 
     private func rebuildIndex(feeds: [Feed]) {
+        self.feeds = []
+
         // First, drop any feeds that have been removed
         var feedsToDrop: [URL] = []
         for key in map.keys {
-            if feeds.contains(where: { $0.isSameFeed(as: key) }) {
+            if !feeds.contains(where: { $0.isSameFeed(as: key) }) {
                 feedsToDrop.append(key)
             }
         }
@@ -39,7 +41,9 @@ class StreamScheduleStore: ObservableObject {
 
         // Identify all new feeds and add them to the map
         for feed in feeds {
-            if map[feed.url!] == nil {
+            if let schedule = map[feed.url!] {
+                schedule.updateFeed(feed)
+            } else {
                 let streamSchedule = StreamSchedule(feed: feed)
                 map[feed.url!] = streamSchedule
             }

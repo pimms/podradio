@@ -20,13 +20,13 @@ class Player: ObservableObject {
             print("🍖 playerState changed: \(playerState)")
         }
     }
-    @Published private(set) var feed: Feed?
     @Published private(set) var atom: StreamAtom? {
         didSet {
             currentTimeReporter.atom = atom
         }
     }
     @Published private(set) var currentTime: TimeInterval = 0
+    var feed: Feed? { schedule?.feed }
 
 
     // MARK: - Private properties
@@ -74,7 +74,7 @@ class Player: ObservableObject {
     }
 
     func configureIfUnconfigured(with schedule: StreamSchedule) {
-        if self.feed == nil {
+        if self.schedule == nil {
             configure(with: schedule)
         }
     }
@@ -90,7 +90,6 @@ class Player: ObservableObject {
         feedFilterSubscription = nil
 
         self.schedule = schedule
-        self.feed = schedule.feed
         self.atom = nil
 
         if !isRunningPreviews() {
@@ -99,11 +98,11 @@ class Player: ObservableObject {
 
         feedFilterSubscription = schedule.feed.publisher(for: \.filter)
             .dropFirst()
+            .debounce(for: 1, scheduler: RunLoop.main)
             .sink(receiveValue: { [weak self] _ in
                 self?.filterReloaded()
             }
         )
-
     }
 
     func togglePlay() {
@@ -156,7 +155,9 @@ extension Player {
         case .playing:
             startPlayer()
         default:
-            atom = schedule?.currentAtom()
+            if let atom = schedule?.currentAtom() {
+                loadAtomAndSeek(atom, autostart: false)
+            }
         }
     }
 
@@ -278,7 +279,7 @@ extension Player {
 
     private func makeMetadata() -> ModernAVPlayerMediaMetadata {
         guard let atom else { fatalError() }
-        guard let feed else { fatalError() }
+        guard let feed = schedule?.feed else { fatalError() }
 
         var albumTitle: String?
 

@@ -74,7 +74,7 @@ class FeedFetcher {
 
             do {
                 if let existingFeed = existingFeed {
-                    log.debug("Replacing previously fetched feed")
+                    log.debug("Replacing previously fetched feed (\(existingFeed.objectID))")
                     if let existingFilter = existingFeed.filter {
                         let previousSeasons = existingFilter.includedSeasons ?? []
                         let seasons = feed.seasons!.allObjects.compactMap({ $0 as? Season })

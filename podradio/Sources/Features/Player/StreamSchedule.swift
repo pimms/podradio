@@ -17,7 +17,7 @@ class StreamSchedule: StreamScheduling, Equatable {
 
     // MARK: - Internal properties
 
-    let feed: Feed
+    private(set) var feed: Feed
 
     // MARK: - Private properties
 
@@ -32,8 +32,14 @@ class StreamSchedule: StreamScheduling, Equatable {
 
     // MARK: - Internal methods
 
+    func updateFeed(_ feed: Feed) {
+        guard feed.url! == self.feed.url! else { fatalError() }
+        self.feed = feed
+        self.cache.clear()
+    }
+
     func currentAtom() -> StreamAtom {
-        if let cached = cache.currentAtom() {
+        if let cached = cache.currentAtom(for: feed.filter) {
             return cached
         }
 
@@ -51,7 +57,7 @@ class StreamSchedule: StreamScheduling, Equatable {
             atom = atom.nextAtom
         }
 
-        cache.setCurrentAtom(atom)
+        cache.setCurrentAtom(atom, filter: feed.filter)
         return atom
     }
 
