@@ -2,21 +2,25 @@ import SwiftUI
 
 struct FeedRootView: View {
     private static let log = Log(Self.self)
-
     @ObservedObject var streamScheduleStore: StreamScheduleStore
+    @State private var path: [Feed] = []
 
     var body: some View {
         Group {
             if streamScheduleStore.isEmpty {
                 NoFeedsView()
             } else {
-                List() {
-                    ForEach(streamScheduleStore.feeds) { feed in
-                        NavigationLink(destination: {
-                            PlayerRootView(streamSchedule: streamScheduleStore.streamSchedule(for: feed))
-                        }, label: {
-                            FeedCell(feed: feed)
-                        })
+                NavigationStack(path: $path) {
+                    List() {
+                        ForEach(streamScheduleStore.feeds) { feed in
+                            NavigationLink(value: feed) {
+                                FeedCell(feed: feed)
+                            }
+                        }
+                    }
+                    .navigationTitle("PodRadio")
+                    .navigationDestination(for: Feed.self) { feed in
+                        PlayerRootView(streamSchedule: streamScheduleStore.streamSchedule(for: feed))
                     }
                 }
             }
@@ -24,6 +28,15 @@ struct FeedRootView: View {
         .listStyle(InsetGroupedListStyle())
         .navigationTitle("frontpage.title")
         .navigationBarItems(leading: NavBarButton(), trailing: AddFeedButton())
+        .onAppear {
+            loadInitialFeed()
+        }
+    }
+
+    private func loadInitialFeed() {
+        guard let url = DefaultFeedStore.defaultFeedUrl() else { return }
+        guard let feed = streamScheduleStore.feeds.first(where: { $0.url == url }) else { return }
+        path = [feed]
     }
 }
 

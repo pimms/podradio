@@ -45,6 +45,7 @@ struct PlayerRootView: View {
                     PlayerControlSheet(streamSchedule: streamSchedule)
                 }
             }.onAppear(perform: {
+                DefaultFeedStore.setDefaultFeed(streamSchedule.feed)
                 self.player.configureIfUnconfigured(with: streamSchedule)
             })
         }

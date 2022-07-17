@@ -27,11 +27,9 @@ struct podradioApp: App {
 
     var body: some Scene {
         WindowGroup {
-            NavigationView {
-                FeedRootView(streamScheduleStore: streamScheduleStore)
-            }
-            .environment(\.managedObjectContext, persistenceController.container.viewContext)
-            .environmentObject(player)
+            FeedRootView(streamScheduleStore: streamScheduleStore)
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environmentObject(player)
         }
     }
 }
