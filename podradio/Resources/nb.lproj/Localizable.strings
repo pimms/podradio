@@ -19,7 +19,7 @@
 "settings.feed.seasonCount %@" = "%@ sesonger";
 "settings.feed.lastRefreshed %@" = "Oppdatert for %@";
 "settings.feed.refreshAction" = "Oppdater";
-"settings.feed.refreshedNow" = "akkurat";
+"settings.feed.refreshedNow" = "bitte litt siden";
 
 // FRONT PAGE
 "frontpage.title" = "PodRadio";

@@ -34,7 +34,7 @@ struct PlayerControlSheet: View {
                 }
                 Spacer()
                     .frame(width: 0, height: 20)
-                ProgressBar()
+                ProgressBar(streamSchedule: streamSchedule)
             }
             Spacer()
                 .frame(width: 0, height: 20)
@@ -47,10 +47,10 @@ struct PlayerControlSheet: View {
 }
 
 private struct ProgressBar: View {
-    @EnvironmentObject var player: Player
+    @ObservedObject var streamSchedule: StreamSchedule
 
     var body: some View {
-        ProgressView(value: player.currentTime, total: player.atom?.duration ?? 1)
+        ProgressView(value: streamSchedule.currentTime, total: streamSchedule.atomDuration)
             .tint(.secondarySystemBackground)
             .padding(.horizontal, 20)
     }

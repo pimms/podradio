@@ -4,10 +4,8 @@ import CoreData
 import struct Kingfisher.KFImage
 
 struct PlayerRootView: View {
-    let streamSchedule: StreamSchedule
+    @ObservedObject var streamSchedule: StreamSchedule
     @EnvironmentObject var player: Player
-
-    var atom: StreamAtom { streamSchedule.currentAtom() }
 
     var body: some View {
         GeometryReader { metrics in
@@ -16,10 +14,10 @@ struct PlayerRootView: View {
                     FeedImageView(feed: streamSchedule.feed)
                         .frame(width: metrics.size.width)
                         .fixedSize()
-                    Text(atom.title)
+                    Text(streamSchedule.atom.title)
                         .font(.title2)
                         .multilineTextAlignment(.center)
-                    Text(atom.episode.season?.name ?? "Season")
+                    Text(streamSchedule.atom.episode.season?.name ?? "Season")
                         .font(.headline)
                         .multilineTextAlignment(.center)
                     Text(streamSchedule.feed.title!)
@@ -28,7 +26,7 @@ struct PlayerRootView: View {
 
                     ScrollView {
                         VStack {
-                            Text(atom.description)
+                            Text(streamSchedule.atom.description)
                                 .font(.subheadline)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .padding(.horizontal)

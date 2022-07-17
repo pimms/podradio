@@ -20,22 +20,14 @@ class Player: ObservableObject {
             print("🍖 playerState changed: \(playerState)")
         }
     }
-    @Published private(set) var atom: StreamAtom? {
-        didSet {
-            currentTimeReporter.atom = atom
-        }
-    }
-    @Published private(set) var currentTime: TimeInterval = 0
     var feed: Feed? { schedule?.feed }
-
 
     // MARK: - Private properties
 
     private var schedule: StreamSchedule?
     private var player: ModernAVPlayerExposable
-    private let currentTimeReporter = CurrentTimeReporter()
-    private var feedFilterSubscription: AnyCancellable?
     private var currentTimeSubscription: AnyCancellable?
+    private var atomChangeSubscription: AnyCancellable?
 
     // MARK: - Internal methods
 
@@ -47,25 +39,6 @@ class Player: ObservableObject {
             self.player = player
             player.delegate = self
             player.remoteCommands = [ makePlayCommand(), makeStopCommand(), makePlayPauseCommand() ]
-        }
-
-        currentTimeReporter.onUpdateTime = { [weak self] currentTime in
-            self?.currentTime = currentTime
-        }
-        currentTimeReporter.onAtomCompleted = { [weak self] in
-            guard let self else { return }
-            guard let schedule = self.schedule else { return }
-            switch self.playerState {
-            case .readyToPlay,
-                    .waitingToPlay(autostart: false),
-                    .paused,
-                    .none:
-                self.loadAtomAndSeek(schedule.currentAtom(), autostart: false)
-            case .waitingToPlay(autostart: true),
-                    .playing,
-                    .episodeTransition:
-                break
-            }
         }
     }
 
@@ -86,39 +59,21 @@ class Player: ObservableObject {
     }
 
     func configure(with schedule: StreamSchedule) {
-        feedFilterSubscription?.cancel()
-        feedFilterSubscription = nil
-
         self.schedule = schedule
-        self.atom = nil
 
         if !isRunningPreviews() {
-            loadAtomAndSeek(schedule.currentAtom(), autostart: false)
+            atomChangeSubscription?.cancel()
+            atomChangeSubscription = schedule.$atom.sink(receiveValue: { [weak self] _ in
+                self?.onAtomChanged()
+            })
         }
-
-        feedFilterSubscription = schedule.feed.publisher(for: \.filter)
-            .dropFirst()
-            .debounce(for: 1, scheduler: RunLoop.main)
-            .sink(receiveValue: { [weak self] _ in
-                self?.filterReloaded()
-            }
-        )
     }
 
     func togglePlay() {
         guard let schedule else { fatalError() }
         switch playerState {
         case .readyToPlay:
-            let currentAtom = schedule.currentAtom()
-            if currentAtom == atom {
-                print("▶️ The loaded asset is still relevant")
-                player.seek(position: currentAtom.currentPosition)
-                player.play()
-            } else {
-                print("▶️ The loaded asset has expired")
-                loadAtomAndSeek(currentAtom, autostart: true)
-            }
-
+            loadAtomAndSeek(schedule.atom, autostart: true)
         case .waitingToPlay(autostart: false):
             playerState = .waitingToPlay(autostart: true)
         case .playing, .waitingToPlay(autostart: true), .episodeTransition:
@@ -135,47 +90,40 @@ class Player: ObservableObject {
     // MARK: - Private methods
 
     private func startPlayer() {
-        guard let atom = schedule?.currentAtom() else { fatalError("Not configured") }
+        guard let atom = schedule?.atom else { fatalError("Not configured") }
         loadAtomAndSeek(atom, autostart: true)
     }
 
     private func loadAtomAndSeek(_ atom: StreamAtom, autostart: Bool) {
-        self.atom = atom
         let media = atom.media
         playerState = .waitingToPlay(autostart: autostart)
         player.load(media: media, autostart: false, position: atom.currentPosition)
+    }
+
+    private func onAtomChanged() {
+        print("ℹ️ \(#function)")
+        switch playerState {
+        case .playing, .episodeTransition:
+            startPlayer()
+        default:
+            if let atom = schedule?.atom {
+                loadAtomAndSeek(atom, autostart: false)
+            }
+        }
     }
 }
 
 // MARK: - State transitions
 
 extension Player {
-    private func filterReloaded() {
-        switch playerState {
-        case .playing:
-            startPlayer()
-        default:
-            if let atom = schedule?.currentAtom() {
-                loadAtomAndSeek(atom, autostart: false)
-            }
-        }
-    }
-
     private func playerLoaded() {
-        guard let schedule else { fatalError() }
-        guard let atom else { fatalError() }
         print("ℹ️ \(#function)")
 
         switch playerState {
         case .waitingToPlay(autostart: true),
              .episodeTransition:
-            if player.currentTime >= atom.duration {
-                print("❌ We loaded an expired asset, playing the current")
-                loadAtomAndSeek(schedule.currentAtom(), autostart: true)
-            } else {
-                print("▶️ playing")
-                player.play()
-            }
+            print("▶️ playing")
+            player.play()
         case .waitingToPlay(autostart: false):
             playerState = .readyToPlay
         default:
@@ -190,19 +138,8 @@ extension Player {
     }
 
     private func playerStopped() {
-        print("ℹ️ \(#function)")
-        guard let atom else { return }
-
-        var nextAtom = atom.nextAtom
-        while nextAtom.endTime < Date() {
-            nextAtom = nextAtom.nextAtom
-        }
-
-        print("ℹ️ Beginning playback of atom '\(nextAtom.title)'")
-        print("ℹ️   - startTime \(nextAtom.startTime.ISO8601Format()) (dt \(Date().timeIntervalSince1970 - nextAtom.startTime.timeIntervalSince1970)")
-        print("ℹ️   - endTime \(nextAtom.endTime.ISO8601Format()) (dt \(Date().timeIntervalSince1970 - nextAtom.endTime.timeIntervalSince1970)")
-
-        loadAtomAndSeek(nextAtom, autostart: true)
+        print("ℹ️ \(#function) - waiting for StreamSchedule to give us the next atom")
+        playerState = .episodeTransition
     }
 
     private func playerPaused() {
@@ -278,19 +215,18 @@ extension Player {
     }
 
     private func makeMetadata() -> ModernAVPlayerMediaMetadata {
-        guard let atom else { fatalError() }
-        guard let feed = schedule?.feed else { fatalError() }
+        guard let schedule else { fatalError() }
 
         var albumTitle: String?
 
-        if let year = Calendar.current.dateComponents([.year], from: atom.episode.publishDate!).year {
+        if let year = Calendar.current.dateComponents([.year], from: schedule.atom.episode.publishDate!).year {
             albumTitle = "\(year)"
         }
 
         return ModernAVPlayerMediaMetadata(
-            title: atom.title,
+            title: schedule.atom.title,
             albumTitle: albumTitle,
-            artist: feed.title!,
-            remoteImageUrl: feed.imageUrl)
+            artist: schedule.feed.title!,
+            remoteImageUrl: schedule.feed.imageUrl)
     }
 }

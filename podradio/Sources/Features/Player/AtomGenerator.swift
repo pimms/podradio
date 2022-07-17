@@ -1,7 +1,7 @@
 import Foundation
 
 class AtomGenerator {
-    private let feed: Feed
+    private var feed: Feed
     private let cache = AtomCache()
 
     init(feed: Feed) {
@@ -10,8 +10,10 @@ class AtomGenerator {
 
     // MARK: - Internal methods
 
-    func clearCache() {
-        cache.clear()
+    func updateFeed(_ feed: Feed) {
+        guard feed.isSameFeed(as: self.feed) else { fatalError() }
+        self.feed = feed
+        self.cache.clear()
     }
 
     func currentAtom() -> StreamAtom {
