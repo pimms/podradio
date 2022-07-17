@@ -56,13 +56,13 @@ class StreamSchedule: StreamScheduling, Equatable {
     }
 
     func nextAtom(after current: StreamAtom) -> StreamAtom {
-        let seedString = "after-\(current.episode.url!.hashValue)"
+        let seedString = "after-\(current.episode.url!.absoluteString)"
         var rng = randomNumberGenerator(from: seedString)
         return makeAtom(using: &rng, startTime: current.endTime)
     }
 
     func previousAtom(before current: StreamAtom) -> StreamAtom {
-        let seedString = "before-\(current.episode.url!.hashValue)"
+        let seedString = "before-\(current.episode.url!.absoluteString)"
         var rng = randomNumberGenerator(from: seedString)
         return makeAtom(using: &rng, endingAt: current.endTime)
     }
@@ -109,11 +109,9 @@ class StreamSchedule: StreamScheduling, Equatable {
     private func filteredEpisodes() -> [Episode] {
         var episodes = [Episode]()
 
-        for season in feed.seasons!.allObjects {
-            guard let season = season as? Season else { continue }
+        for season in feed.sortedSeasons {
             guard shouldIncludeSeason(season) else { continue }
-
-            episodes.append(contentsOf: season.episodes!.allObjects.compactMap({ $0 as? Episode }))
+            episodes.append(contentsOf: season.sortedEpisodes)
         }
 
         return episodes

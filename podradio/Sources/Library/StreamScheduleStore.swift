@@ -49,37 +49,3 @@ class StreamScheduleStore: ObservableObject {
         self.feeds = feeds
     }
 }
-
-private class FeedFetchRequestExecutor: NSObject, NSFetchedResultsControllerDelegate {
-    var onFetch: (([Feed]) -> Void)?
-
-    private let persistenceController: PersistenceController
-    private let fetchedResultsController: NSFetchedResultsController<Feed>
-
-    init(persistenceController: PersistenceController) {
-        self.persistenceController = persistenceController
-
-        let fetchRequest = Feed.fetchRequest()
-        fetchRequest.sortDescriptors = [.init(key: #keyPath(Feed.title), ascending: true)]
-        fetchRequest.includesSubentities = true
-
-        fetchedResultsController = NSFetchedResultsController(
-            fetchRequest: fetchRequest,
-            managedObjectContext: persistenceController.container.viewContext,
-            sectionNameKeyPath: "title",
-            cacheName: nil)
-        super.init()
-
-        fetchedResultsController.delegate = self
-    }
-
-    func beginFetching() {
-        try! fetchedResultsController.performFetch()
-        onFetch?(fetchedResultsController.fetchedObjects ?? [])
-    }
-
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        let feeds = fetchedResultsController.fetchedObjects ?? []
-        onFetch?(feeds)
-    }
-}

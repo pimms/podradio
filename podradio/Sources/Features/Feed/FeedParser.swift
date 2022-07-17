@@ -82,7 +82,7 @@ final class FeedParser {
             }
         }
 
-        return episodes
+        return episodes.sorted(by: { a, b in a.publishDate! < b.publishDate! })
     }
 
     private func buildSeasons(fromEpisodes episodes: [Episode]) -> [Season] {
