@@ -19,15 +19,24 @@ class StreamSchedule: StreamScheduling, Equatable {
 
     let feed: Feed
 
+    // MARK: - Private properties
+
+    private let cache: StreamScheduleCache
+
     // MARK: - Init
 
     init(feed: Feed) {
         self.feed = feed
+        self.cache = StreamScheduleCache()
     }
 
     // MARK: - Internal methods
 
     func currentAtom() -> StreamAtom {
+        if let cached = cache.currentAtom() {
+            return cached
+        }
+
         let currentPeriodStart = currentPeriodStartTime()
 
         let formatter = DateFormatter()
@@ -42,6 +51,7 @@ class StreamSchedule: StreamScheduling, Equatable {
             atom = atom.nextAtom
         }
 
+        cache.setCurrentAtom(atom)
         return atom
     }
 

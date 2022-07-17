@@ -60,7 +60,7 @@ private class FeedFetchRequestExecutor: NSObject, NSFetchedResultsControllerDele
         self.persistenceController = persistenceController
 
         let fetchRequest = Feed.fetchRequest()
-        fetchRequest.sortDescriptors = [.init(key: "title", ascending: true)]
+        fetchRequest.sortDescriptors = [.init(key: #keyPath(Feed.title), ascending: true)]
         fetchRequest.includesSubentities = true
 
         fetchedResultsController = NSFetchedResultsController(

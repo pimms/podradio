@@ -7,6 +7,8 @@ struct PlayerRootView: View {
     let streamSchedule: StreamSchedule
     @EnvironmentObject var player: Player
 
+    var atom: StreamAtom { streamSchedule.currentAtom() }
+
     var body: some View {
         GeometryReader { metrics in
             ZStack {
@@ -14,10 +16,10 @@ struct PlayerRootView: View {
                     FeedImageView(feed: streamSchedule.feed)
                         .frame(width: metrics.size.width)
                         .fixedSize()
-                    Text(player.atom?.title ?? "Title")
+                    Text(atom.title)
                         .font(.title2)
                         .multilineTextAlignment(.center)
-                    Text(player.atom?.episode.season?.name ?? "Season")
+                    Text(atom.episode.season?.name ?? "Season")
                         .font(.headline)
                         .multilineTextAlignment(.center)
                     Text(streamSchedule.feed.title!)
@@ -26,7 +28,7 @@ struct PlayerRootView: View {
 
                     ScrollView {
                         VStack {
-                            Text(player.atom?.description ?? "")
+                            Text(atom.description)
                                 .font(.subheadline)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .padding(.horizontal)

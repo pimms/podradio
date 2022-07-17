@@ -24,9 +24,6 @@ struct FeedRootView: View {
         .listStyle(InsetGroupedListStyle())
         .navigationTitle("frontpage.title")
         .navigationBarItems(leading: NavBarButton(), trailing: AddFeedButton())
-        onAppear {
-            print("items: \(streamScheduleStore.feeds.count)")
-        }
     }
 }
 
