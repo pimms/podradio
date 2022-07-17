@@ -18,7 +18,8 @@ struct FeedRootView: View {
                             }
                         }
                     }
-                    .navigationTitle("PodRadio")
+                    .navigationTitle("frontpage.title")
+                    .navigationBarItems(leading: NavBarButton(), trailing: AddFeedButton())
                     .navigationDestination(for: Feed.self) { feed in
                         PlayerRootView(streamSchedule: streamScheduleStore.streamSchedule(for: feed))
                     }
@@ -26,8 +27,6 @@ struct FeedRootView: View {
             }
         }
         .listStyle(InsetGroupedListStyle())
-        .navigationTitle("frontpage.title")
-        .navigationBarItems(leading: NavBarButton(), trailing: AddFeedButton())
         .onAppear {
             loadInitialFeed()
         }
@@ -124,12 +123,8 @@ struct FeedRootView_Previews: PreviewProvider {
     private static var mockPlayer: Player { Player(dummyPlayer: true) }
 
     static var previews: some View {
-        Group {
-            NavigationView {
-                FeedRootView(streamScheduleStore: DummyData.streamScheduleStore)
-                    .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-                    .environmentObject(mockPlayer)
-            }
-        }
+        FeedRootView(streamScheduleStore: DummyData.streamScheduleStore)
+            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+            .environmentObject(mockPlayer)
     }
 }
