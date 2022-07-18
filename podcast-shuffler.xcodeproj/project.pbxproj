@@ -58,6 +58,7 @@
 		F53DAF2D2590840700D3F0A9 /* YearFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DAF2C2590840700D3F0A9 /* YearFilter.swift */; };
 		F53DAF322590912400D3F0A9 /* FilterStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53DAF312590912400D3F0A9 /* FilterStore.swift */; };
 		F55B1C2025841CAE004E1380 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55B1C1F25841CAE004E1380 /* FilterView.swift */; };
+		F55CC2A12885428000FEF597 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55CC2A02885428000FEF597 /* BlurView.swift */; };
 		F5651F5B285902E100DB77C7 /* StreamAtom.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5651F5A285902E100DB77C7 /* StreamAtom.swift */; };
 		F5768FD7259A843300FD551A /* Color+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5768FD6259A843300FD551A /* Color+UIColor.swift */; };
 		F5768FDF259B340500FD551A /* ITunesLinkExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5768FDE259B340500FD551A /* ITunesLinkExtractor.swift */; };
@@ -178,6 +179,7 @@
 		F53DAF2C2590840700D3F0A9 /* YearFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearFilter.swift; sourceTree = "<group>"; };
 		F53DAF312590912400D3F0A9 /* FilterStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterStore.swift; sourceTree = "<group>"; };
 		F55B1C1F25841CAE004E1380 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
+		F55CC2A02885428000FEF597 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		F5651F5A285902E100DB77C7 /* StreamAtom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamAtom.swift; sourceTree = "<group>"; };
 		F5768FD6259A843300FD551A /* Color+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+UIColor.swift"; sourceTree = "<group>"; };
 		F5768FDE259B340500FD551A /* ITunesLinkExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITunesLinkExtractor.swift; sourceTree = "<group>"; };
@@ -659,6 +661,7 @@
 			isa = PBXGroup;
 			children = (
 				F59BD29926C81D0A00B3AAB8 /* RoundedCorners.swift */,
+				F55CC2A02885428000FEF597 /* BlurView.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -993,6 +996,7 @@
 				F593681C26CAE13400335911 /* ModelExtensions.swift.swift in Sources */,
 				F5E02B09287DF54E007D4735 /* DummyModernAVPlayer.swift in Sources */,
 				F52B74362884029200D0AD61 /* FeedFetchRequestExecutor.swift in Sources */,
+				F55CC2A12885428000FEF597 /* BlurView.swift in Sources */,
 				F5D7AA4726B16E9800BED013 /* FeedHelpView.swift in Sources */,
 				F59BD28F26C7B62200B3AAB8 /* SettingsView.swift in Sources */,
 				F593681E26CAE3BC00335911 /* FilterView.swift in Sources */,

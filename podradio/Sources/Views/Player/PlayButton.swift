@@ -49,7 +49,7 @@ struct PlayButton: View {
                 }
             }
         })
-        .foregroundColor(.secondarySystemBackground)
+        .foregroundColor(.gray)
     }
 
     private func playButtonTapped() {

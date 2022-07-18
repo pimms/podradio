@@ -23,7 +23,7 @@ struct FilterButton: View {
             } else {
                 Image(systemName: "line.horizontal.3.decrease.circle")
                     .resizable()
-                    .tint(.secondarySystemBackground)
+                    .tint(.gray)
             }
         }
     }

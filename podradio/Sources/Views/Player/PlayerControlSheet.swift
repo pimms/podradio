@@ -40,7 +40,7 @@ struct PlayerControlSheet: View {
                 .frame(width: 0, height: 20)
         }
         .background(
-            RoundedCorners(color: .init(white: 0.75), tl: 20, tr: 20, bl: 0, br: 0)
+            BlurView(style: .systemMaterialDark)
                 .ignoresSafeArea(.all, edges: .bottom)
         )
     }
@@ -51,7 +51,7 @@ private struct ProgressBar: View {
 
     var body: some View {
         ProgressView(value: streamSchedule.currentTime, total: streamSchedule.atomDuration)
-            .tint(.secondarySystemBackground)
+            .tint(.gray)
             .padding(.horizontal, 20)
     }
 }
