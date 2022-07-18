@@ -60,10 +60,13 @@ class Player: ObservableObject {
 
     func configure(with schedule: StreamSchedule) {
         self.schedule = schedule
+        playerState = .none
 
         if !isRunningPreviews() {
             atomChangeSubscription?.cancel()
-            atomChangeSubscription = schedule.$atom.sink(receiveValue: { [weak self] _ in
+            atomChangeSubscription = schedule.$atom
+                .dropFirst()
+                .sink(receiveValue: { [weak self] _ in
                 self?.onAtomChanged()
             })
         }
