@@ -33,13 +33,22 @@ struct DummyData {
         season.uniqueId = "1999"
         feed.addToSeasons(season)
 
+        let urls = [
+            "https://audiocdn.123rf.com/preview/ronaldruiz/ronaldruiz2205/ronaldruiz220500036_preview.mp3",
+            "https://audiocdn.123rf.com/preview/amusic7/amusic72206/amusic7220600079_preview.mp3",
+            "https://audiocdn.123rf.com/preview/oligarwil/oligarwil2206/oligarwil220600013_preview.mp3",
+            "https://audiocdn.123rf.com/preview/ledlightmusic/ledlightmusic2204/ledlightmusic220400008_preview.mp3",
+            "https://audiocdn.123rf.com/preview/ledlightmusic/ledlightmusic2204/ledlightmusic220400001_preview.mp3",
+            "https://audiocdn.123rf.com/preview/domahidimusic/domahidimusic2204/domahidimusic220400018_preview.mp3",
+        ]
+
         for index in 0 ... 100 {
             let episode = Episode(context: context)
             episode.title = "Episode \(index+1)"
-            episode.url = URL(string: "https://download.samplelib.com/mp3/sample-12s.mp3?foobar=\(index)")!
+            episode.url = URL(string: urls.randomElement()! + "?foobar=\(index)")!
             episode.publishDate = Date().addingTimeInterval(-86400 * 7 * (TimeInterval(index) + 1.0))
             episode.detailedDescription = [String](repeating: "This is a nice episode.\n", count: 50).joined()
-            episode.duration = 12
+            episode.duration = 30
             feed.addToEpisodes(episode)
             season.addToEpisodes(episode)
         }

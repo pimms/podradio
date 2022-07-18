@@ -44,7 +44,7 @@ extension StreamAtom {
     }
 
     var media: ModernAVPlayerMedia {
-        ModernAVPlayerMedia(url: episode.url!, type: .clip)
+        ModernAVPlayerMedia(url: episode.url!, type: .stream(isLive: true))
     }
 
     var currentPosition: TimeInterval {

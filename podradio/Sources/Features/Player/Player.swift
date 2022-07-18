@@ -102,12 +102,14 @@ class Player: ObservableObject {
 
     private func onAtomChanged() {
         print("ℹ️ \(#function)")
-        switch playerState {
-        case .playing, .episodeTransition:
-            startPlayer()
-        default:
-            if let atom = schedule?.atom {
-                loadAtomAndSeek(atom, autostart: false)
+        DispatchQueue.main.async {
+            switch self.playerState {
+            case .playing, .episodeTransition:
+                self.startPlayer()
+            default:
+                if let atom = self.schedule?.atom {
+                    self.loadAtomAndSeek(atom, autostart: false)
+                }
             }
         }
     }
@@ -167,7 +169,7 @@ extension Player: ModernAVPlayerDelegate {
         case .failed:
             playerFailed()
         default:
-            print("⚠️ Unhandled ModernAVPlayer.State: \(state)")
+            break
         }
     }
 }
