@@ -1,20 +1,23 @@
 import Foundation
 import ModernAVPlayer
 
-class StreamAtom: Equatable {
+class StreamAtom: Hashable {
     let episode: Episode
     let startTime: Date
 
-    private let generator: AtomGenerator
-
-    init(generator: AtomGenerator, episode: Episode, startTime: Date) {
-        self.generator = generator
+    init(episode: Episode, startTime: Date) {
         self.episode = episode
         self.startTime = startTime
     }
 
     static func == (lhs: StreamAtom, rhs: StreamAtom) -> Bool {
         return lhs.episode.url == rhs.episode.url
+            && lhs.startTime == rhs.startTime
+    }
+
+    func hash(into hasher: inout Hasher) {
+        episode.url!.hash(into: &hasher)
+        startTime.hash(into: &hasher)
     }
 }
 
@@ -25,14 +28,6 @@ extension StreamAtom {
 
     var description: String {
         return episode.detailedDescription ?? ""
-    }
-
-    var previousAtom: StreamAtom {
-        generator.previousAtom(before: self)
-    }
-
-    var nextAtom: StreamAtom {
-        generator.nextAtom(after: self)
     }
 
     var endTime: Date {

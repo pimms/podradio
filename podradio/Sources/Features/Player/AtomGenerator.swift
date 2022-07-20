@@ -2,7 +2,7 @@ import Foundation
 
 class AtomGenerator {
     private var feed: Feed
-    private let cache = AtomCache()
+    private lazy var cache = AtomCache(generator: self)
 
     init(feed: Feed) {
         self.feed = feed
@@ -32,7 +32,7 @@ class AtomGenerator {
 
         let now = Date()
         while atom.endTime.distance(to: now) > 0 {
-            atom = atom.nextAtom
+            atom = cache.atom(after: atom)
         }
 
         cache.setCurrentAtom(atom, filter: feed.filter)
@@ -63,7 +63,7 @@ class AtomGenerator {
         let filteredEpisodes = filteredEpisodes()
         let index = rng.next() % UInt64(filteredEpisodes.count)
         let episode = filteredEpisodes[Int(index)]
-        return StreamAtom(generator: self, episode: episode, startTime: startTime)
+        return StreamAtom(episode: episode, startTime: startTime)
     }
 
     private func makeAtom(using rng: inout RandomNumberGenerator, endingAt endTime: Date) -> StreamAtom {
@@ -72,7 +72,7 @@ class AtomGenerator {
         let episode = filteredEpisodes[Int(index)]
 
         let startTime = endTime.addingTimeInterval(-episode.duration)
-        return StreamAtom(generator: self, episode: episode, startTime: startTime)
+        return StreamAtom(episode: episode, startTime: startTime)
     }
 
     private func currentPeriodStartTime() -> Date {
