@@ -32,7 +32,7 @@ class AtomGenerator {
 
         let now = Date()
         while atom.endTime.distance(to: now) > 0 {
-            atom = cache.atom(after: atom)
+            atom = nextAtom(after: atom)
         }
 
         cache.setCurrentAtom(atom, filter: feed.filter)
@@ -40,15 +40,45 @@ class AtomGenerator {
     }
 
     func nextAtom(after current: StreamAtom) -> StreamAtom {
+        if let cached = cache.atom(after: current) {
+            return cached
+        }
+
         let seedString = "after-\(current.episode.url!.absoluteString)"
         var rng = randomNumberGenerator(from: seedString)
-        return makeAtom(using: &rng, startTime: current.endTime)
+        let atom = makeAtom(using: &rng, startTime: current.endTime)
+        cache.cacheAtom(atom, after: current)
+        return atom
     }
 
     func previousAtom(before current: StreamAtom) -> StreamAtom {
-        let seedString = "before-\(current.episode.url!.absoluteString)"
-        var rng = randomNumberGenerator(from: seedString)
-        return makeAtom(using: &rng, endingAt: current.endTime)
+        if let cached = cache.atom(before: current) {
+            return cached
+        }
+
+        fatalError("⚠️⚠️⚠️ Cache miss when traversing the cache backwards ⚠️⚠️⚠️")
+    }
+
+    func currentPeriodStartTime() -> Date {
+        // Each "streamable" day starts at 05:00 in the local timezone.
+        let calendar = Calendar.current
+        let todayStart = calendar.date(bySettingHour: 5, minute: 0, second: 0, of: Date())!
+
+        let currentPeriodStart: Date
+        if calendar.dateComponents([.hour], from: Date()).hour! <= 5 {
+            currentPeriodStart = calendar.date(byAdding: .day, value: -1, to: todayStart)!
+        } else {
+            currentPeriodStart = todayStart
+        }
+
+        return currentPeriodStart
+    }
+
+    func currentPeriodEndTime() -> Date {
+        let startTime = currentPeriodStartTime()
+
+        // https://gist.github.com/timvisee/fcda9bbdff88d45cc9061606b4b923ca
+        return startTime.addingTimeInterval(86400)
     }
 
     // MARK: - Private methods
@@ -73,21 +103,6 @@ class AtomGenerator {
 
         let startTime = endTime.addingTimeInterval(-episode.duration)
         return StreamAtom(episode: episode, startTime: startTime)
-    }
-
-    private func currentPeriodStartTime() -> Date {
-        // Each "streamable" day starts at 05:00 in the local timezone.
-        let calendar = Calendar.current
-        let todayStart = calendar.date(bySettingHour: 5, minute: 0, second: 0, of: Date())!
-
-        let currentPeriodStart: Date
-        if calendar.dateComponents([.hour], from: Date()).hour! <= 5 {
-            currentPeriodStart = calendar.date(byAdding: .day, value: -1, to: todayStart)!
-        } else {
-            currentPeriodStart = todayStart
-        }
-
-        return currentPeriodStart
     }
 
     private func filteredEpisodes() -> [Episode] {

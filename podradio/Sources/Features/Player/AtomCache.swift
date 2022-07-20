@@ -38,25 +38,29 @@ class AtomCache {
         return currentAtomCache.atom
     }
 
-    func atom(after atom: StreamAtom) -> StreamAtom {
+    func atom(after atom: StreamAtom) -> StreamAtom? {
         if let cached = nextAtomCache[atom] {
             return cached
+        } else {
+            return nil
         }
-
-        let next = generator.nextAtom(after: atom)
-        nextAtomCache[atom] = next
-        previousAtomCache[next] = atom
-        return next
     }
 
-    func atom(before atom: StreamAtom) -> StreamAtom {
+    func cacheAtom(_ next: StreamAtom, after current: StreamAtom) {
+        nextAtomCache[current] = next
+        previousAtomCache[next] = current
+    }
+
+    func atom(before atom: StreamAtom) -> StreamAtom? {
         if let cached = previousAtomCache[atom] {
             return cached
+        } else {
+            return nil
         }
+    }
 
-        let previous = generator.previousAtom(before: atom)
-        previousAtomCache[atom] = previous
-        nextAtomCache[previous] = atom
-        return previous
+    func cacheAtom(_ previous: StreamAtom, before current: StreamAtom) {
+        previousAtomCache[current] = previous
+        nextAtomCache[previous] = current
     }
 }

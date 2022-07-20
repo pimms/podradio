@@ -5,9 +5,18 @@ import MediaPlayer
 
 struct AirPlayButton: UIViewRepresentable {
     func makeUIView(context: Context) -> some UIView {
-        let view = MPVolumeView(frame: .zero)
-        view.showsVolumeSlider = false
-        return view
+        let returnView: UIView
+        if isRunningPreviews() {
+            let image = UIImage(systemName: "airplayaudio")
+            let imageView = UIImageView(image: image)
+            returnView = imageView
+        } else {
+            let volumeView = MPVolumeView(frame: .zero)
+            volumeView.showsVolumeSlider = false
+            returnView = volumeView
+        }
+
+        return returnView
     }
 
     func updateUIView(_ uiView: UIViewType, context: Context) {

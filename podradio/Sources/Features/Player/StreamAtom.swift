@@ -1,7 +1,9 @@
 import Foundation
 import ModernAVPlayer
 
-class StreamAtom: Hashable {
+class StreamAtom: Hashable, Identifiable {
+    var id: any Hashable { self }
+
     let episode: Episode
     let startTime: Date
 

@@ -19,6 +19,7 @@ class StreamSchedule: ObservableObject, Equatable {
             timeReporter.atom = atom
         }
     }
+    @Published var todaysSchedule: [StreamAtom] = []
 
     private(set) var feed: Feed
 
@@ -49,6 +50,8 @@ class StreamSchedule: ObservableObject, Equatable {
         timeReporter.onUpdateTime = { [weak self] currentTime in
             self?.currentTime = currentTime
         }
+
+        rebuildTodaysSchedule()
     }
 
     // MARK: - Internal methods
@@ -62,6 +65,7 @@ class StreamSchedule: ObservableObject, Equatable {
         timeReporter.atom = atom
         atomDuration = atom.duration
         currentTime = 0
+        rebuildTodaysSchedule()
     }
 
     // MARK: - Private methods
@@ -69,5 +73,33 @@ class StreamSchedule: ObservableObject, Equatable {
     private func filterReloaded() {
         self.atom = generator.currentAtom()
         self.currentTime = self.atom.currentPosition
+    }
+
+    private func rebuildTodaysSchedule() {
+        let current = generator.currentAtom()
+
+        let startTime = generator.currentPeriodStartTime()
+        let endTime = generator.currentPeriodEndTime()
+
+        var first: StreamAtom = current
+        while first.startTime > startTime {
+            first = generator.previousAtom(before: first)
+        }
+
+        var last: StreamAtom = current
+        while last.startTime < endTime && last.endTime < endTime {
+            last = generator.nextAtom(after: last)
+        }
+
+        // TODO: IT SEEMS LIKE THE DOUBLY LINKED LIST IS NOT VERY
+        // DETERMINISTIC. THAT IS A PROBLEM.
+        var index: [StreamAtom] = []
+        var iterator = first
+        while iterator != last {
+            index.append(iterator)
+            iterator = generator.nextAtom(after: iterator)
+        }
+        index.append(iterator)
+        todaysSchedule = index
     }
 }

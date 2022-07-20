@@ -23,6 +23,7 @@
 		F52B74382884238000D0AD61 /* DefaultFeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52B74372884238000D0AD61 /* DefaultFeedStore.swift */; };
 		F52B743A2884588900D0AD61 /* AtomGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52B74392884588900D0AD61 /* AtomGenerator.swift */; };
 		F55CC2A12885428000FEF597 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55CC2A02885428000FEF597 /* BlurView.swift */; };
+		F55CC2A5288886CF00FEF597 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55CC2A4288886CF00FEF597 /* ScheduleView.swift */; };
 		F5651F5B285902E100DB77C7 /* StreamAtom.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5651F5A285902E100DB77C7 /* StreamAtom.swift */; };
 		F57A64CB26C7A6680011B54D /* FeedFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57A64CA26C7A6680011B54D /* FeedFetcher.swift */; };
 		F58AE0E626B154650015419E /* podradioApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58AE0E526B154650015419E /* podradioApp.swift */; };
@@ -90,6 +91,7 @@
 		F52B74372884238000D0AD61 /* DefaultFeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultFeedStore.swift; sourceTree = "<group>"; };
 		F52B74392884588900D0AD61 /* AtomGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtomGenerator.swift; sourceTree = "<group>"; };
 		F55CC2A02885428000FEF597 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
+		F55CC2A4288886CF00FEF597 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		F5651F5A285902E100DB77C7 /* StreamAtom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamAtom.swift; sourceTree = "<group>"; };
 		F57A64CA26C7A6680011B54D /* FeedFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedFetcher.swift; sourceTree = "<group>"; };
 		F58AE0E326B154650015419E /* podradio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = podradio.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -304,6 +306,7 @@
 				F5C34B80287F34C10049893A /* PlayerControlSheet.swift */,
 				F5C34B82287F35040049893A /* FilterButton.swift */,
 				F5C34B8A287F4E9A0049893A /* CustomModernAVPlayerConfiguration.swift */,
+				F55CC2A4288886CF00FEF597 /* ScheduleView.swift */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -577,6 +580,7 @@
 				F57A64CB26C7A6680011B54D /* FeedFetcher.swift in Sources */,
 				F5C34B85287F36720049893A /* IsRunningPreviews.swift in Sources */,
 				F5C34B83287F35040049893A /* FilterButton.swift in Sources */,
+				F55CC2A5288886CF00FEF597 /* ScheduleView.swift in Sources */,
 				F52B74382884238000D0AD61 /* DefaultFeedStore.swift in Sources */,
 				F5651F5B285902E100DB77C7 /* StreamAtom.swift in Sources */,
 				F52B743A2884588900D0AD61 /* AtomGenerator.swift in Sources */,

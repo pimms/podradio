@@ -42,13 +42,13 @@ struct DummyData {
             "https://audiocdn.123rf.com/preview/domahidimusic/domahidimusic2204/domahidimusic220400018_preview.mp3",
         ]
 
-        for index in 0 ... 100 {
+        for index in 0 ... 25 {
             let episode = Episode(context: context)
             episode.title = "Episode \(index+1)"
             episode.url = URL(string: urls.randomElement()! + "?foobar=\(index)")!
             episode.publishDate = Date().addingTimeInterval(-86400 * 7 * (TimeInterval(index) + 1.0))
             episode.detailedDescription = [String](repeating: "This is a nice episode.\n", count: 50).joined()
-            episode.duration = 30
+            episode.duration = 3660
             feed.addToEpisodes(episode)
             season.addToEpisodes(episode)
         }
