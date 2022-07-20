@@ -76,14 +76,12 @@ class Player: ObservableObject {
     func togglePlay() {
         guard let schedule else { fatalError() }
         switch playerState {
-        case .readyToPlay:
+        case .readyToPlay, .paused, .none:
             loadAtomAndSeek(schedule.atom, autostart: true)
         case .waitingToPlay(autostart: false):
             playerState = .waitingToPlay(autostart: true)
         case .playing, .waitingToPlay(autostart: true), .episodeTransition:
             player.pause()
-        case .paused, .none:
-            startPlayer()
         }
     }
 
@@ -92,11 +90,6 @@ class Player: ObservableObject {
     }
 
     // MARK: - Private methods
-
-    private func startPlayer() {
-        guard let atom = schedule?.atom else { fatalError("Not configured") }
-        loadAtomAndSeek(atom, autostart: true)
-    }
 
     private func loadAtomAndSeek(_ atom: StreamAtom, autostart: Bool) {
         let media = atom.media
@@ -107,13 +100,13 @@ class Player: ObservableObject {
     private func onAtomChanged() {
         print("ℹ️ \(#function)")
         DispatchQueue.main.async {
+            guard let atom = self.schedule?.atom else { fatalError() }
+
             switch self.playerState {
             case .playing, .episodeTransition:
-                self.startPlayer()
+                self.loadAtomAndSeek(atom, autostart: true)
             default:
-                if let atom = self.schedule?.atom {
-                    self.loadAtomAndSeek(atom, autostart: false)
-                }
+                self.loadAtomAndSeek(atom, autostart: false)
             }
         }
     }
