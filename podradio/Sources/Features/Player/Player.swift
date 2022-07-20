@@ -61,6 +61,7 @@ class Player: ObservableObject {
     func configure(with schedule: StreamSchedule) {
         self.schedule = schedule
         playerState = .none
+        player.updateMetadata(makeMetadata())
 
         if !isRunningPreviews() {
             atomChangeSubscription?.cancel()
@@ -139,7 +140,6 @@ extension Player {
     private func playerPlaying() {
         print("ℹ️ \(#function)")
         playerState = .playing
-        player.updateMetadata(makeMetadata())
     }
 
     private func playerStopped() {
