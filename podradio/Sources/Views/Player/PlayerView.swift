@@ -1,7 +1,6 @@
 import Foundation
 import SwiftUI
 import CoreData
-import struct Kingfisher.KFImage
 
 struct PlayerRootView: View {
     @ObservedObject var streamSchedule: StreamSchedule
@@ -55,13 +54,16 @@ private struct FeedImageView: View {
     let feed: Feed
 
     var body: some View {
-        KFImage(feed.imageUrl)
-            .resizable()
-            .aspectRatio(1, contentMode: .fit)
-            .cornerRadius(30)
-            .shadow(color: .gray, radius: 20)
-            .padding(.horizontal, 40)
-            .padding(.vertical, 20)
+        AsyncImage(url: feed.imageUrl) { image in
+            image.resizable()
+        } placeholder: {
+            Color.gray.opacity(0.1)
+        }
+        .aspectRatio(1, contentMode: .fit)
+        .cornerRadius(30)
+        .shadow(color: .gray, radius: 20)
+        .padding(.horizontal, 40)
+        .padding(.vertical, 20)
     }
 }
 

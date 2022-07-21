@@ -7,13 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		19FD32EF24AA981900FB9FF6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19FD32EE24AA981900FB9FF6 /* AVFoundation.framework */; };
-		F527A5C02857B7D700498D95 /* FeedKit in Frameworks */ = {isa = PBXBuildFile; productRef = F527A5BF2857B7D700498D95 /* FeedKit */; };
-		F527A5C42857B8A900498D95 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F527A5C32857B8A900498D95 /* Kingfisher */; };
 		F527A5C62857B8BC00498D95 /* FeedKit in Frameworks */ = {isa = PBXBuildFile; productRef = F527A5C52857B8BC00498D95 /* FeedKit */; };
 		F527A5C82857B8BC00498D95 /* ModernAVPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = F527A5C72857B8BC00498D95 /* ModernAVPlayer */; };
-		F527A5CA2857B8BC00498D95 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F527A5C92857B8BC00498D95 /* Kingfisher */; };
-		F527A5CC2857B8CD00498D95 /* ModernAVPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = F527A5CB2857B8CD00498D95 /* ModernAVPlayer */; };
 		F527A5CE2857C36900498D95 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F527A5CD2857C36900498D95 /* Player.swift */; };
 		F527A5D12857C43400498D95 /* StreamSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F527A5D02857C43400498D95 /* StreamSchedule.swift */; };
 		F527A5D42857C60100498D95 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = F527A5D32857C60100498D95 /* Random.swift */; };
@@ -60,27 +55,7 @@
 		F5E02B0B287DFDC2007D4735 /* CurrentTimeReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5E02B0A287DFDC2007D4735 /* CurrentTimeReporter.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		19115D8A24A4C8E9008E8BAC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 19115D7024A4C8E8008E8BAC /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 19115D7724A4C8E8008E8BAC;
-			remoteInfo = "podcast-shuffler";
-		};
-		19115D9524A4C8E9008E8BAC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 19115D7024A4C8E8008E8BAC /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 19115D7724A4C8E8008E8BAC;
-			remoteInfo = "podcast-shuffler";
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		19115D7824A4C8E8008E8BAC /* podcast-shuffler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "podcast-shuffler.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		19115D8924A4C8E9008E8BAC /* podcast-shufflerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "podcast-shufflerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		19115D9424A4C8E9008E8BAC /* podcast-shufflerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "podcast-shufflerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		19FD32EE24AA981900FB9FF6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.16.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
 		F527A5CD2857C36900498D95 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		F527A5D02857C43400498D95 /* StreamSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamSchedule.swift; sourceTree = "<group>"; };
@@ -132,36 +107,10 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		19115D7524A4C8E8008E8BAC /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F527A5C42857B8A900498D95 /* Kingfisher in Frameworks */,
-				F527A5C02857B7D700498D95 /* FeedKit in Frameworks */,
-				F527A5CC2857B8CD00498D95 /* ModernAVPlayer in Frameworks */,
-				19FD32EF24AA981900FB9FF6 /* AVFoundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		19115D8624A4C8E9008E8BAC /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		19115D9124A4C8E9008E8BAC /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F58AE0E026B154650015419E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F527A5CA2857B8BC00498D95 /* Kingfisher in Frameworks */,
 				F527A5C82857B8BC00498D95 /* ModernAVPlayer in Frameworks */,
 				F527A5C62857B8BC00498D95 /* FeedKit in Frameworks */,
 			);
@@ -182,9 +131,6 @@
 		19115D7924A4C8E8008E8BAC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				19115D7824A4C8E8008E8BAC /* podcast-shuffler.app */,
-				19115D8924A4C8E9008E8BAC /* podcast-shufflerTests.xctest */,
-				19115D9424A4C8E9008E8BAC /* podcast-shufflerUITests.xctest */,
 				F58AE0E326B154650015419E /* podradio.app */,
 			);
 			name = Products;
@@ -381,64 +327,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		19115D7724A4C8E8008E8BAC /* podcast-shuffler */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 19115D9D24A4C8E9008E8BAC /* Build configuration list for PBXNativeTarget "podcast-shuffler" */;
-			buildPhases = (
-				19115D7424A4C8E8008E8BAC /* Sources */,
-				19115D7524A4C8E8008E8BAC /* Frameworks */,
-				19115D7624A4C8E8008E8BAC /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "podcast-shuffler";
-			packageProductDependencies = (
-				F527A5BF2857B7D700498D95 /* FeedKit */,
-				F527A5C32857B8A900498D95 /* Kingfisher */,
-				F527A5CB2857B8CD00498D95 /* ModernAVPlayer */,
-			);
-			productName = "podcast-shuffler";
-			productReference = 19115D7824A4C8E8008E8BAC /* podcast-shuffler.app */;
-			productType = "com.apple.product-type.application";
-		};
-		19115D8824A4C8E9008E8BAC /* podcast-shufflerTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 19115DA024A4C8E9008E8BAC /* Build configuration list for PBXNativeTarget "podcast-shufflerTests" */;
-			buildPhases = (
-				19115D8524A4C8E9008E8BAC /* Sources */,
-				19115D8624A4C8E9008E8BAC /* Frameworks */,
-				19115D8724A4C8E9008E8BAC /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				19115D8B24A4C8E9008E8BAC /* PBXTargetDependency */,
-			);
-			name = "podcast-shufflerTests";
-			productName = "podcast-shufflerTests";
-			productReference = 19115D8924A4C8E9008E8BAC /* podcast-shufflerTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		19115D9324A4C8E9008E8BAC /* podcast-shufflerUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 19115DA324A4C8E9008E8BAC /* Build configuration list for PBXNativeTarget "podcast-shufflerUITests" */;
-			buildPhases = (
-				19115D9024A4C8E9008E8BAC /* Sources */,
-				19115D9124A4C8E9008E8BAC /* Frameworks */,
-				19115D9224A4C8E9008E8BAC /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				19115D9624A4C8E9008E8BAC /* PBXTargetDependency */,
-			);
-			name = "podcast-shufflerUITests";
-			productName = "podcast-shufflerUITests";
-			productReference = 19115D9424A4C8E9008E8BAC /* podcast-shufflerUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 		F58AE0E226B154650015419E /* podradio */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F58AE0F526B154660015419E /* Build configuration list for PBXNativeTarget "podradio" */;
@@ -455,7 +343,6 @@
 			packageProductDependencies = (
 				F527A5C52857B8BC00498D95 /* FeedKit */,
 				F527A5C72857B8BC00498D95 /* ModernAVPlayer */,
-				F527A5C92857B8BC00498D95 /* Kingfisher */,
 			);
 			productName = podradio;
 			productReference = F58AE0E326B154650015419E /* podradio.app */;
@@ -470,17 +357,6 @@
 				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1200;
 				TargetAttributes = {
-					19115D7724A4C8E8008E8BAC = {
-						CreatedOnToolsVersion = 12.0;
-					};
-					19115D8824A4C8E9008E8BAC = {
-						CreatedOnToolsVersion = 12.0;
-						TestTargetID = 19115D7724A4C8E8008E8BAC;
-					};
-					19115D9324A4C8E9008E8BAC = {
-						CreatedOnToolsVersion = 12.0;
-						TestTargetID = 19115D7724A4C8E8008E8BAC;
-					};
 					F58AE0E226B154650015419E = {
 						CreatedOnToolsVersion = 13.0;
 					};
@@ -499,42 +375,17 @@
 			packageReferences = (
 				F527A5BE2857B7D700498D95 /* XCRemoteSwiftPackageReference "FeedKit" */,
 				F527A5C12857B7FD00498D95 /* XCRemoteSwiftPackageReference "ModernAVPlayer" */,
-				F527A5C22857B8A900498D95 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 19115D7924A4C8E8008E8BAC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				19115D7724A4C8E8008E8BAC /* podcast-shuffler */,
-				19115D8824A4C8E9008E8BAC /* podcast-shufflerTests */,
-				19115D9324A4C8E9008E8BAC /* podcast-shufflerUITests */,
 				F58AE0E226B154650015419E /* podradio */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		19115D7624A4C8E8008E8BAC /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		19115D8724A4C8E9008E8BAC /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		19115D9224A4C8E9008E8BAC /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F58AE0E126B154650015419E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -548,27 +399,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		19115D7424A4C8E8008E8BAC /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		19115D8524A4C8E9008E8BAC /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		19115D9024A4C8E9008E8BAC /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F58AE0DF26B154650015419E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -618,19 +448,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		19115D8B24A4C8E9008E8BAC /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 19115D7724A4C8E8008E8BAC /* podcast-shuffler */;
-			targetProxy = 19115D8A24A4C8E9008E8BAC /* PBXContainerItemProxy */;
-		};
-		19115D9624A4C8E9008E8BAC /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 19115D7724A4C8E8008E8BAC /* podcast-shuffler */;
-			targetProxy = 19115D9524A4C8E9008E8BAC /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		F5D7AA4226B16D7300BED013 /* Localizable.strings */ = {
@@ -761,136 +578,6 @@
 			};
 			name = Release;
 		};
-		19115D9E24A4C8E9008E8BAC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "podcast-shuffler/podcast-shuffler.entitlements";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"podcast-shuffler/Preview Content\"";
-				DEVELOPMENT_TEAM = WSQ25TFDK3;
-				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = NO;
-				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "podcast-shuffler/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "no.jstien.podcast-shuffler";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTS_MACCATALYST = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Debug;
-		};
-		19115D9F24A4C8E9008E8BAC /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "podcast-shuffler/podcast-shuffler.entitlements";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"podcast-shuffler/Preview Content\"";
-				DEVELOPMENT_TEAM = WSQ25TFDK3;
-				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = NO;
-				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "podcast-shuffler/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "no.jstien.podcast-shuffler";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTS_MACCATALYST = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Release;
-		};
-		19115DA124A4C8E9008E8BAC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WSQ25TFDK3;
-				INFOPLIST_FILE = "podcast-shufflerTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "no.jstien.podcast-shufflerTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/podcast-shuffler.app/podcast-shuffler";
-			};
-			name = Debug;
-		};
-		19115DA224A4C8E9008E8BAC /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WSQ25TFDK3;
-				INFOPLIST_FILE = "podcast-shufflerTests/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "no.jstien.podcast-shufflerTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/podcast-shuffler.app/podcast-shuffler";
-			};
-			name = Release;
-		};
-		19115DA424A4C8E9008E8BAC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WSQ25TFDK3;
-				INFOPLIST_FILE = "podcast-shufflerUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "no.jstien.podcast-shufflerUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "podcast-shuffler";
-			};
-			name = Debug;
-		};
-		19115DA524A4C8E9008E8BAC /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WSQ25TFDK3;
-				INFOPLIST_FILE = "podcast-shufflerUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "no.jstien.podcast-shufflerUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "podcast-shuffler";
-			};
-			name = Release;
-		};
 		F58AE0F326B154660015419E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -971,33 +658,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		19115D9D24A4C8E9008E8BAC /* Build configuration list for PBXNativeTarget "podcast-shuffler" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				19115D9E24A4C8E9008E8BAC /* Debug */,
-				19115D9F24A4C8E9008E8BAC /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		19115DA024A4C8E9008E8BAC /* Build configuration list for PBXNativeTarget "podcast-shufflerTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				19115DA124A4C8E9008E8BAC /* Debug */,
-				19115DA224A4C8E9008E8BAC /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		19115DA324A4C8E9008E8BAC /* Build configuration list for PBXNativeTarget "podcast-shufflerUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				19115DA424A4C8E9008E8BAC /* Debug */,
-				19115DA524A4C8E9008E8BAC /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		F58AE0F526B154660015419E /* Build configuration list for PBXNativeTarget "podradio" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1026,43 +686,15 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		F527A5C22857B8A900498D95 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 7.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F527A5BF2857B7D700498D95 /* FeedKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F527A5BE2857B7D700498D95 /* XCRemoteSwiftPackageReference "FeedKit" */;
-			productName = FeedKit;
-		};
-		F527A5C32857B8A900498D95 /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F527A5C22857B8A900498D95 /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
-		};
 		F527A5C52857B8BC00498D95 /* FeedKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F527A5BE2857B7D700498D95 /* XCRemoteSwiftPackageReference "FeedKit" */;
 			productName = FeedKit;
 		};
 		F527A5C72857B8BC00498D95 /* ModernAVPlayer */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F527A5C12857B7FD00498D95 /* XCRemoteSwiftPackageReference "ModernAVPlayer" */;
-			productName = ModernAVPlayer;
-		};
-		F527A5C92857B8BC00498D95 /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F527A5C22857B8A900498D95 /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
-		};
-		F527A5CB2857B8CD00498D95 /* ModernAVPlayer */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F527A5C12857B7FD00498D95 /* XCRemoteSwiftPackageReference "ModernAVPlayer" */;
 			productName = ModernAVPlayer;

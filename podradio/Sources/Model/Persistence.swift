@@ -10,9 +10,9 @@ struct PersistenceController {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.mainContext
 
-        DummyData.makeFeed(context: viewContext, title: "feeda", episodeCount: 100)
+        DummyData.makeFeed(context: viewContext, title: "feeda", episodeCount: 30)
         DummyData.makeFeed(context: viewContext, title: "feedb", episodeCount: 5)
-        DummyData.makeFeed(context: viewContext, title: "feedc", episodeCount: 1538)
+        DummyData.makeFeed(context: viewContext, title: "feedc", episodeCount: 9)
 
         do {
             try viewContext.save()

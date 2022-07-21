@@ -1,5 +1,4 @@
 import Foundation
-import struct Kingfisher.KFImage
 import SwiftUI
 
 struct ListFeedImageView: View {
@@ -22,7 +21,11 @@ struct ListFeedImageView: View {
     private var imageView: some View {
         Group {
             if let imageUrl = imageUrl {
-                KFImage(imageUrl).resizable()
+                AsyncImage(url: imageUrl) { image in
+                    image.resizable()
+                } placeholder: {
+                    Color.gray.opacity(0.1)
+                }
             } else {
                 Image("defaultFeedImage").resizable()
             }

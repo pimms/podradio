@@ -9,6 +9,11 @@ struct DummyData {
         feed.url = URL(string: "https://\(title).com")!
         feed.imageUrl = URL(string: "https://thumbs.dreamstime.com/b/owls-portrait-owl-eyes-close-up-image-owls-portrait-owl-eyes-image-136855731.jpg")
 
+        let season = Season(context: context)
+        season.name = "season 1"
+        season.uniqueId = "season 1"
+        feed.addToSeasons(season)
+
         for index in 0 ... episodeCount {
             let episode = Episode(context: context)
             episode.title = "Episode \(index+1)"
@@ -17,6 +22,7 @@ struct DummyData {
             episode.publishDate = Date().addingTimeInterval(-86400 * 3 * Double(index))
             episode.duration = 3937
             feed.addToEpisodes(episode)
+            season.addToEpisodes(episode)
         }
 
         return feed
