@@ -52,21 +52,17 @@ private struct FeedCell: View {
 
     var body: some View {
         HStack {
-            
             if feed.title != nil {
                 ListFeedImageView(imageUrl: feed.imageUrl)
-
-                VStack {
-                    HStack {
-                        if player.playerState == .playing && player.feed == feed {
-                            Image(systemName: "play.circle.fill")
-                                .resizable()
-                                .frame(width: 20, height: 20)
-                        }
-                        Text(feed.title!)
-                            .foregroundColor(.primary)
-                        Spacer()
+                HStack {
+                    if player.playerState == .playing && player.feed == feed {
+                        Image(systemName: "play.circle.fill")
+                            .resizable()
+                            .frame(width: 20, height: 20)
                     }
+                    Text(feed.title!)
+                        .foregroundColor(.primary)
+                    Spacer()
                 }
             }
         }
