@@ -6,7 +6,7 @@ import MediaPlayer
 struct AirPlayButton: UIViewRepresentable {
     func makeUIView(context: Context) -> some UIView {
         let returnView: UIView
-        if isRunningPreviews() {
+        if isRunningPreviews() || isRunningOnSimulator() {
             let image = UIImage(systemName: "airplayaudio")
             let imageView = UIImageView(image: image)
             returnView = imageView

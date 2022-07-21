@@ -44,7 +44,7 @@
 		F5C34B7F287F2CA70049893A /* PlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C34B7E287F2CA70049893A /* PlayButton.swift */; };
 		F5C34B81287F34C10049893A /* PlayerControlSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C34B80287F34C10049893A /* PlayerControlSheet.swift */; };
 		F5C34B83287F35040049893A /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C34B82287F35040049893A /* FilterButton.swift */; };
-		F5C34B85287F36720049893A /* IsRunningPreviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C34B84287F36720049893A /* IsRunningPreviews.swift */; };
+		F5C34B85287F36720049893A /* DebugEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C34B84287F36720049893A /* DebugEnvironment.swift */; };
 		F5C34B8B287F4E9A0049893A /* CustomModernAVPlayerConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C34B8A287F4E9A0049893A /* CustomModernAVPlayerConfiguration.swift */; };
 		F5C34B8F287F58E80049893A /* StreamScheduleStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C34B8E287F58E80049893A /* StreamScheduleStore.swift */; };
 		F5C40AC626B6FE520062FB3F /* ITunes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C40AC526B6FE520062FB3F /* ITunes.swift */; };
@@ -114,7 +114,7 @@
 		F5C34B7E287F2CA70049893A /* PlayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayButton.swift; sourceTree = "<group>"; };
 		F5C34B80287F34C10049893A /* PlayerControlSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlSheet.swift; sourceTree = "<group>"; };
 		F5C34B82287F35040049893A /* FilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
-		F5C34B84287F36720049893A /* IsRunningPreviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsRunningPreviews.swift; sourceTree = "<group>"; };
+		F5C34B84287F36720049893A /* DebugEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugEnvironment.swift; sourceTree = "<group>"; };
 		F5C34B8A287F4E9A0049893A /* CustomModernAVPlayerConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModernAVPlayerConfiguration.swift; sourceTree = "<group>"; };
 		F5C34B8E287F58E80049893A /* StreamScheduleStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamScheduleStore.swift; sourceTree = "<group>"; };
 		F5C40AC526B6FE520062FB3F /* ITunes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ITunes.swift; sourceTree = "<group>"; };
@@ -284,7 +284,7 @@
 			children = (
 				F58AE0E526B154650015419E /* podradioApp.swift */,
 				F58AE0FE26B15F770015419E /* Log.swift */,
-				F5C34B84287F36720049893A /* IsRunningPreviews.swift */,
+				F5C34B84287F36720049893A /* DebugEnvironment.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -578,7 +578,7 @@
 				F5C34B81287F34C10049893A /* PlayerControlSheet.swift in Sources */,
 				F5C34B8B287F4E9A0049893A /* CustomModernAVPlayerConfiguration.swift in Sources */,
 				F57A64CB26C7A6680011B54D /* FeedFetcher.swift in Sources */,
-				F5C34B85287F36720049893A /* IsRunningPreviews.swift in Sources */,
+				F5C34B85287F36720049893A /* DebugEnvironment.swift in Sources */,
 				F5C34B83287F35040049893A /* FilterButton.swift in Sources */,
 				F55CC2A5288886CF00FEF597 /* ScheduleView.swift in Sources */,
 				F52B74382884238000D0AD61 /* DefaultFeedStore.swift in Sources */,
