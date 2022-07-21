@@ -18,6 +18,7 @@ class CurrentTimeReporter: ObservableObject {
     init() {
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { [weak self] _ in
             guard let atom = self?.atom else { return }
+            guard atom.duration > 0 else { return }
 
             let currentPosition = atom.currentPosition
             if currentPosition >= atom.duration {

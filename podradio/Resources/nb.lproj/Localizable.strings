@@ -15,8 +15,8 @@
 
 // SETTINGS
 "settings.title" = "Innstillinger";
-"settings.feed.episodeCount %@" = "%@ episoder";
-"settings.feed.seasonCount %@" = "%@ sesonger";
+"settings.feed.episodeCount %lld" = "%lld episoder";
+"settings.feed.seasonCount %lld" = "%lld sesonger";
 "settings.feed.lastRefreshed %@" = "Oppdatert for %@";
 "settings.feed.refreshAction" = "Oppdater";
 "settings.feed.refreshedNow" = "bitte litt siden";
